@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Demo</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="css/main.css" rel="stylesheet">
+    </head>
+          
+    <body>
+        <div class="qr-box">
+            <div class="qrcode"></div>
+        </div>
+        <div class="color-box" style="background-color:#f00;">
+        </div>
+        
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.qrcode-0.12.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+				// jQuery qrcode
+				$(".qrcode").qrcode({
+					"text": "http://larsjung.de/qrcode"
+				});
+				
+				// Color Loop
+				var colors = ['#fc0','#6c0','#60f','#f00']; //設定顏色(不限數量)，最後一個顏色須跟上面style裡的相同
+				var step = 0;
+				window.setInterval(function(){
+					$(".color-box").css('background-color',colors[step]);
+					if(step==colors.length-1) 
+						step=0;
+					else
+						step+=1;
+				},500); //設定間隔時間
+            });
+        </script>
+          
+    </body>
+</html>
