@@ -20,6 +20,6 @@ if ver == 0x44:
   blue = data[7] << 8 | data[6]
   crgb = "C: %s, R: %s, G: %s, B: %s\n" % (clear, red, green, blue)
   print crgb
-  time.sleep(1)
+  time.sleep(0.1)
 else: 
  print "Device not found\n"
