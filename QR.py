@@ -13,6 +13,6 @@ def start_cam():
         if barcodedata:
             print("{0}".format(barcodedata))
             #Kills the webcam window by executing the bash file 
-            os.system("/home/pi/Desktop/kill.sh")
+            os.system("/home/pi/huan/kill.sh")
 
 start_cam()
