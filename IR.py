@@ -1,14 +1,13 @@
-#!/usr/bin/python
-#!-*- coding: utf-8 -*-
+#!/usr/bin/python !-*- coding: utf-8 -*-
 
 import time
 import sys
 import RPi.GPIO as GPIO
 
 # 使用 BCM GPIO 取代實際接腳號碼
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 # 定義樹莓派連接到 PIR 的接腳
-PIN_PIR = 18
+PIN_PIR = 22
 STB_TIME = 3
 
 try:
@@ -27,11 +26,11 @@ try:
     # 按下 Ctrl + C 離開
     while True:
         if(GPIO.input(PIN_PIR)):
-            print "THE PIR SENSOR DETECTED MOVEMENT           \r",
+            print "DETECTED           \n",
             sys.stdout.flush()
-            time.sleep(3)   # 此時間的設定必須要大於 PIR 的延遲時間
+            time.sleep(0.2)   # 此時間的設定必須要大於 PIR 的延遲時間
         else:
-            print "PIR sensor get ready for movement detection\r",            
-    
+            print "PIR sensor get ready for movement detection\n",            
+    	    time.sleep(0.2)
 except KeyboardInterrupt:    
     print "\n\n  Quit!  \n"

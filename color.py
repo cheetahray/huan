@@ -13,13 +13,25 @@ if ver == 0x44:
  bus.write_byte(0x29, 0x01|0x02) # 0x01 = Power on, 0x02 RGB sensors enabled
  bus.write_byte(0x29, 0x80|0x14) # Reading results start register 14, LSB then MSB
  while True:
+  color = "NONE"
   data = bus.read_i2c_block_data(0x29, 0)
   clear = clear = data[1] << 8 | data[0]
   red = data[3] << 8 | data[2]
   green = data[5] << 8 | data[4]
-  blue = data[7] << 8 | data[6]
-  crgb = "C: %s, R: %s, G: %s, B: %s\n" % (clear, red, green, blue)
+  blue = data[7] << 8 | data[6] 
+  red = red >> 8
+  green = green >> 8
+  blue = blue >> 8
+  if (red > 200 & green < 50 & blue < 50) :
+	color = "RED,"
+  if (red < 50 & green > 200 & blue < 50) :
+	color = "GREEN"
+  if (red < 50 & green < 50 & blue > 200) :
+	color = "BLUE"
+  if (red > 200 & green > 200 & blue < 50) :
+	color = "YELLOW"
+  crgb = "C: %s, R: %s, G: %s, B: %s\n" % (color, red, green, blue)
   print crgb
-  time.sleep(1)
+  time.sleep(0.005)
 else: 
  print "Device not found\n"
