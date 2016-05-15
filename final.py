@@ -36,6 +36,7 @@ def get_distance():
 
 try:
     while True:
+	GPIO.output(relayPin, True)
         #Initializes an instance of Zbar to the commandline to detect barcode data-strings.
         p=os.popen('/usr/bin/zbarcam --prescale=300x200','r')
         #Barcode variable read by Python from the commandline.
@@ -48,17 +49,21 @@ try:
             print("{0}".format(barcodedata))
             #Kills the webcam window by executing the bash file 
             os.system("/home/pi/huan/kill.sh")
-            GPIO.output(relayPin, True)
+            GPIO.output(relayPin, False)
             while True: 
                 d = get_distance()
                 if (d < 10): 
                     count += 1
                     if (count > 20):
-                        GPIO.output(relayPin, False)
+                        GPIO.output(relayPin, True)
                         break
                 else:
                     count = 0
                     time.sleep(0.01)
  
 except KeyboardInterrupt:
+    GPIO.output(relayPin, False)
     GPIO.cleanup()
+
+finally:
+    GPIO.cleanup()     
