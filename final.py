@@ -34,7 +34,7 @@ def get_distance():
     distance_in = distance_cm /2.5
     return (distance_cm)
 
-def start_cam():
+try:
     while True:
         #Initializes an instance of Zbar to the commandline to detect barcode data-strings.
         p=os.popen('/usr/bin/zbarcam --prescale=300x200','r')
@@ -44,14 +44,16 @@ def start_cam():
         barcodedata = str(barcode)[8:]
 
         if barcodedata:
+            count = 0
             print("{0}".format(barcodedata))
             #Kills the webcam window by executing the bash file 
             os.system("/home/pi/huan/kill.sh")
             GPIO.output(relayPin, True)
             while True: 
-                d = get_distance()
-                if ( d > 1 and d < 10 ) :
+                if ( get_distance() < 10 and count > 2) :
+                    count += 1
                     GPIO.output(relayPin, False)
                     break
  
-start_cam()
+except KeyboardInterrupt:
+    GPIO.cleanup()
