@@ -34,7 +34,7 @@ def get_distance():
     distance_in = distance_cm /2.5
     return (distance_cm)
 
-    def start_cam():
+def start_cam():
     while True:
         #Initializes an instance of Zbar to the commandline to detect barcode data-strings.
         p=os.popen('/usr/bin/zbarcam --prescale=300x200','r')
