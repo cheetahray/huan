@@ -50,10 +50,15 @@ try:
             os.system("/home/pi/huan/kill.sh")
             GPIO.output(relayPin, True)
             while True: 
-                if ( get_distance() < 10 and count > 2) :
+                d = get_distance()
+                if (d < 10): 
                     count += 1
-                    GPIO.output(relayPin, False)
-                    break
+                    if (count > 20):
+                        GPIO.output(relayPin, False)
+                        break
+                else:
+                    count = 0
+                    time.sleep(0.01)
  
 except KeyboardInterrupt:
     GPIO.cleanup()
