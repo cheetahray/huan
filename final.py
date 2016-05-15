@@ -48,7 +48,9 @@ def start_cam():
             #Kills the webcam window by executing the bash file 
             os.system("/home/pi/huan/kill.sh")
             GPIO.output(relayPin, True)
-            if( get_distance() < 10) :
-                GPIO.output(relayPin, False)
+            while True: 
+                if ( get_distance() < 10 ) :
+                    GPIO.output(relayPin, False)
+                    break
  
 start_cam()
