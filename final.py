@@ -49,7 +49,8 @@ def start_cam():
             os.system("/home/pi/huan/kill.sh")
             GPIO.output(relayPin, True)
             while True: 
-                if ( get_distance() < 10 ) :
+                d = get_distance()
+                if ( d > 1 and d < 10 ) :
                     GPIO.output(relayPin, False)
                     break
  
