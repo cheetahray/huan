@@ -64,6 +64,3 @@ try:
 except KeyboardInterrupt:
     GPIO.output(relayPin, False)
     GPIO.cleanup()
-
-finally:
-    GPIO.cleanup()     
