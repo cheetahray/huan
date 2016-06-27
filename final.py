@@ -35,6 +35,8 @@ def get_distance():
     return (distance_cm)
 
 try:
+    GPIO.output(relayPin, False)
+    time.sleep(0.25)
     while True:
 	GPIO.output(relayPin, True)
         #Initializes an instance of Zbar to the commandline to detect barcode data-strings.
