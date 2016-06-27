@@ -38,7 +38,7 @@ try:
     while True:
 	GPIO.output(relayPin, True)
         #Initializes an instance of Zbar to the commandline to detect barcode data-strings.
-        p=os.popen('/usr/bin/zbarcam --prescale=300x200','r')
+        p=os.popen('LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libv4l2.so zbarcam --raw /dev/video0','r')
         #Barcode variable read by Python from the commandline.
         print("Please Scan a QRcode to begin...")
         barcode = p.readline()
