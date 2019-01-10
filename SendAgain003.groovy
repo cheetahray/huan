@@ -40,7 +40,7 @@ try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
                 String UserID = ctx.getRequestAttribute(CitiUtil.userid);
-                CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.RESENDESTMT.toString());
                 ObjectMapper mapper = new ObjectMapper();
                 Result result = new Result();
                 result.setCode(cardinfo.getResult().getCode());
@@ -92,3 +92,4 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
+
