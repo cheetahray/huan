@@ -54,54 +54,58 @@ try {
                 List<Info> infos = cardinfo.getInfos();
                 for (Info info:infos) {
                     Column column = new Column();
-                    CitiDeep detail = CitiDeep.alist(info.getCardtype());
-                    try {
-                        column.setImageUrl(new URI(detail.getImageUrl()));
-                        column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                        column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
-                        Content content = new Content();
-                        content.setText(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
-                        content.setType(Content.Type.GRID);
-                        content.addHeader(new Header("繳款日",null));
-                        content.addHeader(new Header("完成日",null));
-                        content.addHeader(new Header("金額","right"));
-                        int newLineCnt = 0;
-                        for (Pym pym:info.getPyms()) {
-                            Row row = new Row();
-                            Field field = new Field();
-                            field.setText(pym.getTxndate());
-                            row.addField(field);
-                            field = new Field();
-                            field.setText(pym.getDuedate());
-                            row.addField(field);
-                            field = new Field();
-                            field.setText("");
-                            row.addField(field);
-                            if (newLineCnt > 0)
-                                row.setIsAlternatingRow(true);
-                            newLineCnt++;
-                            content.addRow(row);
-                            row = new Row();
-                            field = new Field();
-                            field.setText(pym.getTxndesc());
-                            row.addField(field);
-                            field = new Field();
-                            field.setText("");
-                            row.addField(field);
-                            field = new Field();
-                            field.setText(CitiUtil.formatMoney(pym.getTxnamount(), CitiUtil.fontColor.BLUE));
-                            field.setIsBold(true);
-                            field.setAlign("right");
-                            row.addField(field);
-                            content.addRow(row);
-                        }
-                        column.addContent(content);
+                    CitiDeep detail = CitiDeep.alist(info.getLogo());
+                    if(detail != null)
+                    {
+                      try {
+                          column.setImageUrl(new URI(detail.getImageUrl()));
+                          column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
+                          column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                          Content content = new Content();
+                          content.setText(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                          content.setType(Content.Type.GRID);
+                          content.addHeader(new Header("繳款日",null));
+                          content.addHeader(new Header("完成日",null));
+                          content.addHeader(new Header("金額","right"));
+                          int newLineCnt = 0;
+                          for (Pym pym:info.getPyms()) {
+                              Row row = new Row();
+                              Field field = new Field();
+                              field.setText(pym.getTxndate());
+                              row.addField(field);
+                              field = new Field();
+                              field.setText(pym.getDuedate());
+                              row.addField(field);
+                              field = new Field();
+                              field.setText("");
+                              row.addField(field);
+                              if (newLineCnt > 0)
+                                  row.setIsAlternatingRow(true);
+                              newLineCnt++;
+                              content.addRow(row);
+                              row = new Row();
+                              field = new Field();
+                              field.setText(pym.getTxndesc());
+                              row.addField(field);
+                              field = new Field();
+                              field.setText("");
+                              row.addField(field);
+                              field = new Field();
+                              field.setText(pym.getTxnamount());
+                              //field.setText(CitiUtil.formatMoney(pym.getTxnamount(), CitiUtil.fontColor.BLUE));
+                              field.setIsBold(true);
+                              field.setAlign("right");
+                              row.addField(field);
+                              content.addRow(row);
+                          }
+                          column.addContent(content);
 
-                    } catch (URISyntaxException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
+                      } catch (URISyntaxException e) {
+                          // TODO Auto-generated catch block
+                          e.printStackTrace();
+                      }
+                      msgcrl.addColumn(column);
                     }
-                    msgcrl.addColumn(column);
                 }
 
                 jsonInString = mapper.writeValueAsString(msgcrl);
