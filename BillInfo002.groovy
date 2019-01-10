@@ -20,6 +20,7 @@ import com.intumit.citi.Result;
 import com.intumit.citi.CitiDeep;
 import org.apache.wink.json4j.JSONObject;
 import org.apache.wink.json4j.JSONArray;
+import com.intumit.systemconfig.WiseSystemConfigFacade;
 
 private Content newContent(Content.Type type, String text) {
     Content content = new Content();
@@ -51,25 +52,29 @@ try {
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
                 msgcrl.setType(Message.Type.CAROUSEL);
-                int cnt = 1;
+                int cnt=1;
                 List<Info> infos = cardinfo.getInfos();
                 for (Info info:infos) {
                     Column column = new Column();
-                    CitiDeep detail = CitiDeep.alist(info.getCardtype());
-                    column.setImageUrl(new URI(detail.getImageUrl()));
-                    column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                    column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
-                    column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalAmountofCurrentBill +
-                                                   CitiUtil.formatMoney( info.getEndBal(), CitiUtil.fontColor.BLUE ) ) );
-                    column.addContent( newContent( Content.Type.TEXT, CitiUtil.miniAmountPayment + CitiUtil.formatMoney(info.getTotAmtDue(), CitiUtil.fontColor.BLUE) ) );
-                    column.addContent( newContent( Content.Type.TEXT, CitiUtil.billCheckoutDate + info.getStmtday() ) );
-                    column.addContent( newContent( Content.Type.TEXT, CitiUtil.paymentDeadline +
-                                                   info.getDueDt() + (info.getAutopay().equals("Y")?CitiUtil.autoTransfer:"") ) );
-                    column.addExternalActions(newAction(Action.Type.URL,"本期帳單明細", CitiUtil.getMyLink() + "/citi-detail.jsp?carno=" + (cnt++) + "&apikey=" + ctx.getCtxAttr("_bundle").get("apikey") + "&id=" + ctx.getCtxAttr("_bundle").get("id")));
-                    column.addExternalActions(newAction(Action.Type.URL,"未出帳交易明細",CitiUtil.unTranDetail));
-                    column.addExternalActions(newAction(Action.Type.URL,"申請帳單分期",CitiUtil.applyBilling));
-                    column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
-                    msgcrl.addColumn(column);
+                    CitiDeep detail = CitiDeep.alist(info.getLogo());
+                    if(detail != null)
+                    {
+                      column.setImageUrl(new URI(detail.getImageUrl()));
+                      column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
+                      column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalAmountofCurrentBill +
+                                                     CitiUtil.formatMoney( info.getEndBal(), CitiUtil.fontColor.BLUE ) ) );
+                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.miniAmountPayment + CitiUtil.formatMoney(info.getTotAmtDue(), CitiUtil.fontColor.BLUE) ) );
+                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.billCheckoutDate + info.getStmtday() ) );
+                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.paymentDeadline +
+                                                     info.getDueDt() + (info.getAutopay().equals("Y")?CitiUtil.autoTransfer:"") ) );
+                      //column.addExternalActions(newAction(Action.Type.URL,"本期帳單明細", CitiUtil.getMyLink() + WiseSystemConfigFacade.getInstance().get().getContextPath()
+                      // + "/citi-detail.jsp?cardno=" + (cnt++) + "&apikey=" + ctx.getCtxAttr("_bundle").get("apikey") + "&id=" + ctx.getCtxAttr("_bundle").get("id")));
+                      column.addExternalActions(newAction(Action.Type.URL,"未出帳交易明細",CitiUtil.unTranDetail));
+                      column.addExternalActions(newAction(Action.Type.URL,"申請帳單分期",CitiUtil.applyBilling));
+                      column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
+                      msgcrl.addColumn(column);
+                    }
                 }
 
                 jsonInString = mapper.writeValueAsString(msgcrl);
