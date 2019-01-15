@@ -55,25 +55,27 @@ try {
                 List<Info> infos = cardinfo.getInfos();
                 for (Info info:infos) {
                     Column column = new Column();
-                    CitiDeep detail = CitiDeep.alist(info.getCardtype());
-                    try {
-                        column.setImageUrl(new URI(detail.getImageUrl()));
-                        column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                        column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
-                        //column.setTitle( (Calendar.getInstance().get(Calendar.MONTH)+1) + CitiUtil.checkoutBill);
-                        //column.setTitleBackgroundColor(CitiUtil.titleBackgroundColor);
-                        column.addContent( newContent(Content.Type.TEXT, CitiUtil.checkoutBill + info.getStmtday() ) );
-                        column.addContent( newContent(Content.Type.TEXT, CitiUtil.emailBox + info.getEmail() ) );
-                        //column.addInternalActions(newAction(Action.Type.URL,"帳單資訊", CitiUtil.getMyLink()
-                        // + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey") // + "&UserID=" + jsonobj.getString("UserID")
-                        // + "&id=" + jsonobj.getString("id") + "&q=帳單應交金額及繳款日" // + CitiUtil.billInfo
-                        //                              ));
-                    } catch (URISyntaxException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
+                    CitiDeep detail = CitiDeep.alist(info.getLogo());
+                    if(detail != null)
+                    {
+                      try {
+                          column.setImageUrl(new URI(detail.getImageUrl()));
+                          column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
+                          column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                          //column.setTitle( (Calendar.getInstance().get(Calendar.MONTH)+1) + CitiUtil.checkoutBill);
+                          //column.setTitleBackgroundColor(CitiUtil.titleBackgroundColor);
+                          column.addContent( newContent(Content.Type.TEXT, CitiUtil.checkoutBill + info.getStmtday() ) );
+                          column.addContent( newContent(Content.Type.TEXT, CitiUtil.emailBox + info.getEmail() ) );
+                          //column.addInternalActions(newAction(Action.Type.URL,"帳單資訊", CitiUtil.getMyLink()
+                          // + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey") // + "&UserID=" + jsonobj.getString("UserID")
+                          // + "&id=" + jsonobj.getString("id") + "&q=帳單應交金額及繳款日" // + CitiUtil.billInfo
+                          //                              ));
+                      } catch (URISyntaxException e) {
+                          // TODO Auto-generated catch block
+                          e.printStackTrace();
+                      }
+                      msgcrl.addColumn(column);
                     }
-                    msgcrl.addColumn(column);
-
                 }
 
                 jsonInString = mapper.writeValueAsString(msgcrl);
