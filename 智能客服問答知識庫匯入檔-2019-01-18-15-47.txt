@@ -1,0 +1,192 @@
+kid	id	category	question	inheritance_alt_template	question_alt	question_test_case	answer
+COMMON_SENSE-8	8		推播帳單到期提醒功能		"(推播)(帳單)(期限)(提醒)(功能)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""推播帳單到期提醒功能""}"	"推播帳單到期提醒功能
+"	"可以！簡單4步驟立即設定帳單到期通知，讓您帳單不漏繳 ~
+（1）返回 　<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197236784.png"" style=""height:51px; width:53px"" />　點選左上方選單<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197240654.png"" style=""height:41px; width:48px"" />
+（2）點選【設定】&rarr;啟用推播通知
+（3）點選【管理推播通知】
+（4）勾選【帳單到期提醒】&rarr;啟用成功
+&hearts;一隻手機僅能綁定一個網路使用者代號
+※帳單到期通知會在繳款截止日前1工作日發送，若已繳足最低應繳金額就不會收到通知囉~
+"
+COMMON_SENSE-9	9		查詢緊急公告內容		"(緊急)(公告)(通知)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""查詢緊急公告通知""}"	"查詢緊急公告通知
+"	好的，以下為緊急公告資訊。
+COMMON_SENSE-10030025	10030025		信用卡申請文件		"(信用卡)(申請)(文件) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u5361\u7533\u8acb\u6587\u4ef6""}"	"信用卡申請文件
+"	"申辦信用卡需要3項文件：
+（1）身分證
+（2）第二身分證件 （駕照或健保卡）
+（3）財力證明
+　　  例如:薪資存摺(近3個月)/扣繳憑單(最新年度)
+"
+COMMON_SENSE-10030080	10030080		信用卡有效期限查詢		"(信用卡)(期限)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""信用卡有效期限查詢""}"	"信用卡有效期限查詢
+"	"請拿出您的卡片並參考下圖範例：
+
+有效期限：12/21=2021年12月
+
+&nbsp;
+
+<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187931492.png"" style=""height:110px; width:173px"" /><img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187938892.jpg"" style=""height:109px; width:173px"" />
+識別碼（CVV）：720
+
+<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187990826.jpg"" style=""height:109px; width:173px"" />
+"
+COMMON_SENSE-10030083	10030083		為什麼我的卡片跟你們顯示的不同		"(為什麼)(卡片)(顯示)(不同) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u70ba\u4ec0\u9ebc\u6211\u7684\u5361\u7247\u8ddf\u4f60\u5011\u986f\u793a\u7684\u4e0d\u540c""}"	"為什麼我的卡片跟你們顯示的不同
+"	"別擔心，本行於2018年10月起，陸續將信用卡升級為感應式晶片卡，且會同時更換新卡面唷！
+
+※信用卡有效期限到期時，會自動為您換發新卡唷~
+"
+COMMON_SENSE-10040288	10040288		信用卡機場接送優惠		"(信用卡)(機場接送)(優惠) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u5361\u6a5f\u5834\u63a5\u9001\u512a\u60e0""}"	"信用卡機場接送優惠
+"	"有的！機場接送最優$380起/趟 ，讓您往返機場更加從容優雅。
+
+{{L:立即上車享優惠:https://www.citibank.com.tw/sim/zh-tw/credit-cards/airport-pick-up.htm?card=1}}"
+COMMON_SENSE-10050012	10050012		查詢超商繳款入帳時間		"(超商)(繳款)(入帳)(時間) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u67e5\u8a62\u8d85\u5546\u7e73\u6b3e\u5165\u5e33\u6642\u9593""}"	"查詢超商繳款入帳時間
+"	超商繳款入帳時間需2∼3個工作天，請您耐心等候唷！
+COMMON_SENSE-10050013	10050013		查詢ATM轉帳繳款入帳時間		"(atm)(轉帳)(繳款)(入帳)(時間) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u67e5\u8a62ATM\u8f49\u5e33\u7e73\u6b3e\u5165\u5e33\u6642\u9593""}"	"查詢ATM轉帳繳款入帳時間
+"	"ATM轉帳繳款入帳時間：
+＊15：30前繳款－下1個工作天入帳
+＊15：30後繳款－下2個工作天入帳"
+COMMON_SENSE-10050015	10050015		查詢銀行匯款入帳時間		"(銀行)(匯款)(入帳)(時間) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u67e5\u8a62\u9280\u884c\u532f\u6b3e\u5165\u5e33\u6642\u9593""}"	"查詢銀行匯款入帳時間
+"	匯款(電匯)入帳時間需1~2個工作天！
+COMMON_SENSE-10050016	10050016		查詢語音繳款入帳時間		"(語音)(繳款)(入帳)(時間) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u67e5\u8a62\u8a9e\u97f3\u7e73\u6b3e\u5165\u5e33\u6642\u9593""}"	"查詢語音繳款入帳時間
+"	"使用本行語音繳款入帳時間：
+【週一∼週五】 
+     20：30 前繳款－當日入帳
+     20：30 後繳款－下1個工作天入帳
+【例假日】－下1個工作天入帳"
+COMMON_SENSE-10050023	10050023		繳款未入帳處理方式		"(繳款)(未入帳)(處理方式) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u7e73\u6b3e\u672a\u5165\u5e33\u8655\u7406\u65b9\u5f0f""}"	"繳款未入帳處理方式
+"	"別擔心~備妥繳款證明後，請點選客服即時通由專員立即為您查詢繳款紀錄。
+
+客服即時通："
+COMMON_SENSE-10050044	10050044		信用卡帳單繳款提醒方式		"(信用卡)(帳單)(繳款)(提醒)(方式) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u5361\u5e33\u55ae\u7e73\u6b3e\u63d0\u9192\u65b9\u5f0f""}"	"信用卡帳單繳款提醒方式
+"	"若您在本行有登記電子信箱，繳款截止日前1~2天會自動發送繳款提醒。
+※以下狀況不會發送提醒：
+（1）帳單有設定自動轉帳
+（2）本期帳單繳款總金額<=0
+（3）帳單逾期繳款超過1個月(含)以上
+（4）發送提醒前已繳足最低應繳金額
+"
+COMMON_SENSE-10060075	10060075		暫停當期帳單自動扣款		"(暫停)(當期)(帳單)(自動扣款)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""暫停當期帳單自動扣款""}"	"暫停當期帳單自動扣款
+"	"要通知我們唷，請點選客服即時通由專員為您暫停本期自動扣款。
+
+&hearts;請務必於繳款截止日前3個工作天提出申請
+<a class=""answer-link"" href=""http://${transfer}"" target=""_blank"">客服即時通</a>：
+"
+COMMON_SENSE-10060083	10060083		查詢帳單繳款截止日		"(帳單)(繳款)(期限)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""查詢帳單繳款截止日""}"	"查詢帳單繳款截止日
+"	"請直接連結功能選單的{{Q:【帳單資訊】:查詢我的本期帳單應交金額及繳款日}}
+"
+COMMON_SENSE-10100002	10100002		永久額度調高申請方式		"(永久)(額度)(調高)(申請)(方式)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""永久額度調高申請方式""}"	"永久額度調高申請方式
+"	"申請永久額度調高只需簡單3步驟
+<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187836474.png"" style=""height:161px; width:318px"" />
+
+&hearts;審核約需5個工作天，調整結果會寄發簡訊通知您。
+
+
+{{L:立即申請:www.citibank.com.tw/CLIC}}
+"
+COMMON_SENSE-10100009	10100009		臨時額度調高申請方式		"(臨時)(額度)(調高)(申請)(方式)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""臨時額度調高申請方式""}"	"臨時額度調高申請方式
+"	"持卡滿6個月以上，可透過電話理財中心申請調高臨時額度
+
+&hearts;調整時間最長30天，且不能刷分期交易唷！
+&nbsp;
+
+<span style=""background-color:rgb(248	 249	 250); color:rgb(32	 33	 36); font-family:roboto	sans-serif; font-size:15.04px"">{{L:立即申請:tel:02-25768000}}</span>
+"
+COMMON_SENSE-10130002	10130002		信用卡爭議帳款申訴流程		"(信用卡)(爭議帳款)(申訴)(流程)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""信用卡爭議帳款申訴流程""}"	"信用卡爭議帳款申訴流程
+"	"別擔心?請點選客服即時通由專員立即為您查詢消費明細。
+
+<a class=""answer-link"" href=""http://${transfer}"" target=""_blank"">客服即時通</a>
+"
+COMMON_SENSE-10130029	10130029		信用卡國外交易手續費		"(信用卡)(國外)(交易)(手續費) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u5361\u570b\u5916\u4ea4\u6613\u624b\u7e8c\u8cbb""}"	"信用卡國外交易手續費
+"	"只要收單銀行在國外，不論當時以外幣或新臺幣交易，皆會收取國外交易手續費1.5%。
+範例：NT$1000x1.5%=NT$15
+"
+COMMON_SENSE-10150004	10150004		補寄電子帳單費用		"(補)(寄)(電子帳單)(費用) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u88dc\u5bc4\u96fb\u5b50\u5e33\u55ae\u8cbb\u7528""}"	"補寄電子帳單費用
+"	請您放心，補寄電子月結單不收取任何費用唷∼
+COMMON_SENSE-10150005	10150005		信用卡電子帳單開啟密碼		"(信用卡)(電子帳單)(開啟)(密碼) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u5361\u96fb\u5b50\u5e33\u55ae\u958b\u555f\u5bc6\u78bc""}"	"信用卡電子帳單開啟密碼
+"	"開啟電子月結單的密碼如下：
+【本國人】=身份證字號
+　　　　　例如：Ａ123456789
+
+【外籍人士】=性別＋西元出生年月日
+　　　　　男：Ｍ19800723
+　　　　　女：Ｆ19771019
+
+※英文字母須大寫唷~
+"
+COMMON_SENSE-10150011	10150011		信用卡電子帳單未收到原因		"(信用卡)(電子帳單)(未)(收到)(原因)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""信用卡電子帳單未收到原因""}"	"信用卡電子帳單未收到原因
+"	"收不到電子月結單常見原因如下：
+（1）本期帳單無新增交易且繳款金
+額=0，則不會寄送電子月結單
+
+（2）郵件被阻擋:
+建議將花旗電子信箱加為【聯絡人】
+避免落入垃圾郵件
+estatement@citibank.com.tw
+twcitiphone@citi.com
+
+（3）郵件被收合: 若信箱有設定交談(outlook/Yahoo) 或會話群組檢視功能(Gmail) 則 電子月結單會被放在同一信件. 範例 :
+
+<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547188200960.png"" style=""height:136px; width:416px"" />
+"
+COMMON_SENSE-10150051	10150051		補寄非當期信用卡電子帳單		"(補)(寄)(非)(當期)(信用卡)(電子帳單) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u88dc\u5bc4\u975e\u7576\u671f\u4fe1\u7528\u5361\u96fb\u5b50\u5e33\u55ae""}"	"補寄非當期信用卡電子帳單
+"	"當然沒問題！請點選客服即時通由專員立即為您補寄。
+
+客服即時通："
+COMMON_SENSE-10160241	10160241		行動生活家app啟用推播通知方式		"(行動生活家)(啟用)(推播)(通知)(方式)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""行動生活家app啟用推播通知方式""}"	"行動生活家app啟用推播通知方式
+"	"可以！簡單4步驟立即設定消費通知，讓您越刷越安心 ~
+（1）返回　<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197293536.png"" style=""height:51px; width:53px"" />　點選左上方選單<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197296347.png"" style=""height:41px; width:48px"" />
+（2）點選【設定】&rarr;啟用推播通知
+（3）點選【管理推播通知】
+（4）勾選【信用卡消費通知】&rarr;啟用成功
+&hearts;一隻手機僅能綁定一個網路使用者代號
+"
+COMMON_SENSE-10170003	10170003		信用貸款財力證明		"(信用貸款)(財力證明) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u8cb8\u6b3e\u8ca1\u529b\u8b49\u660e""}"	"信用貸款財力證明
+"	"請準備以下任一財力證明即可申請：
+（1）扣繳憑單（最新年度）
+（2）薪資存摺（近３個月）
+（3）正式薪資單（近3個月）
+（4）所得稅（清）單
+
+{{L:立即申請:0800-600-666}}"
+COMMON_SENSE-10170013	10170013		信用貸款月付金試算		"(信用貸款)(月付金)(試算) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u8cb8\u6b3e\u6708\u4ed8\u91d1\u8a66\u7b97""}"	"信用貸款月付金試算
+"	"信貸的期數/利率將由專員為您試算~
+
+{{L:立即試算:0800-600-666}}"
+COMMON_SENSE-10230018	10230018		信用卡消費分期繳款方式		"(信用卡)(消費)(分期)(繳款)(方式) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u5361\u6d88\u8cbb\u5206\u671f\u7e73\u6b3e\u65b9\u5f0f""}"	"信用卡消費分期繳款方式
+"	"帳單分期後，每期月付金會一併列入信用卡帳單，請於繳款截止日前繳費即可。
+"
+COMMON_SENSE-10230071	10230071		分期聰明付分期試算		"(分期聰明付)(分期)(試算) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u5206\u671f\u8070\u660e\u4ed8\u5206\u671f\u8a66\u7b97""}"	"分期聰明付分期試算
+"	"您可透過活動網頁試算分期金額/期數/利率唷。
+
+※活動資格請以網頁顯示為主
+
+{{L:立即試算:https://www.citibank.com.tw/global_docs/chi/cc/161013_rte/index2_pc.html?AgentCode=TML18000&icid=TWCCXRTCNHOMECOMR}}
+
+"
+COMMON_SENSE-10230072	10230072		分期聰明付額度占用		"(分期聰明付)(額度)(占用) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u5206\u671f\u8070\u660e\u4ed8\u984d\u5ea6\u5360\u7528""}"	"分期聰明付額度占用
+"	"帳單分期會佔用信用卡額度，但每個月繳款入帳後，額度會逐月恢復喔~
+"
+COMMON_SENSE-10230221	10230221		線上訂房樂享優惠		"(上)(訂房)(樂)(享)(優惠) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u7dda\u4e0a\u8a02\u623f\u6a02\u4eab\u512a\u60e0""}"	"線上訂房樂享優惠
+"	"有的！透過花旗卡友專屬網站訂房樂享優惠 !
+（1）Agoda-享最優9折優惠
+（2）Hotels.com-享最優91折優惠
+（3）Booking.com-享禮獻7%回饋
+（4）Expedia-享最優91折優惠
+
+{{L:前往專屬網站享優惠:https://www.citibank.com.tw/global_docs/chi/cc/150130_onlinehotel/index.htm}}
+"
+COMMON_SENSE-10230304	10230304		台亞全國加油站活動介紹		"(台)(亞)(全國加油站)(活動)(介紹)	 // {""alt.editor"":""1""	""testCase.editor"":""1""	""testCase"":""台亞全國加油站活動介紹""}"	"台亞全國加油站活動介紹
+"	"有的！持花旗信用卡於全國/台亞加油站，享汽油每公升最優降1.2元
+
+<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547188250606.jpg"" style=""height:271px; width:844px"" />
+
+&nbsp;{{L:了解更多:https://www.citibank.com.tw/global_docs/chi/cc/171227_gasoline/index.html}}
+"
+COMMON_SENSE-10230531	10230531		信用卡KKDAY優惠活動		"(信用卡)(kkday)(優惠活動) // {""alt.editor"":1	""testCase.editor"":1	""testCase"":""\u4fe1\u7528\u5361KKDAY\u512a\u60e0\u6d3b\u52d5""}"	"信用卡KKDAY優惠活動
+"	"有的！「KKDAY暢玩世界 由你做主」
+透過指定網站輸入優惠代碼享：
+（1）全行程94折
+　　  活動代碼：「CITI2018」
+（2）日本一日遊行程9折
+　      活動代碼：「CITI201801」
+
+{{L:前往指定網站享優惠:https://www.citibank.com.tw/global_docs/chi/cc/180628_kkday/index.html}}"
