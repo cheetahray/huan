@@ -1,0 +1,30 @@
+{
+  "Messages": [
+    {
+      "Actions": [
+        {
+          "Text": "帳單分期",
+          "Type": "url",
+          "Url": "https://www.citibank.com.tw/global_docs/chi/cc/161013_rte/index2_pc.html"
+        },
+        {
+          "Text": "我要辦信貸",
+          "Type": "url",
+          "Url": "https://www.citibank.com.tw/sim/zh-tw/loans/credit-fin.htm"
+        }
+      ],
+      "Id": "0",
+      "Text": "好的，請您先選擇。",
+      "Type": "buttons"
+    }
+  ],
+  "Output": {
+    "Id": "",
+    "Text": "",
+    "Type": "text"
+  },
+  "Result": {
+    "Code": 0,
+    "Message": ""
+  }
+}
