@@ -61,7 +61,7 @@ private Column setColumn(Column column, CitiDeep detail) {
     } catch (URISyntaxException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
-    } 
+    }
     return null;
 }
 
@@ -69,7 +69,7 @@ try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
                 String UserID = ctx.getRequestAttribute(CitiUtil.userid);
-                CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.STATEMENT.toString());
+                CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
                 ObjectMapper mapper = new ObjectMapper();
                 Result result = new Result();
                 result.setCode(cardinfo.getResult().getCode());
@@ -92,17 +92,21 @@ try {
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
-                    for (List place: places)
+                    if(detail != null)
                     {
-                        HashSet set = place.get(1);
-                        if(set.contains(info.getLogo()))
-                        {
-                            place.set(0,true);
-                        }
+                      for (List place: places)
+                      {
+                          HashSet set = place.get(1);
+                          if(place.get(0) == false && set.contains(info.getLogo()))
+                          {
+                              place.set(0,true);
+                              System.out.println(info.getLogo());
+                          }
+                      }
+                      column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
+                      column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
+                      msgcrl.addColumn(setColumn(column, detail));
                     }
-                    column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                    column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
-                    msgcrl.addColumn(setColumn(column, detail));
                 }
                 for (List place: places)
                 {
@@ -116,6 +120,7 @@ try {
                     }
                 }
                 jsonInString = mapper.writeValueAsString(msgcrl);
+
                 ctx.response.put("Messages", new JSONArray("[" + jsonInString + "]"));
         }
     }
