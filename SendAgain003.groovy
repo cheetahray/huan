@@ -59,9 +59,9 @@ try {
                     if(detail != null)
                     {
                       try {
-                          column.setImageUrl(new URI(detail.getImageUrl()));
+                          column.setImageUrl(detail.getImageUrl());
                           column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                          column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                          column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
                           //column.setTitle( (Calendar.getInstance().get(Calendar.MONTH)+1) + CitiUtil.checkoutBill);
                           //column.setTitleBackgroundColor(CitiUtil.titleBackgroundColor);
                           column.addContent( newContent(Content.Type.TEXT, CitiUtil.checkoutBill + info.getStmtday() ) );

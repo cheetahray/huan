@@ -59,9 +59,9 @@ try {
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
                     if(detail != null)
                     {
-                      column.setImageUrl(new URI(detail.getImageUrl()));
+                      column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                      column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                      column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalAmountofCurrentBill +
                                                      CitiUtil.formatMoney( info.getEndBal(), CitiUtil.fontColor.BLUE ) ) );
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.miniAmountPayment + CitiUtil.formatMoney(info.getTotAmtDue(), CitiUtil.fontColor.BLUE) ) );

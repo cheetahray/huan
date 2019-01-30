@@ -58,11 +58,11 @@ try {
                     if(detail != null)
                     {
                       try {
-                          column.setImageUrl(new URI(detail.getImageUrl()));
+                          column.setImageUrl(detail.getImageUrl());
                           column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                          column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                          column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
                           Content content = new Content();
-                          content.setText(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                          content.setText(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
                           content.setType(Content.Type.GRID);
                           content.addHeader(new Header("繳款日",null));
                           content.addHeader(new Header("完成日",null));

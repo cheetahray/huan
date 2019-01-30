@@ -51,9 +51,9 @@ try {
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
                     if(detail != null)
                     {
-                      column.setImageUrl(new URI(detail.getImageUrl()));
+                      column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                      column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:"" ));
+                      column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.billCheckoutDate + info.getStmtday() ) );
                       column.addContent( newContent( Content.Type.TEXT, ( info.getCcl().equals("Y") ? CitiUtil.bonus: CitiUtil.jointName ) +
                                                      CitiUtil.points + info.getAvlPoint() ) );
