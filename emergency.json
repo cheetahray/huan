@@ -17,5 +17,32 @@
     "Id": "0",
     "Type": "announce",
     "Title": "緊急公告"
-  }
+  },
+  "Messages": [
+    {
+      "Id": "0",
+      "Type": "carousel",
+      "Columns": [
+        {
+          "ImageUrl": "kv-l.png",
+          "ImageText": "Image Description"
+        },
+        {
+          "ImageUrl": "kv-l.png",
+          "ImageText": "Image Description"
+        }
+      ]
+    },
+    {
+      "Id": "0",
+      "Type": "text",
+      "Text": "早安 ${username} 您好，<br>花旗客服即時通很高興為您服務"
+    },
+    {
+      "Id": "0",
+      "Type": "image",
+      "ImageUrl": "kv-s.png",
+      "ImageText": "Welcome Page Image"
+    }
+  ]
 }
