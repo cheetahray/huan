@@ -1,5 +1,5 @@
 import java.util.List;
-
+import java.util.TreeMap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,7 +51,9 @@ try {
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
                 msgcrl.setType(Message.Type.CAROUSEL);
+                int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
+                TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
@@ -104,10 +106,22 @@ try {
                           // TODO Auto-generated catch block
                           e.printStackTrace();
                       }
-                      msgcrl.addColumn(column);
+                      String tmId = String.valueOf(detail.getId());
+                      if(tm.containsKey(tmId))
+                      {
+                        tm.put(tmId + (tmId++), column);
+                      }
+                      else
+                      {
+                        tm.put(tmId, column);
+                      }
                     }
                 }
-
+                Iterator i = tm.entrySet().iterator();
+                while(i.hasNext()) {
+                    Map.Entry me = (Map.Entry)i.next();
+                    msgcrl.addColumn(me.getValue());
+                }
                 jsonInString = mapper.writeValueAsString(msgcrl);
                 ctx.response.put("Messages", new JSONArray("[" + jsonInString + "]"));
         }
