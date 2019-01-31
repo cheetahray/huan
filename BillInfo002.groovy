@@ -1,9 +1,11 @@
 import java.util.List;
-
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.TreeMap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.text.SimpleDateFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intumit.citi.backend.CardInfo;
 import com.intumit.citi.backend.Info;
@@ -41,7 +43,25 @@ try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
                 String UserID = ctx.getRequestAttribute(CitiUtil.userid);
-                CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.STATEMENT.toString());
+                //CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.STATEMENT.toString());
+                CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.STATEMENT.toString());
+                if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
+                {
+                    cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.STATEMENT.toString());
+                    ctx.setCtxAttr(Result.Postfix.STATEMENT.toString(),cardinfo);
+                }
+                else
+                {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    long rightnow = System.currentTimeMillis();
+                    long diffInMillies = Math.abs(rightnow - sdf.parse(ctx.getLastResponseAttribute("originalQuestionTime",rightnow)).getTime());
+                    long diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
+                    if (diff > Integer.parseInt(CitiUtil.getProperties("cacheSecs","200")))
+                    {
+                       cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.STATEMENT.toString());
+                       ctx.setCtxAttr(Result.Postfix.STATEMENT.toString(),cardinfo);
+                    }
+                }
                 ObjectMapper mapper = new ObjectMapper();
                 Result result = new Result();
                 result.setCode(cardinfo.getResult().getCode());
@@ -52,8 +72,9 @@ try {
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
                 msgcrl.setType(Message.Type.CAROUSEL);
-                int cnt=1;
+                int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
+                TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
@@ -73,10 +94,22 @@ try {
                       column.addExternalActions(newAction(Action.Type.URL,"未出帳交易明細",CitiUtil.unTranDetail));
                       column.addExternalActions(newAction(Action.Type.URL,"申請帳單分期",CitiUtil.applyBilling));
                       column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
-                      msgcrl.addColumn(column);
+                      String tmId = String.valueOf(detail.getId());
+                      if(tm.containsKey(tmId))
+                      {
+                        tm.put(tmId + (tmId++), column);
+                      }
+                      else
+                      {
+                        tm.put(tmId, column);
+                      }
                     }
                 }
-
+                Iterator i = tm.entrySet().iterator();
+                while(i.hasNext()) {
+                    Map.Entry me = (Map.Entry)i.next();
+                    msgcrl.addColumn(me.getValue());
+                }
                 jsonInString = mapper.writeValueAsString(msgcrl);
                 ctx.response.put("Messages", new JSONArray("[" + jsonInString + "]"));
         }
