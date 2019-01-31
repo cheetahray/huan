@@ -1,9 +1,11 @@
 import java.util.List;
 import java.util.HashSet;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.text.SimpleDateFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intumit.citi.backend.CardInfo;
 import com.intumit.citi.backend.Info;
@@ -69,21 +71,39 @@ try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
                 String UserID = ctx.getRequestAttribute(CitiUtil.userid);
-                CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                //CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.CARDINFO.toString());
+                if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
+                {
+                    cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                    ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
+                }
+                else
+                {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    long rightnow = System.currentTimeMillis();
+                    long diffInMillies = Math.abs(rightnow - sdf.parse(ctx.getLastResponseAttribute("originalQuestionTime",rightnow)).getTime());
+                    long diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
+                    if (diff > Integer.parseInt(CitiUtil.getProperties("cacheSecs","200")))
+                    {
+                       cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                       ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
+                    }
+                }
                 ObjectMapper mapper = new ObjectMapper();
                 Result result = new Result();
                 result.setCode(cardinfo.getResult().getCode());
                 result.setMessage(cardinfo.getResult().getMessage());
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
-                List places = Arrays.asList(Arrays.asList(false,new HashSet<>(Arrays.asList("807")),"807"), 
-                                            Arrays.asList(false,new HashSet<>(Arrays.asList("559","558")),"558"), 
-                                            Arrays.asList(false,new HashSet<>(Arrays.asList("593","595","554","597","510","550")),"554"),
-                                            Arrays.asList(false,new HashSet<>(Arrays.asList("451","596","847","848","849","461","028","432","010","120","439","496","532","539")),"596"),
-                                            Arrays.asList(false,new HashSet<>(Arrays.asList("420","421")),"421"),
-                                            Arrays.asList(false,new HashSet<>(Arrays.asList("947","462","802","263","197")),"263"),
-                                            Arrays.asList(false,new HashSet<>(Arrays.asList("948","463","494","492","004","005","018","023","130","138","230","238","333","334","335","338","417","427","517","527","592","594")),"492"),
-                                            Arrays.asList(false,new HashSet<>(Arrays.asList("241","266")),"241")
+                List places = Arrays.asList(Arrays.asList(false,new HashSet<>(CitiDeep.logos(1,1)),"807"), 
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(2,3)),"558"), 
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(4,5)),"554"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(6,9)),"596"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(10,11)),"421"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(12,15)),"263"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(16,19)),"492"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(20,20)),"241")
                                            );
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
