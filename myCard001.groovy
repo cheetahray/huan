@@ -1,9 +1,11 @@
 import java.util.List;
-
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.TreeMap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.text.SimpleDateFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intumit.citi.backend.CardInfo;
 import com.intumit.citi.backend.Info;
@@ -32,7 +34,25 @@ try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
                 String UserID = ctx.getRequestAttribute(CitiUtil.userid);
-                CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                //CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.CARDINFO.toString());
+                if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
+                {
+                    cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                    ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
+                }
+                else
+                {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    long rightnow = System.currentTimeMillis();
+                    long diffInMillies = Math.abs(rightnow - sdf.parse(ctx.getLastResponseAttribute("originalQuestionTime",rightnow)).getTime());
+                    long diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
+                    if (diff > Integer.parseInt(CitiUtil.getProperties("cacheSecs","200")))
+                    {
+                       cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                       ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
+                    }
+                }
                 ObjectMapper mapper = new ObjectMapper();
                 Result result = new Result();
                 result.setCode(cardinfo.getResult().getCode());
@@ -43,8 +63,9 @@ try {
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
                 msgcrl.setType(Message.Type.CAROUSEL);
-
+                int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
+                TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
                     //CitiDeep detail = CitiDeep.alist(info.getCardtype());
@@ -60,10 +81,22 @@ try {
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.usedQuata + CitiUtil.formatMoney(info.getCrL(), CitiUtil.fontColor.BLUE) ) );
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalCredit + CitiUtil.formatMoney(info.getCurrBal(), CitiUtil.fontColor.BLUE) ) );
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.availableCredit + CitiUtil.formatMoney(info.getAvailCl(), CitiUtil.fontColor.BLUE) ) );
-                      msgcrl.addColumn(column);
+                      String tmId = String.valueOf(detail.getId());
+                      if(tm.containsKey(tmId))
+                      {
+                        tm.put(tmId + (tmId++), column);
+                      }
+                      else
+                      {
+                        tm.put(tmId, column);
+                      }
                     }
                 }
-
+                Iterator i = tm.entrySet().iterator();
+                while(i.hasNext()) {
+                    Map.Entry me = (Map.Entry)i.next();
+                    msgcrl.addColumn(me.getValue());
+                }
                 jsonInString = mapper.writeValueAsString(msgcrl);
                 ctx.response.put("Messages", new JSONArray("[" + jsonInString + "]"));
         }
