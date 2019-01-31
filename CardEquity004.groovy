@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.HashSet;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.TreeMap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -108,7 +109,9 @@ try {
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
                 msgcrl.setType(Message.Type.CAROUSEL);
+                int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
+                TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
@@ -120,13 +123,25 @@ try {
                           if(place.get(0) == false && set.contains(info.getLogo()))
                           {
                               place.set(0,true);
-                              System.out.println(info.getLogo());
                           }
                       }
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
                       column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
-                      msgcrl.addColumn(setColumn(column, detail));
+                      String tmId = String.valueOf(detail.getId());
+                      if(tm.containsKey(tmId))
+                      {
+                        tm.put(tmId + (tmId++), setColumn(column, detail));
+                      }
+                      else
+                      {
+                        tm.put(tmId, setColumn(column, detail));
+                      }
                     }
+                }
+                Iterator i = tm.entrySet().iterator();
+                while(i.hasNext()) {
+                    Map.Entry me = (Map.Entry)i.next();
+                    msgcrl.addColumn(me.getValue());
                 }
                 for (List place: places)
                 {
