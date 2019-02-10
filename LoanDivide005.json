@@ -1,30 +1,66 @@
-{
-  "Messages": [
-    {
-      "Actions": [
-        {
-          "Text": "帳單分期",
-          "Type": "url",
-          "Url": "https://www.citibank.com.tw/global_docs/chi/cc/161013_rte/index2_pc.html"
-        },
-        {
-          "Text": "我要辦信貸",
-          "Type": "url",
-          "Url": "https://www.citibank.com.tw/sim/zh-tw/loans/credit-fin.htm"
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.intumit.citi.backend.CardInfo;
+import com.intumit.citi.backend.Info;
+import com.intumit.citi.frontend.Action;
+import com.intumit.citi.frontend.Column;
+import com.intumit.citi.frontend.Content;
+import com.intumit.citi.frontend.Menu;
+import com.intumit.citi.frontend.Message;
+import com.intumit.citi.frontend.MessageButtons;
+import com.intumit.citi.frontend.MessageCarousel;
+import com.intumit.citi.frontend.MessageText;
+import com.intumit.citi.CitiUtil;
+import com.intumit.citi.Result;
+
+import org.apache.wink.json4j.JSONObject;
+import org.apache.wink.json4j.JSONArray;
+
+private Content newContent(Content.Type type, String text) {
+    Content content = new Content();
+    content.setType(type);
+    content.setText(text);
+    return content;
+}
+
+private Action newAction(Action.Type type, String text, String url) {
+    Action action = new Action();
+    action.setText(text);
+    action.setType(Action.Type.URL);
+    action.setUrl(url);
+    return action;
+}
+
+try {
+    if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
+        if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
+                String UserID = ctx.getRequestAttribute(CitiUtil.userid);
+                //CardInfo cardinfo = CitiUtil.getCardInfo(UserID);
+                ObjectMapper mapper = new ObjectMapper();
+                Result result = new Result();
+                result.setCode(0);
+                result.setMessage("");
+                String jsonInString = mapper.writeValueAsString(result);
+                ctx.response.put("Result", new JSONObject(jsonInString));
+                JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
+                MessageButtons msgbtn = new MessageButtons();
+                msgbtn.setId(jsonobj.get("id"));
+                msgbtn.setType(Message.Type.BUTTONS);
+                msgbtn.setText("好的，請您先選擇。");
+                msgbtn.addAction(newAction(Action.Type.URL,"帳單分期",CitiUtil.getMyLink() + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey")
+		                                                             + "&id=" + jsonobj.getString("id") + "&q=我要申請帳單分期"));
+                msgbtn.addAction(newAction(Action.Type.URL,"我要辦信貸","https://www.citibank.com.tw/sim/zh-tw/loans/credit-fin.htm"));
+
+                String jsonInButton = mapper.writeValueAsString(msgbtn);
+
+                ctx.response.put("Messages", new JSONArray("[" + jsonInButton + "]"));
         }
-      ],
-      "Id": "0",
-      "Text": "好的，請您先選擇。",
-      "Type": "buttons"
     }
-  ],
-  "Output": {
-    "Id": "",
-    "Text": "",
-    "Type": "text"
-  },
-  "Result": {
-    "Code": 0,
-    "Message": ""
-  }
+} catch (Exception e) {
+    e.printStackTrace();
 }

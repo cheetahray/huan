@@ -22,7 +22,7 @@ import com.intumit.citi.Result;
 import com.intumit.citi.CitiDeep;
 import org.apache.wink.json4j.JSONObject;
 import org.apache.wink.json4j.JSONArray;
-
+import org.apache.commons.lang.StringUtils;
 private Content newContent(Content.Type type, String text) {
     Content content = new Content();
     content.setType(type);
@@ -42,12 +42,11 @@ try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
                 String UserID = ctx.getRequestAttribute(CitiUtil.userid);
-                //CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.RESENDESTMT.toString());
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.RESENDESTMT.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
                     cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.RESENDESTMT.toString());
-                    ctx.setCtxAttr(Result.Postfix.RESENDESTMT.toString(),cardinfo);
+                    //ctx.setCtxAttr(Result.Postfix.RESENDESTMT.toString(),cardinfo);
                 }
                 else
                 {
@@ -68,6 +67,8 @@ try {
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
                 JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
+                HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
+                set1.addAll(CitiDeep.logos(29,29));
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(jsonobj.get("id"));
                 msgcrl.setType(Message.Type.CAROUSEL);
@@ -82,7 +83,7 @@ try {
                       try {
                           column.setImageUrl(detail.getImageUrl());
                           column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                          column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
+                          column.setTitle(detail.getTitle() + (set1.contains(info.getLogo())?CitiUtil.alreadyCancel:""));
                           //column.setTitle( (Calendar.getInstance().get(Calendar.MONTH)+1) + CitiUtil.checkoutBill);
                           //column.setTitleBackgroundColor(CitiUtil.titleBackgroundColor);
                           column.addContent( newContent(Content.Type.TEXT, CitiUtil.checkoutBill + info.getStmtday() ) );
@@ -98,7 +99,7 @@ try {
                       String tmId = String.valueOf(detail.getId());
                       if(tm.containsKey(tmId))
                       {
-                        tm.put(tmId + (tmId++), column);
+                        tm.put(tmId + "!" + (tmId++), column);
                       }
                       else
                       {
@@ -117,7 +118,7 @@ try {
                 msgbtn.setId(jsonobj.get("id"));
                 msgbtn.setType(Message.Type.BUTTONS);
                 msgbtn.setText(CitiUtil.poleBear);
-                msgbtn.addAction(newAction(Action.Type.URL,"立即註冊","https://www.citibank.com.tw/sim/zh-tw/cbol/cards-estmt.htm"));
+                msgbtn.addAction(newAction(Action.Type.URL,"我同意申請電子月結單","https://www.citibank.com.tw/sim/zh-tw/cbol/cards-estmt.htm"));
 
                 String jsonInButton = mapper.writeValueAsString(msgbtn);
 
@@ -127,4 +128,3 @@ try {
 } catch (Exception e) {
     e.printStackTrace();
 }
-

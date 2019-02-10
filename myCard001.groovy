@@ -1,4 +1,6 @@
 import java.util.List;
+import java.util.HashSet;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.TreeMap;
@@ -22,7 +24,7 @@ import com.intumit.citi.Result;
 import com.intumit.citi.CitiDeep;
 import org.apache.wink.json4j.JSONObject;
 import org.apache.wink.json4j.JSONArray;
-
+import org.apache.commons.lang.StringUtils;
 private Content newContent(Content.Type type, String text) {
     Content content = new Content();
     content.setType(type);
@@ -34,12 +36,11 @@ try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
                 String UserID = ctx.getRequestAttribute(CitiUtil.userid);
-                //CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.CARDINFO.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
                     cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
-                    ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
+                    //ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
                 }
                 else
                 {
@@ -59,7 +60,18 @@ try {
                 result.setMessage(cardinfo.getResult().getMessage());
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
-
+                HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
+                List bigcome = CitiDeep.logos(29,29);
+                set1.addAll(bigcome);
+                //HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
+                //set2.addAll(CitiUtil.s1);
+                //set2.addAll(bigcome);
+                HashSet set3 = new HashSet<>(Arrays.asList(CitiUtil.s3));
+                set3.addAll(CitiUtil.s1);
+                set3.addAll(CitiUtil.s2);
+                set3.remove("U");
+                set3.addAll(CitiDeep.logos(20,20));
+                set3.addAll(CitiDeep.logos(26,27));
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
                 msgcrl.setType(Message.Type.CAROUSEL);
@@ -68,23 +80,49 @@ try {
                 TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
-                    //CitiDeep detail = CitiDeep.alist(info.getCardtype());
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
                     if(detail != null)
                     {
                       column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                      column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
+                      if(set1.contains(info.getLogo()) || set1.contains(info.getBlkcd()))
+                      {
+                          column.setTitle(detail.getTitle() + CitiUtil.alreadyCancel);
+                      }
+                      else
+                      {
+                          column.setTitle(detail.getTitle() + ( StringUtils.equals(info.getCcl(), "Y") ? CitiUtil.singleQuota:CitiUtil.sharingQuota ));
+                      }
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.billCheckoutDate + info.getStmtday() ) );
-                      column.addContent( newContent( Content.Type.TEXT, ( info.getCcl().equals("Y") ? CitiUtil.bonus: CitiUtil.jointName ) +
-                                                     CitiUtil.points + info.getAvlPoint() ) );
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.usedQuata + CitiUtil.formatMoney(info.getCrL(), CitiUtil.fontColor.BLUE) ) );
+                      if(set3.contains(info.getLogo()) || set3.contains(info.getBlkcd()))
+                      {
+                          column.addContent( newContent( Content.Type.TEXT, ( detail.getReward() + "<br />\${transfer}" ) ) );
+                      }
+                      else
+                      {
+                          column.addContent( newContent( Content.Type.TEXT, ( detail.getReward() + CitiUtil.newLine + info.getAvlPoint() ) ) );
+                      }
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalCredit + CitiUtil.formatMoney(info.getCurrBal(), CitiUtil.fontColor.BLUE) ) );
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.availableCredit + CitiUtil.formatMoney(info.getAvailCl(), CitiUtil.fontColor.BLUE) ) );
+                      int crl = Integer.valueOf(info.getCrL());
+                      if (crl < 0)
+                      {
+                          crl *= -1;
+                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(crl, CitiUtil.currentOverpayAmout) ) );
+                      }
+                      else
+                      {
+                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(crl, CitiUtil.usedQuata) ) );
+                      }
+                      int availcl = Integer.valueOf(info.getAvailCl());
+                      if (availcl < 0)
+                      {
+                          availcl = 0;
+                      }
+                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(availcl, CitiUtil.availableCredit) ) );
                       String tmId = String.valueOf(detail.getId());
                       if(tm.containsKey(tmId))
                       {
-                        tm.put(tmId + (tmId++), column);
+                        tm.put(tmId + "!" + (tmId++), column);
                       }
                       else
                       {

@@ -72,12 +72,11 @@ try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
                 String UserID = ctx.getRequestAttribute(CitiUtil.userid);
-                //CardInfo cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.CARDINFO.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
                     cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
-                    ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
+                    //ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
                 }
                 else
                 {
@@ -130,7 +129,7 @@ try {
                       String tmId = String.valueOf(detail.getId());
                       if(tm.containsKey(tmId))
                       {
-                        tm.put(tmId + (tmId++), setColumn(column, detail));
+                        tm.put(tmId + "!" + (tmId++), setColumn(column, detail));
                       }
                       else
                       {
@@ -155,7 +154,6 @@ try {
                     }
                 }
                 jsonInString = mapper.writeValueAsString(msgcrl);
-
                 ctx.response.put("Messages", new JSONArray("[" + jsonInString + "]"));
         }
     }

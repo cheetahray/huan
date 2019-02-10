@@ -47,7 +47,8 @@ try {
                 result.setMessage(cardinfo.getResult().getMessage());
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
-
+                HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
+                set1.addAll(CitiDeep.logos(29,29));
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
                 msgcrl.setType(Message.Type.CAROUSEL);
@@ -62,9 +63,9 @@ try {
                       try {
                           column.setImageUrl(detail.getImageUrl());
                           column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                          column.setTitle(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
+                          column.setTitle(detail.getTitle() + (set1.contains(info.getLogo())?CitiUtil.alreadyCancel:""));
                           Content content = new Content();
-                          content.setText(detail.getTitle() + (info.getCcl().equals("N") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
+                          content.setText(detail.getTitle() + (set1.contains(info.getLogo())?CitiUtil.alreadyCancel:""));
                           content.setType(Content.Type.GRID);
                           content.addHeader(new Header("繳款日",null));
                           content.addHeader(new Header("完成日",null));
@@ -94,7 +95,6 @@ try {
                               row.addField(field);
                               field = new Field();
                               field.setText(pym.getTxnamount());
-                              //field.setText(CitiUtil.formatMoney(pym.getTxnamount(), CitiUtil.fontColor.BLUE));
                               field.setIsBold(true);
                               field.setAlign("right");
                               row.addField(field);
@@ -109,7 +109,7 @@ try {
                       String tmId = String.valueOf(detail.getId());
                       if(tm.containsKey(tmId))
                       {
-                        tm.put(tmId + (tmId++), column);
+                        tm.put(tmId + "!" + (tmId++), column);
                       }
                       else
                       {
