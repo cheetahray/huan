@@ -102,16 +102,16 @@ try {
                       {
                           column.addContent( newContent( Content.Type.TEXT, ( detail.getReward() + CitiUtil.newLine + info.getAvlPoint() ) ) );
                       }
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalCredit + CitiUtil.formatMoney(info.getCurrBal(), CitiUtil.fontColor.BLUE) ) );
-                      int crl = Integer.valueOf(info.getCrL());
-                      if (crl < 0)
+                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalCredit + CitiUtil.formatMoney(info.getCrL(), CitiUtil.fontColor.BLUE) ) );
+                      int currbal = Integer.valueOf(info.getCurrBal());
+                      if (currbal < 0)
                       {
-                          crl *= -1;
-                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(crl, CitiUtil.currentOverpayAmout) ) );
+                          currbal *= -1;
+                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(currbal, CitiUtil.currentOverpayAmout) ) );
                       }
                       else
                       {
-                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(crl, CitiUtil.usedQuata) ) );
+                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(currbal, CitiUtil.usedQuata) ) );
                       }
                       int availcl = Integer.valueOf(info.getAvailCl());
                       if (availcl < 0)
