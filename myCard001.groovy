@@ -34,12 +34,12 @@ private Content newContent(Content.Type type, String text) {
 
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
-        if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
-                String UserID = ctx.getRequestAttribute(CitiUtil.userid);
+        JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
+        if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.CARDINFO.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
-                    cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                    cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.CARDINFO.toString());
                     //ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
                 }
                 else
@@ -50,7 +50,7 @@ try {
                     long diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
                     if (diff > Integer.parseInt(CitiUtil.getProperties("cacheSecs","200")))
                     {
-                       cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.CARDINFO.toString());
+                       cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.CARDINFO.toString());
                        ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
                     }
                 }
@@ -84,14 +84,14 @@ try {
                     if(detail != null)
                     {
                       column.setImageUrl(detail.getImageUrl());
-                      column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
+                      column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
                       if(set1.contains(info.getLogo()) || set1.contains(info.getBlkcd()))
                       {
                           column.setTitle(detail.getTitle() + CitiUtil.alreadyCancel);
                       }
                       else
                       {
-                          column.setTitle(detail.getTitle() + ( StringUtils.equals(info.getCcl(), "Y") ? CitiUtil.singleQuota:CitiUtil.sharingQuota ));
+                          column.setTitle(detail.getTitle() + ( StringUtils.equals(info.getCcl(), "Y") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
                       }
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.billCheckoutDate + info.getStmtday() ) );
                       if(set3.contains(info.getLogo()) || set3.contains(info.getBlkcd()))
