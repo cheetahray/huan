@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.TreeMap;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import java.text.SimpleDateFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intumit.citi.backend.CardInfo;
@@ -25,11 +22,18 @@ import com.intumit.citi.CitiDeep;
 import org.apache.wink.json4j.JSONObject;
 import org.apache.wink.json4j.JSONArray;
 import org.apache.commons.lang.StringUtils;
+import com.intumit.solr.robot.RobotFormalAnswers;
+import java.net.URLEncoder;
 private Content newContent(Content.Type type, String text) {
     Content content = new Content();
     content.setType(type);
     content.setText(text);
     return content;
+}
+
+private String formalAns(String key)
+{
+    return RobotFormalAnswers.getAnswers(ctx.getTenant().getId(),key).get(0).toString();  
 }
 
 try {
@@ -60,40 +64,37 @@ try {
                 result.setMessage(cardinfo.getResult().getMessage());
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
-                HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
+                //HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
                 List bigcome = CitiDeep.logos(29,29);
-                set1.addAll(bigcome);
-                //HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
-                //set2.addAll(CitiUtil.s1);
-                //set2.addAll(bigcome);
+                //set1.addAll(bigcome);
+                HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
+                set2.addAll(CitiUtil.s1);
+                set2.addAll(bigcome);
                 HashSet set3 = new HashSet<>(Arrays.asList(CitiUtil.s3));
                 set3.addAll(CitiUtil.s1);
                 set3.addAll(CitiUtil.s2);
                 set3.remove("U");
                 set3.addAll(CitiDeep.logos(20,20));
                 set3.addAll(CitiDeep.logos(26,27));
-                MessageCarousel msgcrl = new MessageCarousel();
-                msgcrl.setId(ctx.getCtxAttr("_bundle").get("id"));
-                msgcrl.setType(Message.Type.CAROUSEL);
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
                 TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
-                    if(detail != null)
+                    if(detail != null && !set2.contains(info.getLogo()) && !set2.contains(info.getBlkcd()) )
                     {
                       column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
-                      if(set1.contains(info.getLogo()) || set1.contains(info.getBlkcd()))
+                      if(false) //set1.contains(info.getLogo()) || set1.contains(info.getBlkcd()))
                       {
-                          column.setTitle(detail.getTitle() + CitiUtil.alreadyCancel);
+                          column.setTitle(detail.getTitle() + formalAns("alreadyCancel") );
                       }
                       else
                       {
-                          column.setTitle(detail.getTitle() + ( StringUtils.equals(info.getCcl(), "Y") ? CitiUtil.sharingQuota:CitiUtil.singleQuota ));
+                          column.setTitle(detail.getTitle() + ( StringUtils.equals(info.getCcl(), "Y") ? formalAns("sharingQuota"):formalAns("singleQuota") ) );
                       }
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.billCheckoutDate + info.getStmtday() ) );
+                      column.addContent( newContent( Content.Type.TEXT, formalAns("billCheckoutDate") + info.getStmtday() ) );
                       if(set3.contains(info.getLogo()) || set3.contains(info.getBlkcd()))
                       {
                           column.addContent( newContent( Content.Type.TEXT, ( detail.getReward() + "<br />\${transfer}" ) ) );
@@ -102,27 +103,27 @@ try {
                       {
                           column.addContent( newContent( Content.Type.TEXT, ( detail.getReward() + CitiUtil.newLine + info.getAvlPoint() ) ) );
                       }
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalCredit + CitiUtil.formatMoney(info.getCrL(), CitiUtil.fontColor.BLUE) ) );
+                      column.addContent( newContent( Content.Type.TEXT, formalAns("totalCredit") + CitiUtil.formatMoney(info.getCrL(), CitiUtil.fontColor.BLUE) ) );
                       int currbal = Integer.valueOf(info.getCurrBal());
                       if (currbal < 0)
                       {
                           currbal *= -1;
-                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(currbal, CitiUtil.currentOverpayAmout) ) );
+                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(currbal, formalAns("currentOverpayAmout") ) ) );
                       }
                       else
                       {
-                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(currbal, CitiUtil.usedQuata) ) );
+                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(currbal, formalAns("usedQuata") ) ) );
                       }
                       int availcl = Integer.valueOf(info.getAvailCl());
                       if (availcl < 0)
                       {
                           availcl = 0;
                       }
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(availcl, CitiUtil.availableCredit) ) );
+                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(availcl, formalAns("availableCredit") ) ) );
                       String tmId = String.valueOf(detail.getId());
                       if(tm.containsKey(tmId))
                       {
-                        tm.put(tmId + "!" + (tmId++), column);
+                        tm.put(tmId + "!" + (tmInc++), column);
                       }
                       else
                       {
@@ -131,11 +132,31 @@ try {
                     }
                 }
                 Iterator i = tm.entrySet().iterator();
+                MessageCarousel msgcrl = null;
+                if(i.hasNext()) {
+                    msgcrl = new MessageCarousel();
+                    msgcrl.setId("");
+                    msgcrl.setType(Message.Type.CAROUSEL);
+                }
+                tmInc = 0;
                 while(i.hasNext()) {
                     Map.Entry me = (Map.Entry)i.next();
                     msgcrl.addColumn(me.getValue());
+                    tmInc++;
                 }
-                jsonInString = mapper.writeValueAsString(msgcrl);
+                MessageText msgtxt = null;
+                if(0 == tmInc)
+                {
+                    msgtxt = new MessageText();
+                    msgtxt.setId("");
+                    msgtxt.setType(Message.Type.TEXT);
+                    msgtxt.setText(formalAns("noCardInfo"));
+                    jsonInString = mapper.writeValueAsString(msgtxt);
+                }
+                else
+                {
+                    jsonInString = mapper.writeValueAsString(msgcrl);
+                }
                 ctx.response.put("Messages", new JSONArray("[" + jsonInString + "]"));
         }
     }
