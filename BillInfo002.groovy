@@ -2,9 +2,6 @@ import java.util.List;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.TreeMap;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import java.text.SimpleDateFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intumit.citi.backend.CardInfo;
@@ -24,7 +21,7 @@ import org.apache.wink.json4j.JSONObject;
 import org.apache.wink.json4j.JSONArray;
 import org.apache.commons.lang.StringUtils;
 import com.intumit.systemconfig.WiseSystemConfigFacade;
-
+import com.intumit.solr.robot.RobotFormalAnswers;
 private Content newContent(Content.Type type, String text) {
     Content content = new Content();
     content.setType(type);
@@ -40,14 +37,21 @@ private Action newAction(Action.Type type, String text, String url) {
 	return action;
 }
 
+private String formalAns(String key)
+{
+    return RobotFormalAnswers.getAnswers(ctx.getTenant().getId(),key).get(0).toString();  
+}
+
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
-        if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
-                String UserID = ctx.getRequestAttribute(CitiUtil.userid);
+        JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
+        System.out.print("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
+                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.STATEMENT.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
-                    cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.STATEMENT.toString());
+                    cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.STATEMENT.toString());
                     //ctx.setCtxAttr(Result.Postfix.STATEMENT.toString(),cardinfo);
                 }
                 else
@@ -58,7 +62,7 @@ try {
                     long diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
                     if (diff > Integer.parseInt(CitiUtil.getProperties("cacheSecs","200")))
                     {
-                       cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.STATEMENT.toString());
+                       cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.STATEMENT.toString());
                        ctx.setCtxAttr(Result.Postfix.STATEMENT.toString(),cardinfo);
                     }
                 }
@@ -70,45 +74,47 @@ try {
                 ctx.response.put("Result", new JSONObject(jsonInString));
                 HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
                 set1.addAll(CitiDeep.logos(29,29));
-                MessageCarousel msgcrl = new MessageCarousel();
-                JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
-                msgcrl.setId(jsonobj.get("id"));
-                msgcrl.setType(Message.Type.CAROUSEL);
+                HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
                 TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
-                    if(detail != null)
+                    if( detail != null && !set2.contains(info.getLogo()) && !set2.contains(info.getBlkcd()) && 
+                      ( StringUtils.isNotEmpty( info.getCurrBal() ) && info.getCurrBal().matches(CitiUtil.isNumeric) ? //"-?(0|[1-9]\\d*)") ? 
+                      ( Integer.parseInt( info.getCurrBal() ) != 0 ):false ) )
                     {
                       column.setImageUrl(detail.getImageUrl());
-                      column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                      column.setTitle(detail.getTitle() + (set1.contains(info.getLogo())?CitiUtil.alreadyCancel:""));
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.totalAmountofCurrentBill +
+                      column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
+                      column.setTitle(detail.getTitle() + (set1.contains(info.getLogo()) || set1.contains(info.getBlkcd())?formalAns("alreadyCancel"):""));
+                      column.addContent( newContent( Content.Type.TEXT, formalAns("totalAmountofCurrentBill") +
                                                      CitiUtil.formatMoney( info.getEndBal(), CitiUtil.fontColor.BLUE ) ) );
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.miniAmountPayment + CitiUtil.formatMoney(info.getTotAmtDue(), CitiUtil.fontColor.BLUE) ) );
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.billCheckoutDate + info.getStmtday() ) );
+                      column.addContent( newContent( Content.Type.TEXT, formalAns("miniAmountPayment") + CitiUtil.formatMoney(info.getTotAmtDue(), CitiUtil.fontColor.BLUE) ) );
+                      column.addContent( newContent( Content.Type.TEXT, formalAns("billCheckoutDate") + info.getStmtday() ) );
                       int endbal = Integer.valueOf(info.getEndBal());
                       if (endbal > 0)
                       {
-                      column.addContent( newContent( Content.Type.TEXT, CitiUtil.paymentDeadline +
-                                                     info.getDueDt() + (info.getAutopay().equals("Y")?CitiUtil.autoTransfer:"") ) );
+                          column.addContent( newContent( Content.Type.TEXT, formalAns("paymentDeadline") +
+                                                     info.getDueDt() + (info.getAutopay().equals("Y")?formalAns("autoTransfer"):"") ) );
                       }
                       else
                       {
-                          column.addContent( newContent( Content.Type.TEXT, CitiUtil.noPayment + info.getDueDt() ) );
+                          column.addContent( newContent( Content.Type.TEXT, formalAns("paymentDeadline") + formalAns("noPayment") ) );
                       }
                       //column.addExternalActions(newAction(Action.Type.URL,"本期帳單明細", CitiUtil.getMyLink() + WiseSystemConfigFacade.getInstance().get().getContextPath()
                       // + "/citi-detail.jsp?cardno=" + (cnt++) + "&apikey=" + ctx.getCtxAttr("_bundle").get("apikey") + "&id=" + ctx.getCtxAttr("_bundle").get("id")));
                       column.addExternalActions(newAction(Action.Type.URL,"未出帳交易明細",CitiUtil.unTranDetail));
-                      column.addExternalActions(newAction(Action.Type.URL,"申請帳單分期",CitiUtil.getMyLink() + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey")
+                      if(StringUtils.isEmpty(info.getBlkcd()))
+                      {
+                          column.addExternalActions(newAction(Action.Type.URL,"申請帳單分期",CitiUtil.getMyLink() + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey")
 		                                                                                + "&id=" + jsonobj.getString("id") + "&q=我要申請帳單分期"));
-                      column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
+                      }
+                      //column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
                       String tmId = String.valueOf(detail.getId());
                       if(tm.containsKey(tmId))
                       {
-                        tm.put(tmId + "!" + (tmId++), column);
+                        tm.put(tmId + "!" + (tmInc++), column);
                       }
                       else
                       {
@@ -117,11 +123,31 @@ try {
                     }
                 }
                 Iterator i = tm.entrySet().iterator();
+                MessageCarousel msgcrl = null;
+                if(i.hasNext()) {
+                    msgcrl = new MessageCarousel();
+                    msgcrl.setId("");
+                    msgcrl.setType(Message.Type.CAROUSEL);
+                }
+                tmInc = 0;
                 while(i.hasNext()) {
                     Map.Entry me = (Map.Entry)i.next();
                     msgcrl.addColumn(me.getValue());
+                    tmInc++;
                 }
-                jsonInString = mapper.writeValueAsString(msgcrl);
+                MessageText msgtxt = null;
+                if(0 == tmInc)
+                {
+                    msgtxt = new MessageText();
+                    msgtxt.setId("");
+                    msgtxt.setType(Message.Type.TEXT);
+                    msgtxt.setText(formalAns("noStateMent"));
+                    jsonInString = mapper.writeValueAsString(msgtxt);
+                }
+                else
+                {
+                    jsonInString = mapper.writeValueAsString(msgcrl);
+                }
                 ctx.response.put("Messages", new JSONArray("[" + jsonInString + "]"));
         }
     }
