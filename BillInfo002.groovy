@@ -42,6 +42,17 @@ private String formalAns(String key)
     return RobotFormalAnswers.getAnswers(ctx.getTenant().getId(),key).get(0).toString();  
 }
 
+private boolean checkBlkcd(String s, HashSet set)
+{
+    String[] arr = s.split("");
+    for(String ch: arr)
+    {
+        if(set.contains(ch))
+            return true;
+    }
+    return false;
+}
+
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
@@ -73,7 +84,7 @@ try {
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
                 HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
-                set1.addAll(CitiDeep.logos(29,29));
+                set1.addAll(CitiDeep.logos("大來"));
                 HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
@@ -81,13 +92,13 @@ try {
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
-                    if( detail != null && !set2.contains(info.getLogo()) && !set2.contains(info.getBlkcd()) && 
+                    if( detail != null && !set2.contains(info.getLogo()) && !checkBlkcd(info.getBlkcd(),set2) && 
                       ( StringUtils.isNotEmpty( info.getCurrBal() ) && info.getCurrBal().matches(CitiUtil.isNumeric) ? //"-?(0|[1-9]\\d*)") ? 
                       ( Integer.parseInt( info.getCurrBal() ) != 0 ):false ) )
                     {
                       column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
-                      column.setTitle(detail.getTitle() + (set1.contains(info.getLogo()) || set1.contains(info.getBlkcd())?formalAns("alreadyCancel"):""));
+                      column.setTitle(detail.getTitle() + ( ( set1.contains(info.getLogo()) || checkBlkcd(info.getBlkcd(),set1) )?formalAns("alreadyCancel"):"") );
                       column.addContent( newContent( Content.Type.TEXT, formalAns("totalAmountofCurrentBill") +
                                                      CitiUtil.formatMoney( info.getEndBal(), CitiUtil.fontColor.BLUE ) ) );
                       column.addContent( newContent( Content.Type.TEXT, formalAns("miniAmountPayment") + CitiUtil.formatMoney(info.getTotAmtDue(), CitiUtil.fontColor.BLUE) ) );
@@ -114,11 +125,11 @@ try {
                       String tmId = String.valueOf(detail.getId());
                       if(tm.containsKey(tmId))
                       {
-                        tm.put(tmId + "!" + (tmInc++), column);
+                        tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);
                       }
                       else
                       {
-                        tm.put(tmId, column);
+                        tm.put(String.format("%3s", tmId) + String.valueOf(tmInc), column);
                       }
                     }
                 }
