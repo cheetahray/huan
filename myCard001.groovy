@@ -36,6 +36,17 @@ private String formalAns(String key)
     return RobotFormalAnswers.getAnswers(ctx.getTenant().getId(),key).get(0).toString();  
 }
 
+private boolean checkBlkcd(String s, HashSet set)
+{
+    String[] arr = s.split("");
+    for(String ch: arr)
+    {
+        if(set.contains(ch))
+            return true;
+    }
+    return false;
+}
+
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
@@ -64,29 +75,29 @@ try {
                 result.setMessage(cardinfo.getResult().getMessage());
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
-                //HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
-                List bigcome = CitiDeep.logos(29,29);
-                //set1.addAll(bigcome);
+                List bigcome = CitiDeep.logos("大來");
+                HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
+                set1.addAll(bigcome);
                 HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
-                set2.addAll(CitiUtil.s1);
+                //set2.addAll(CitiUtil.s1);
                 set2.addAll(bigcome);
                 HashSet set3 = new HashSet<>(Arrays.asList(CitiUtil.s3));
                 set3.addAll(CitiUtil.s1);
                 set3.addAll(CitiUtil.s2);
                 set3.remove("U");
-                set3.addAll(CitiDeep.logos(20,20));
-                set3.addAll(CitiDeep.logos(26,27));
+                set3.addAll(CitiDeep.logos("HappyGo"));
+                set3.addAll(CitiDeep.logos("透明"));
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
                 TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
-                    if(detail != null && !set2.contains(info.getLogo()) && !set2.contains(info.getBlkcd()) )
+                    if(detail != null && !set2.contains(info.getLogo()) && !checkBlkcd(info.getBlkcd(),set2))
                     {
                       column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
-                      if(false) //set1.contains(info.getLogo()) || set1.contains(info.getBlkcd()))
+                      if(set1.contains(info.getLogo()) || checkBlkcd(info.getBlkcd(),set1))
                       {
                           column.setTitle(detail.getTitle() + formalAns("alreadyCancel") );
                       }
@@ -95,7 +106,7 @@ try {
                           column.setTitle(detail.getTitle() + ( StringUtils.equals(info.getCcl(), "Y") ? formalAns("sharingQuota"):formalAns("singleQuota") ) );
                       }
                       column.addContent( newContent( Content.Type.TEXT, formalAns("billCheckoutDate") + info.getStmtday() ) );
-                      if(set3.contains(info.getLogo()) || set3.contains(info.getBlkcd()))
+                      if(set3.contains(info.getLogo()) || checkBlkcd(info.getBlkcd(),set3))
                       {
                           column.addContent( newContent( Content.Type.TEXT, ( detail.getReward() + "<br />\${transfer}" ) ) );
                       }
@@ -123,11 +134,11 @@ try {
                       String tmId = String.valueOf(detail.getId());
                       if(tm.containsKey(tmId))
                       {
-                        tm.put(tmId + "!" + (tmInc++), column);
+                        tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);
                       }
                       else
                       {
-                        tm.put(tmId, column);
+                        tm.put(String.format("%3s", tmId) + String.valueOf(tmInc), column);
                       }
                     }
                 }
