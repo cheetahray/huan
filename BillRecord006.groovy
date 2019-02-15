@@ -65,6 +65,8 @@ try {
                 HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
                 set1.addAll(CitiDeep.logos(15));
                 HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s1));
+                HashSet set3 = new HashSet<>(Arrays.asList(CitiUtil.s2));
+                set3.remove("W");
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
                 TreeMap tm = new TreeMap();
@@ -123,26 +125,27 @@ try {
                           {
                               column.addContent(content);
                           }
-                          else
-                          {   
-                              boolean isAB = checkBlkcd(info.getBlkcd(),set2);
-                              if(!isAB || ( isAB && StringUtils.isNotEmpty(info.getCurrBal()) &&
-                                 info.getCurrBal().matches(CitiUtil.isNumeric))                   
-                                )
-                              {
-                                  if(Integer.parseInt(info.getCurrBal()) > 0)
-                                      column.addContent( newContent(Content.Type.TEXT, formalAns("noNewPymRecord")) );
-                                  else
-                                      blkcdLess0 = true;
-                              }
+                          else if(checkBlkcd(info.getBlkcd(),set3))
+                              blkcdLess0 = true;
+                          else if(StringUtils.isEmpty(info.getBlkcd()))
+                              column.addContent( newContent(Content.Type.TEXT, formalAns("noNewPymRecord")) );
+                          else if(checkBlkcd(info.getBlkcd(),set2) && StringUtils.isNotEmpty(info.getCurrBal()) &&
+                              info.getCurrBal().matches(CitiUtil.isNumeric))                   
+                          {
+                              if(Integer.parseInt(info.getCurrBal()) != 0)
+                                  column.addContent( newContent(Content.Type.TEXT, formalAns("noNewPymRecord")) );
+                              else
+                                  blkcdLess0 = true;
                           }
+                          else 
+                              column.addContent( newContent(Content.Type.TEXT, formalAns("noNewPymRecord")) );
                       } catch (URISyntaxException e) {
                           // TODO Auto-generated catch block
                           e.printStackTrace();
                       }
                       if(false == blkcdLess0)
                       {
-                          String tmId = String.valueOf(detail.getId());
+                          String tmId = String.valueOf(detail.getPriority());
                           if(tm.containsKey(tmId))
                           {
                               tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);
