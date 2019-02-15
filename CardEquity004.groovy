@@ -125,19 +125,19 @@ try {
                 result.setMessage(cardinfo.getResult().getMessage());
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
-                List bigcome = CitiDeep.logos("大來");
+                List bigcome = CitiDeep.logos(15);
                 HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
                 set1.addAll(bigcome);
                 HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
                 set2.addAll(bigcome);
-                List places = Arrays.asList(Arrays.asList(false,new HashSet<>(CitiDeep.logos("Prestige")),"807"), 
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos("寰旅尊尚")),"558"), 
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos("寰旅世界")),"554"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(6,9)),"596"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos("PChome")),"421"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos("饗樂")),"263"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos("超級")),"492"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos("HappyGo")),"241")
+                List places = Arrays.asList(Arrays.asList(false,new HashSet<>(CitiDeep.logos(1)),"807"), 
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(2)),"558"), 
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(3)),"554"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(4)),"451"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(5)),"420"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(6)),"947"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(7)),"463"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(8)),"241")
                                            );
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId("");
@@ -167,7 +167,7 @@ try {
                           column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
                           column.setTitle(detail.getTitle());
                       }
-                      String tmId = String.valueOf(detail.getId());
+                      String tmId = String.valueOf(detail.getPriority());
                       if(tm.containsKey(tmId))
                       {
                         tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), setColumn(column, detail, true));
