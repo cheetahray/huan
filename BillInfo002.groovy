@@ -84,17 +84,19 @@ try {
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
                 HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
-                set1.addAll(CitiDeep.logos("大來"));
-                HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
+                set1.addAll(CitiDeep.logos(15));
+                HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s1));
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
                 TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
-                    if( detail != null && !set2.contains(info.getLogo()) && !checkBlkcd(info.getBlkcd(),set2) && 
-                      ( StringUtils.isNotEmpty( info.getCurrBal() ) && info.getCurrBal().matches(CitiUtil.isNumeric) ? //"-?(0|[1-9]\\d*)") ? 
-                      ( Integer.parseInt( info.getCurrBal() ) != 0 ):false ) )
+                    boolean isAB = checkBlkcd(info.getBlkcd(),set2);
+                    if(detail != null && (!isAB || 
+                      ( isAB && StringUtils.isNotEmpty(info.getCurrBal()) &&
+                            info.getCurrBal().matches(CitiUtil.isNumeric) && Integer.parseInt(info.getCurrBal()) != 0 )                   
+                      ) )
                     {
                       column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
