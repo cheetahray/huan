@@ -2,9 +2,7 @@ import java.util.List;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.TreeMap;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intumit.citi.backend.CardInfo;
@@ -23,6 +21,7 @@ import com.intumit.citi.CitiDeep;
 import org.apache.wink.json4j.JSONObject;
 import org.apache.wink.json4j.JSONArray;
 import org.apache.commons.lang.StringUtils;
+import com.intumit.solr.robot.RobotFormalAnswers;
 private Content newContent(Content.Type type, String text) {
     Content content = new Content();
     content.setType(type);
@@ -38,14 +37,32 @@ private Action newAction(Action.Type type, String text, String url) {
     return action;
 }
 
+private String formalAns(String key)
+{
+    return RobotFormalAnswers.getAnswers(ctx.getTenant().getId(),key).get(0).toString();  
+}
+
+private boolean checkBlkcd(String s, HashSet set)
+{
+    String[] arr = s.split("");
+    for(String ch: arr)
+    {
+        if(set.contains(ch))
+            return true;
+    }
+    return false;
+}
+
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
-        if(ctx.getRequestAttribute(CitiUtil.userid) != null) {
-                String UserID = ctx.getRequestAttribute(CitiUtil.userid);
+        JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
+        System.out.print("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
+                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.RESENDESTMT.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
-                    cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.RESENDESTMT.toString());
+                    cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.RESENDESTMT.toString());
                     //ctx.setCtxAttr(Result.Postfix.RESENDESTMT.toString(),cardinfo);
                 }
                 else
@@ -56,7 +73,7 @@ try {
                     long diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
                     if (diff > Integer.parseInt(CitiUtil.getProperties("cacheSecs","200")))
                     {
-                       cardinfo = CitiUtil.getSmartMenu(UserID, Result.Postfix.RESENDESTMT.toString());
+                       cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.RESENDESTMT.toString());
                        ctx.setCtxAttr(Result.Postfix.RESENDESTMT.toString(),cardinfo);
                     }
                 }
@@ -66,63 +83,126 @@ try {
                 result.setMessage(cardinfo.getResult().getMessage());
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
-                JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
                 HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
-                set1.addAll(CitiDeep.logos(29,29));
-                MessageCarousel msgcrl = new MessageCarousel();
-                msgcrl.setId(jsonobj.get("id"));
-                msgcrl.setType(Message.Type.CAROUSEL);
+                set1.addAll(CitiDeep.logos(15));
+                boolean estmt = false;
+                boolean hasEmail = true;
+                HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s1));
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
                 TreeMap tm = new TreeMap();
                 for (Info info:infos) {
-                    Column column = new Column();
-                    CitiDeep detail = CitiDeep.alist(info.getLogo());
-                    if(detail != null)
+                    if(StringUtils.isNotEmpty(info.getEmail()))
                     {
-                      try {
-                          column.setImageUrl(detail.getImageUrl());
-                          column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "xxx\$1"));
-                          column.setTitle(detail.getTitle() + (set1.contains(info.getLogo())?CitiUtil.alreadyCancel:""));
-                          //column.setTitle( (Calendar.getInstance().get(Calendar.MONTH)+1) + CitiUtil.checkoutBill);
-                          //column.setTitleBackgroundColor(CitiUtil.titleBackgroundColor);
-                          column.addContent( newContent(Content.Type.TEXT, CitiUtil.checkoutBill + info.getStmtday() ) );
-                          column.addContent( newContent(Content.Type.TEXT, CitiUtil.emailBox + info.getEmail() ) );
-                          //column.addInternalActions(newAction(Action.Type.URL,"帳單資訊", CitiUtil.getMyLink()
-                          // + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey") // + "&UserID=" + jsonobj.getString("UserID")
-                          // + "&id=" + jsonobj.getString("id") + "&q=帳單應交金額及繳款日" // + CitiUtil.billInfo
-                          //                              ));
-                      } catch (URISyntaxException e) {
-                          // TODO Auto-generated catch block
-                          e.printStackTrace();
-                      }
-                      String tmId = String.valueOf(detail.getId());
-                      if(tm.containsKey(tmId))
-                      {
-                        tm.put(tmId + "!" + (tmId++), column);
-                      }
-                      else
-                      {
-                        tm.put(tmId, column);
-                      }
+                        Column column = new Column();
+                        CitiDeep detail = CitiDeep.alist(info.getLogo());
+                        boolean isAB = checkBlkcd(info.getBlkcd(),set2);
+                        if(detail != null && (!isAB || 
+                          ( isAB && StringUtils.isNotEmpty(info.getCurrBal()) &&
+                                info.getCurrBal().matches(CitiUtil.isNumeric) && Integer.parseInt(info.getCurrBal()) != 0 )                   
+                          ))
+                        {
+                            try {
+                                column.setImageUrl(detail.getImageUrl());
+                                column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
+                                column.setTitle(detail.getTitle() + ( ( set1.contains(info.getLogo()) || checkBlkcd(info.getLogo(),set1) )?formalAns("alreadyCancel"):""));
+                                
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                                long rightnow = System.currentTimeMillis();
+                                Date date = sdf.parse(info.getStmtday());
+                                long diffInMillies = (rightnow - date.getTime());
+                                long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
+                                column.addContent( newContent(Content.Type.TEXT, formalAns("checkoutBill") + CitiUtil.formatDate(date,"MM/dd") ) );
+                                if(diff <= 2 && diff >= 0)
+                                {
+                                    column.addContent( newContent(Content.Type.TEXT, formalAns("waitForTwoDays")) );
+                                }
+                                else
+                                {
+                                    column.addContent( newContent(Content.Type.TEXT, formalAns("emailBox") + info.getEmail() ) );
+                                }
+                            } catch (URISyntaxException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            String tmId = String.valueOf(detail.getId());
+                            if(tm.containsKey(tmId))
+                            {
+                              tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);
+                            }
+                            else
+                            {
+                              tm.put(String.format("%3s", tmId) + String.valueOf(tmInc), column);
+                            }
+                        }
+                        if(false == estmt)
+                        {
+                            estmt = StringUtils.equals("N",info.getEstmt());
+                        }
+                    }
+                    else
+                    {
+                        hasEmail = false;
+                        break;
                     }
                 }
+                MessageCarousel msgcrl = null;
+                MessageButtons msgbtn = null;
+                MessageText msgtxt = null;
+                loveEarth = "https://www.citibank.com.tw/global_docs/chi/cb/160913_estmtcola/index.html?icid=TWCCACAZHHOMELFBA";
                 Iterator i = tm.entrySet().iterator();
-                while(i.hasNext()) {
-                    Map.Entry me = (Map.Entry)i.next();
-                    msgcrl.addColumn(me.getValue());
+                if(false == hasEmail)
+                {
+                    msgtxt = new MessageText();
+                    msgtxt.setId("");
+                    msgtxt.setType(Message.Type.TEXT);
+                    msgtxt.setText(formalAns("clickCustomerService"));
+                    jsonInString = mapper.writeValueAsString(msgtxt);
+                    jsonInString = "[" + jsonInString + "]";
                 }
-                jsonInString = mapper.writeValueAsString(msgcrl);
-
-                MessageButtons msgbtn = new MessageButtons();
-                msgbtn.setId(jsonobj.get("id"));
-                msgbtn.setType(Message.Type.BUTTONS);
-                msgbtn.setText(CitiUtil.poleBear);
-                msgbtn.addAction(newAction(Action.Type.URL,"我同意申請電子月結單","https://www.citibank.com.tw/sim/zh-tw/cbol/cards-estmt.htm"));
-
-                String jsonInButton = mapper.writeValueAsString(msgbtn);
-
-                ctx.response.put("Messages", new JSONArray("[" + jsonInString + "," + jsonInButton + "]"));
+                else if(!i.hasNext())
+                {
+                    msgbtn = new MessageButtons();
+                    msgbtn.setId("");
+                    msgbtn.setType(Message.Type.BUTTONS);  
+                    msgbtn.setText(formalAns("nowYouHaveNoEmail"));
+                    msgbtn.addAction(newAction(Action.Type.URL,formalAns("eLoveEarthTogether"), loveEarth));
+                    msgbtn.addAction(newAction(Action.Type.URL,"帳單資訊", CitiUtil.getMyLink()
+                                 + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey") // + "&UserID=" + jsonobj.getString("UserID")
+                                 + "&id=" + jsonobj.getString("id") + "&q=帳單應交金額及繳款日" // + CitiUtil.billInfo
+                                 ));
+                    jsonInString = mapper.writeValueAsString(msgbtn);
+                    jsonInString = "[" + jsonInString + "]";
+                }
+                else
+                {
+                    msgcrl = new MessageCarousel();
+                    msgcrl.setId("");
+                    msgcrl.setType(Message.Type.CAROUSEL);  
+                    while(i.hasNext()) {
+                        Map.Entry me = (Map.Entry)i.next();
+                        msgcrl.addColumn(me.getValue());
+                    }
+                    jsonInString = mapper.writeValueAsString(msgcrl);
+                    if(estmt)
+                    {
+                        msgtxt = new MessageText();
+                        msgtxt.setId("");
+                        msgtxt.setType(Message.Type.TEXT);
+                        msgtxt.setText("<div class='talk_btns'><div class='talk_box blue citi_icon bearW'><span class='blue'>" + formalAns("poleBear") + 
+                               "</span><br><br><b class='notice_btn'>注意事項</b> <div class='notice_content'> " + formalAns("sevenDays") + 
+                               "</div></div><div class='btn_item center'><ul><li class='btnRedir' data-id='" + loveEarth + "'><a href='javascript:;'>"
+                               + formalAns("IAgreeEmail") + "</a></li></ul></div></div>");
+                        String jsonInTxt = mapper.writeValueAsString(msgtxt);
+                        jsonInString = "[" + jsonInString + "," + jsonInTxt + "]";
+                    }
+                    else
+                    {
+                        jsonInString = "[" + jsonInString + "]";
+                    }
+                }
+                
+                ctx.response.put("Messages", new JSONArray(jsonInString));                
         }
     }
 } catch (Exception e) {
