@@ -75,7 +75,7 @@ try {
                 result.setMessage(cardinfo.getResult().getMessage());
                 String jsonInString = mapper.writeValueAsString(result);
                 ctx.response.put("Result", new JSONObject(jsonInString));
-                List bigcome = CitiDeep.logos("大來");
+                List bigcome = CitiDeep.logos(15);
                 HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
                 set1.addAll(bigcome);
                 HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
@@ -85,8 +85,8 @@ try {
                 set3.addAll(CitiUtil.s1);
                 set3.addAll(CitiUtil.s2);
                 set3.remove("U");
-                set3.addAll(CitiDeep.logos("HappyGo"));
-                set3.addAll(CitiDeep.logos("透明"));
+                set3.addAll(CitiDeep.logos(8));
+                set3.addAll(CitiDeep.logos(13));
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();
                 TreeMap tm = new TreeMap();
