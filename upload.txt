@@ -1,81 +1,34 @@
-好的，請點選“馬上申請”，由客服即時通專員為您服務。
-
-現在非專員服務時間，請於09:00-21:00再次操作，由客服即時通專員為您服務。
-
-好的，請點選“馬上申請”，由信貸專員為您服務。
-
-USE [CTIDB]
-GO
-
-/****** Object:  Table [dbo].[CitiDeep]    Script Date: 2019/2/15 上午 06:00:06 ******/
-DROP TABLE [dbo].[CitiDeep]
-GO
-
-/****** Object:  Table [dbo].[CitiDeep]    Script Date: 2019/2/15 上午 06:00:06 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[CitiDeep](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[ApplyNow] [varchar](255) NULL,
-	[CardType] [varchar](128) NOT NULL,
-	[ImageUrl] [varchar](255) NULL,
-	[KnowMore] [varchar](255) NULL,
-	[OfferName1] [varchar](64) NULL,
-	[OfferName2] [varchar](64) NULL,
-	[OfferName3] [varchar](64) NULL,
-	[OfferText1] [varchar](64) NULL,
-	[OfferText2] [varchar](64) NULL,
-	[OfferText3] [varchar](64) NULL,
-	[Priority] [int] NOT NULL,
-	[Reward] [varchar](255) NULL,
-	[Title] [varchar](64) NOT NULL,
- CONSTRAINT [PK__CitiDeep__3214EC2790C2286B] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
- CONSTRAINT [UQ__CitiDeep__3214EC26A81DC99B] UNIQUE NONCLUSTERED 
-(
-	[ID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
-	「若您欲申辦Citi Prestige，請來電<a href="tel:02-2183-8585">(02)2183-8585</a>，將由專人為您服務，謝謝」	807	9B2E3BB4.png	https://www.citibank.com.tw/global_docs/chi/cc/160121_prestige/index.htm	第4晚	8次/年	無限次	全球精選飯店<br>免費住宿	免費國際機場<br>接或送服務	使用全球<br>機場貴賓室	1	紅利點數	Prestige卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407	559	EE1C9737.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermilesworld-card.htm	4次/年	$20/哩	無限次	免費國際機場<br>接或送服務	不分國內外消費	使用全球<br>機場貴賓室	2	哩程	寰旅尊尚世界悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407	558	EE1C9737.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermilesworld-card.htm	4次/年	$20/哩	無限次	免費國際機場<br>接或送服務	不分國內外消費	使用全球<br>機場貴賓室	2	哩程	寰旅尊尚世界卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407	593;595	EE1C9737.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermiles-card.htm	$20/哩	終身有效	60家航空	不分國內外消費	持卡期間哩程<br>終身有效	哩程自由換<br>(星空、天合聯盟等)	3	哩程	寰旅世界悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407	597;554;550;510	EE1C9737.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermiles-card.htm	$20/哩	終身有效	60家航空	不分國內外消費	持卡期間哩程<br>終身有效	哩程自由換<br>(星空、天合聯盟等)	3	哩程	寰旅世界卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322	451	C8EE464D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm	1.5%	0.5%	6折	百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋	一般消費回饋	最夯威秀<br>購票優惠	4	現金回饋	現金回饋御璽悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322	847;848;849	C8EE464D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm	1.5%	0.5%	6折	百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋	一般消費回饋	最夯威秀<br>購票優惠	4	現金回饋	現金回饋御璽卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322	028;432;439;496;010;532;539;596;120	C8EE464D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm	1.5%	0.5%	6折	百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋	一般消費回饋	最夯威秀<br>購票優惠	4	現金回饋	現金回饋白金卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322	461	C8EE464D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm	1.5%	0.5%	6折	百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋	一般消費回饋	最夯威秀<br>購票優惠	4	現金回饋	現金回饋白金悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=15&Media=381	420	9060B945.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/pchome-card.htm	6%	1.5%	$0	PChome消費<br>最高回饋	海外消費回饋	首年免年費	5	聯名點數	PChome Prime聯名御璽悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=15&Media=381	421	9060B945.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/pchome-card.htm	6%	1.5%	$0	PChome消費<br>最高回饋	海外消費回饋	首年免年費	5	聯名點數	PChome Prime聯名白金悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=3&Media=315	947	D32E0061.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/privileges-card.htm	王品買一送一	6折	$15/點	首次申辦，<br>首年生日享優惠	最夯威秀<br>購票優惠	王品集團指定餐廳 、<br>威秀購票享優惠	6	紅利點數	饗樂生活御璽悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=3&Media=315	802	D32E0061.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/privileges-card.htm	王品買一送一	6折	$15/點	首次申辦，<br>首年生日享優惠	最夯威秀<br>購票優惠	王品集團指定餐廳 、<br>威秀購票享優惠	6	紅利點數	饗樂生活御璽卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=3&Media=315	462	D32E0061.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/privileges-card.htm	王品買一送一	6折	$15/點	首次申辦，<br>首年生日享優惠	最夯威秀<br>購票優惠	王品集團指定餐廳 、<br>威秀購票享優惠	6	紅利點數	饗樂生活白金悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=3&Media=315	263;197	D32E0061.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/privileges-card.htm	王品買一送一	6折	$15/點	首次申辦，<br>首年生日享優惠	最夯威秀<br>購票優惠	王品集團指定餐廳 、<br>威秀購票享優惠	6	紅利點數	饗樂生活白金卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313	948	C82E091D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm	$30/點	3倍	6折	一般消費回饋<br>無上限	4大族群天天3倍回饋<br>(含原1倍回饋)	威秀最狂<br>購票優惠	7	紅利點數	超級紅利回饋御璽悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313	494	C82E091D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm	$30/點	3倍	6折	一般消費回饋<br>無上限	4大族群天天3倍回饋<br>(含原1倍回饋)	威秀最狂<br>購票優惠	7	紅利點數	超級紅利回饋御璽卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313	463	C82E091D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm	$30/點	3倍	6折	一般消費回饋<br>無上限	4大族群天天3倍回饋<br>(含原1倍回饋)	威秀最狂<br>購票優惠	7	紅利點數	超級紅利回饋白金悠遊卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313	492;004;005;018;023;130;138;230;238;333;334;335;338;417;427;517;527;592	C82E091D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm	$30/點	3倍	6折	一般消費回饋<br>無上限	4大族群天天3倍回饋<br>(含原1倍回饋)	威秀最狂<br>購票優惠	7	紅利點數	超級紅利回饋白金卡
-	https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313	594	C82E091D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm	$30/點	3倍	6折	一般消費回饋<br>無上限	4大族群天天3倍回饋<br>(含原1倍回饋)	威秀最狂<br>購票優惠	7	紅利點數	超級紅利回饋鈦金卡
-	請來電<a href="tel:02-2183-8585">(02)2183-8585</a>，將由專人為您服務，謝謝	241;266	78C2252F.png	https://www.citibank.com.tw/global_docs/chi/cc/120604_happygo/index.htm	1倍	2倍	3倍	一般消費單筆每滿<br>$100享Happy Go 1點	特約商店回饋	5大百貨/商店<br>3倍回饋	8	HappyGo點數	HappyGo聯名卡
-	不提供新卡申請	256;808		https://www.citibank.com.tw/sim/index.htm	1	2	3	等待上線	等待上線	等待上線	9	現金回饋	現金回饋PLUS御璽悠遊卡
-	不提供新卡申請	400;499	D8E8D615.png	https://www.citibank.com.tw/global_docs/chi/cc/diamond2013/page1_2.htm	2次/年	$20/哩	無限次	免費國際機場<br>接或送服務	不分國內外消費	使用全球<br>機場貴賓室	10	紅利點數	鑽石卡
-	不提供新卡申請	599;330;500	965645EB.png	https://www.citibank.com.tw/global_docs/chi/cc/diamond2013/page1_2.htm	2次/年	$20/哩	無限次	免費國際機場<br>接或送服務	不分國內外消費	使用全球<br>機場貴賓室	10	紅利點數	鑽石卡
-	不提供新卡申請	454;450;410;567;151;251;808;200	A8960231.png	https://www.citibank.com.tw/global_docs/chi/ap/ap_premiermiles-signature_manual.pdf	終身有效	$20/哩	60家航空	持卡期間哩程<br>終身有效	不分國內外消費	哩程自由換<br>(星空、天合聯盟等)	11	哩程	寰旅御璽卡
-	不提供新卡申請	845;804	8C93276F.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card-infinite.htm	0.88%	1.5%	4次/年	國內一般<br>消費回饋	海外消費回饋	桃園/高雄國際機場<br>外圍免費停車	12	現金回饋	現金回饋無限悠遊卡
-	不提供新卡申請	803;846	8C93276F.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card-infinite.htm	0.88%	1.5%	4次/年	國內一般<br>消費回饋	海外消費回饋	桃園/高雄國際機場<br>外圍免費停車	12	現金回饋	現金回饋無限卡
-	不提供新卡申請	440;484	15A27467.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/clear-card.htm	2%	$30/點	6折	國內加油費、行動通話費<br>滿額享最高回饋	一般消費回饋<br>無上限	威秀最狂<br>購票優惠	13	紅利點數/現金回饋	透明卡
-	不提供新卡申請	584;540	61B5420D.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/clear-card.htm	2%	$30/點	6折	國內加油費、行動通話費<br>滿額享最高回饋	一般消費回饋<br>無上限	威秀最狂<br>購票優惠	13	紅利點數/現金回饋	透明卡
-	不提供新卡申請	160;260	98C4233E.png	https://www.citibank.com.tw/sim/zh-tw/credit-cards/cau-card.htm	0.275%	終身有效	2000萬	捐給「喜憨兒社會福利基金會」<br>(提撥自每筆消費)	持卡期間點數<br>終身有效	公共運輸<br>旅行平安險	14	紅利點數	喜憨兒卡
-	不提供新卡申請	650;651;652;660;680;681	9DCEF1FC.png								15		大來卡
-	不提供新卡申請	458;140;106;009;300;805;973	UAT_CARDFACE.jpg	https://www.citibank.com.tw/sim/index.htm	1	2	3	PAT無此LOGO	PAT無此LOGO	PAT無此LOGO	16		UAT專用
+28	<br/>自動轉帳	autoTransfer	1
+29	(共用額度)	sharingQuota	1
+30	結帳日<br/>	checkoutBill	1
+31	(已取消)	alreadyCancel	1
+32	目前溢繳金額<br/>	currentOverpayAmout	1
+33	預計一小時內寄到您的信箱：<br/>	emailBox	1
+34	(獨立額度)	singleQuota	1
+35	帳單結帳日<br/>	billCheckoutDate	1
+36	無須繳款	noPayment	1
+37	e起愛地球救救北極熊，註冊電子月結單讓你對帳最簡單。	poleBear	1
+38	本期帳單總金額<br/>	totalAmountofCurrentBill	1
+39	可用額度<br/>	availableCredit	1
+40	信用總額度<br/>	totalCredit	1
+41	本期帳單交易明細	currBillTranDetail	1
+42	最低應繳金額<br/>	miniAmountPayment	1
+43	繳款截止日<br/>	paymentDeadline	1
+44	已使用額度<br/>	usedQuata	1
+45	您可能還想知道：	youMayWannaKnow	1
+46	您名下暫無有效的信用卡，查詢卡片資訊請點下方MENU，選擇「客服即時通」由專員為您查詢。	noCardInfo	1
+47	查詢帳單資訊請點下方MENU，選擇「客服即時通」由專員為您查詢。	noStateMent	1
+48	目前您沒有留存電子信箱，立即前往：	nowYouHaveNoEmail	1
+49	註冊電子月結單，e起愛地球	eLoveEarthTogether	1
+50	您好，我們剛剛已收到您補寄電子月結單的申請，預計1小時內會補寄到您留存在花旗的電子信箱，請您在確認您的郵件，謝謝。	emailInOneHour	1
+51	申請成功後 :<ol><li>七個工作天內簡訊或郵寄本服務約定條款到您在本行留存的行動電話或住家地址。</li><li>您名下所有信用卡/信貸將自動完成電子月結單申請。</li><li>第一個月如有消費會同時寄送紙本及電子月結單給您，日後僅寄送電子月結單。</li></ol>	sevenDays	1
+52	我同意申請電子月結單	IAgreeEmail	1
+53	補寄電子月結單請點下方 MENU, 選擇「客服即時通」由專員為您處理。	clickCustomerService	1
+54	帳單還在製作中唷，會在結帳日後 2 個工作天寄出，請您耐心等候唷！	waitForTwoDays	1
+55	您最近一次帳單結帳後，沒有新增的繳款入帳紀錄	noNewPymRecord	1
+56	好的，請點選“馬上申請”，由客服即時通專員為您服務。	applyNowCustomerService	1
+57	現在非專員服務時間，請於09:00-21:00再次操作，由客服即時通專員為您服務。	notWorkingHourNow	1
+58	好的，請點選“馬上申請”，由信貸專員為您服務。	applyNowForLoan	1
 
 CitiDeep.save(1,"807","Prestige卡","9B2E3BB4.png","第4晚","全球精選飯店<br>免費住宿","8次/年","免費國際機場<br>接或送服務","無限次","使用全球<br>機場貴賓室","「若您欲申辦Citi Prestige，請來電<a href="tel:02-2183-8585">(02)2183-8585</a>，將由專人為您服務，謝謝」","https://www.citibank.com.tw/global_docs/chi/cc/160121_prestige/index.htm","紅利點數",1);
 CitiDeep.save(2,"559","寰旅尊尚世界悠遊卡","EE1C9737.png","4次/年","免費國際機場<br>接或送服務","$20/哩","不分國內外消費","無限次","使用全球<br>機場貴賓室","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407","https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermilesworld-card.htm","哩程",2);
@@ -97,7 +50,7 @@ CitiDeep.save(17,"494","超級紅利回饋御璽卡","3D4CFB25.png","$30/點","�
 CitiDeep.save(18,"463","超級紅利回饋白金悠遊卡","C82E091D.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
 CitiDeep.save(19,"492;018;023;130;138;230;238;333;338;417;427","超級紅利回饋白金卡","F7507041.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
 CitiDeep.save(20,"594","超級紅利回饋鈦金卡","4B1BD633.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
-CitiDeep.save(21,"241;266","HappyGo聯名卡","78C2252F.png","1倍","一般消費單筆每滿<br>$100享Happy Go 1點","2倍","特約商店回饋","3倍","5大百貨/商店<br>3倍回饋","請來電<a href="tel:02-2183-8585">(02)2183-8585</a>，將由專人為您服務，謝謝","https://www.citibank.com.tw/global_docs/chi/cc/120604_happygo/index.htm","HappyGo點數",8);
+CitiDeep.save(21,"241;266","HAPPY GO聯名卡","78C2252F.png","1倍","一般消費單筆每滿<br>$100享HAPPY GO 1點","2倍","特約商店回饋","3倍","5大百貨/商店<br>3倍回饋","請來電<a href="tel:02-2183-8585">(02)2183-8585</a>，將由專人為您服務，謝謝","https://www.citibank.com.tw/global_docs/chi/cc/120604_happygo/index.htm","HAPPY GO點數",8);
 CitiDeep.save(22,"256;808","現金回饋PLUS御璽悠遊卡","PLUS_CARDFACE.png","1","等待上線","2","等待上線","3","等待上線","不提供新卡申請","https://www.citibank.com.tw/sim/index.htm","現金回饋",9);
 CitiDeep.save(23,"400;499","鑽石卡","D8E8D615.png","2次/年","免費國際機場<br>接或送服務","$20/哩","不分國內外消費","無限次","使用全球<br>機場貴賓室","不提供新卡申請","https://www.citibank.com.tw/global_docs/chi/cc/diamond2013/page1_2.htm","紅利點數",10);
 CitiDeep.save(24,"599;330;500","鑽石卡","965645EB.png","2次/年","免費國際機場<br>接或送服務","$20/哩","不分國內外消費","無限次","使用全球<br>機場貴賓室","不提供新卡申請","https://www.citibank.com.tw/global_docs/chi/cc/diamond2013/page1_2.htm","紅利點數",10);
@@ -108,7 +61,7 @@ CitiDeep.save(28,"440;484","透明卡","15A27467.png","2%","國內加油費、�
 CitiDeep.save(29,"584;540","透明卡","61B5420D.png","2%","國內加油費、行動通話費<br>滿額享最高回饋","$30/點","一般消費回饋<br>無上限","6折","威秀最狂<br>購票優惠","不提供新卡申請","https://www.citibank.com.tw/sim/zh-tw/credit-cards/clear-card.htm","紅利點數/現金回饋",13);
 CitiDeep.save(30,"160;260","喜憨兒卡","98C4233E.png","0.275%","捐給「喜憨兒社會福利基金會」<br>(提撥自每筆消費)","終身有效","持卡期間點數<br>終身有效","2000萬","公共運輸<br>旅行平安險","不提供新卡申請","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cau-card.htm","紅利點數",14);
 CitiDeep.save(31,"650;651;652;660;680;681","大來卡","9DCEF1FC.png","","","","","","","不提供新卡申請","","",15);
-CitiDeep.save(32,"458;140;106;009;300;805;973","UAT專用","UAT_CARDFACE.jpg","1","PAT無此LOGO","2","PAT無此LOGO","3","PAT無此LOGO","不提供新卡申請","https://www.citibank.com.tw/sim/index.htm","",16);
+CitiDeep.save(32,"458;140;106;009;300;805;973;190","UAT專用","UAT_CARDFACE.jpg","1","PAT無此LOGO","2","PAT無此LOGO","3","PAT無此LOGO","不提供新卡申請","https://www.citibank.com.tw/sim/index.htm","",16);
 CitiDeep.save(33,"010;532;539;596;120","現金回饋白金卡","92817AE3.png","1.5%","百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋","0.5%","一般消費回饋","6折","最夯威秀<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm","現金回饋",4);
 CitiDeep.save(34,"004;005;334;335;517;527;592","超級紅利回饋白金卡","4B1BD633.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
 
