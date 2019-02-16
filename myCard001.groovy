@@ -131,7 +131,7 @@ try {
                           availcl = 0;
                       }
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(availcl, formalAns("availableCredit") ) ) );
-                      String tmId = String.valueOf(detail.getId());
+                      String tmId = String.valueOf(detail.getPriority());
                       if(tm.containsKey(tmId))
                       {
                         tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);

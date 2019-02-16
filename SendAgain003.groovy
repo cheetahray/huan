@@ -53,6 +53,21 @@ private boolean checkBlkcd(String s, HashSet set)
     return false;
 }
 
+private boolean checkABBlockCode(String blkcd, HashSet set, String currbal)
+{
+    boolean isAB = checkBlkcd(blkcd, set);
+    boolean isBlkcdEmpty = StringUtils.isEmpty(currbal);
+    return ( !isAB || 
+               ( isAB && 
+                   ( isBlkcdEmpty || 
+                       (   !isBlkcdEmpty && currbal.matches(CitiUtil.isNumeric) && 
+                           Integer.parseInt(currbal) != 0 
+                       ) 
+                   ) 
+               )                   
+           );
+}
+
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
@@ -96,11 +111,7 @@ try {
                     {
                         Column column = new Column();
                         CitiDeep detail = CitiDeep.alist(info.getLogo());
-                        boolean isAB = checkBlkcd(info.getBlkcd(),set2);
-                        if(detail != null && (!isAB || 
-                          ( isAB && StringUtils.isNotEmpty(info.getCurrBal()) &&
-                                info.getCurrBal().matches(CitiUtil.isNumeric) && Integer.parseInt(info.getCurrBal()) != 0 )                   
-                          ))
+                        if(detail != null && checkABBlockCode( info.getBlkcd(), set2, info.getCurrBal() ))
                         {
                             try {
                                 column.setImageUrl(detail.getImageUrl());
@@ -125,7 +136,7 @@ try {
                                 // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
-                            String tmId = String.valueOf(detail.getId());
+                            String tmId = String.valueOf(detail.getPriority());
                             if(tm.containsKey(tmId))
                             {
                               tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);

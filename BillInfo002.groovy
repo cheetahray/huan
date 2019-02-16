@@ -53,6 +53,21 @@ private boolean checkBlkcd(String s, HashSet set)
     return false;
 }
 
+private boolean checkABBlockCode(String blkcd, HashSet set, String currbal)
+{
+    boolean isAB = checkBlkcd(blkcd, set);
+    boolean isBlkcdEmpty = StringUtils.isEmpty(currbal);
+    return ( !isAB || 
+               ( isAB && 
+                   ( isBlkcdEmpty || 
+                       (   !isBlkcdEmpty && currbal.matches(CitiUtil.isNumeric) && 
+                           Integer.parseInt(currbal) != 0 
+                       ) 
+                   ) 
+               )                   
+           );
+}
+
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
@@ -92,11 +107,7 @@ try {
                 for (Info info:infos) {
                     Column column = new Column();
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
-                    boolean isAB = checkBlkcd(info.getBlkcd(),set2);
-                    if(detail != null && (!isAB || 
-                      ( isAB && StringUtils.isNotEmpty(info.getCurrBal()) &&
-                            info.getCurrBal().matches(CitiUtil.isNumeric) && Integer.parseInt(info.getCurrBal()) != 0 )                   
-                      ) )
+                    if(detail != null && checkABBlockCode( info.getBlkcd(), set2, info.getCurrBal() ))
                     {
                       column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
@@ -124,7 +135,7 @@ try {
 		                                                                                + "&id=" + jsonobj.getString("id") + "&q=我要申請帳單分期"));
                       }
                       //column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
-                      String tmId = String.valueOf(detail.getId());
+                      String tmId = String.valueOf(detail.getPriority());
                       if(tm.containsKey(tmId))
                       {
                         tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);
