@@ -80,7 +80,7 @@ try {
                     cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.RESENDESTMT.toString());
                     //ctx.setCtxAttr(Result.Postfix.RESENDESTMT.toString(),cardinfo);
                 }
-                else
+                else if(false)
                 {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                     long rightnow = System.currentTimeMillis();

@@ -55,7 +55,12 @@ try {
         System.out.print("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
                   + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
         if(jsonobj.has("id")) {
-                CardInfo cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.PYMRECORD.toString());
+                CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.PYMRECORD.toString());
+                if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
+                {
+                    cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.PYMRECORD.toString());
+                    ctx.setCtxAttr(Result.Postfix.PYMRECORD.toString(),cardinfo);
+                }
                 ObjectMapper mapper = new ObjectMapper();
                 Result result = new Result();
                 result.setCode(cardinfo.getResult().getCode());
