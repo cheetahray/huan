@@ -98,14 +98,15 @@ private String formalAns(String key)
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
-        System.out.print("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
-                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        //System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
+        //          + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        //System.out.println(jsonobj);
         if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.CARDINFO.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
                     cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.CARDINFO.toString());
-                    ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
+                    //ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
                 }
                 else if(false)
                 {
@@ -160,25 +161,25 @@ try {
                       }
                       if(set1.contains(info.getLogo()) || checkBlkcd(info.getBlkcd(),set1))
                       {
-                          column.setTitle(detail.getTitle() + formalAns("alreadyCancel") );
+                          continue; //column.setTitle(detail.getTitle() + formalAns("alreadyCancel") );
                       }
                       else
                       {
                           column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
                           column.setTitle(detail.getTitle());
                       }
-                      String tmId = String.valueOf(detail.getPriority());
-                      if(tm.containsKey(tmId))
+                      int tmId = detail.getPriority();
+                      String threeS = String.format("%3d", tmId);
+                      if(tm.containsKey(threeS + String.valueOf(tmInc)))
                       {
-                        tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), setColumn(column, detail, true));
+                        tm.put(threeS + String.valueOf(++tmInc), setColumn(column, detail, true));
                       }
                       else
                       {
-                        tm.put(String.format("%3s", tmId) + String.valueOf(tmInc), setColumn(column, detail, true));
+                        tm.put(threeS + String.valueOf(tmInc), setColumn(column, detail, true));
                       }
                     }
                 }
-                System.out.println(tm);
                 Iterator i = tm.entrySet().iterator();
                 while(i.hasNext()) {
                     Map.Entry me = (Map.Entry)i.next();
@@ -191,7 +192,7 @@ try {
                         Column column = new Column();
                         CitiDeep detail = CitiDeep.alist(place.get(2));
                         column.setImageText("");
-                        column.setTitle(detail.getTitle().replace("白金", "").replace("悠遊", ""));
+                        column.setTitle(detail.getTitle().replace("白金", "").replace("悠遊", "").replace("御璽", ""));
                         msgcrl.addColumn(setColumn(column, detail, false));   
                     }
                 }
