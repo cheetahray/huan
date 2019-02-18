@@ -50,12 +50,13 @@ private boolean checkBlkcd(String s, HashSet set)
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
+        System.out.println(jsonobj);
         if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.CARDINFO.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
                     cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.CARDINFO.toString());
-                    ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
+                    //ctx.setCtxAttr(Result.Postfix.CARDINFO.toString(),cardinfo);
                 }
                 else if(false)
                 {
@@ -79,7 +80,7 @@ try {
                 HashSet set1 = new HashSet<>(Arrays.asList(CitiUtil.s1));
                 set1.addAll(bigcome);
                 HashSet set2 = new HashSet<>(Arrays.asList(CitiUtil.s2));
-                //set2.addAll(CitiUtil.s1);
+                set2.addAll(CitiUtil.s1);
                 set2.addAll(bigcome);
                 HashSet set3 = new HashSet<>(Arrays.asList(CitiUtil.s3));
                 set3.addAll(CitiUtil.s1);
@@ -131,14 +132,15 @@ try {
                           availcl = 0;
                       }
                       column.addContent( newContent( Content.Type.TEXT, CitiUtil.formatMoney(availcl, formalAns("availableCredit") ) ) );
-                      String tmId = String.valueOf(detail.getPriority());
-                      if(tm.containsKey(tmId))
+                      int tmId = detail.getPriority();
+                      String threeS = String.format("%3d", tmId);
+                      if(tm.containsKey(threeS + String.valueOf(tmInc)))
                       {
-                        tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);
+                        tm.put(threeS + String.valueOf(++tmInc), column);
                       }
                       else
                       {
-                        tm.put(String.format("%3s", tmId) + String.valueOf(tmInc), column);
+                        tm.put(threeS + String.valueOf(tmInc), column);
                       }
                     }
                 }
