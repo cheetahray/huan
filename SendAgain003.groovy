@@ -71,8 +71,9 @@ private boolean checkABBlockCode(String blkcd, HashSet set, String currbal)
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
-        System.out.print("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
-                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        //System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
+        //          + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        System.out.println(jsonobj);
         if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.RESENDESTMT.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
@@ -136,14 +137,15 @@ try {
                                 // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
-                            String tmId = String.valueOf(detail.getPriority());
-                            if(tm.containsKey(tmId))
+                            int tmId = detail.getPriority();
+                            String threeS = String.format("%3d", tmId);
+                            if(tm.containsKey(threeS + String.valueOf(tmInc)))
                             {
-                              tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);
+                              tm.put(threeS + String.valueOf(++tmInc), column);
                             }
                             else
                             {
-                              tm.put(String.format("%3s", tmId) + String.valueOf(tmInc), column);
+                              tm.put(threeS + String.valueOf(tmInc), column);
                             }
                         }
                         if(false == estmt)
