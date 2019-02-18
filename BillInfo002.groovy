@@ -57,7 +57,7 @@ private boolean checkABBlockCode(String blkcd, HashSet set, String currbal)
 {
     boolean isAB = checkBlkcd(blkcd, set);
     boolean isBlkcdEmpty = StringUtils.isEmpty(currbal);
-    return ( !isAB || 
+    return why = ( !isAB || 
                ( isAB && 
                    ( isBlkcdEmpty || 
                        (   !isBlkcdEmpty && currbal.matches(CitiUtil.isNumeric) && 
@@ -71,14 +71,15 @@ private boolean checkABBlockCode(String blkcd, HashSet set, String currbal)
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
-        System.out.print("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
-                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        //System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
+        //          + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        //System.out.println(jsonobj);
         if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.STATEMENT.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
                 {
                     cardinfo = CitiUtil.getSmartMenu(jsonobj.get("id"), Result.Postfix.STATEMENT.toString());
-                    ctx.setCtxAttr(Result.Postfix.STATEMENT.toString(),cardinfo);
+                    //ctx.setCtxAttr(Result.Postfix.STATEMENT.toString(),cardinfo);
                 }
                 else if(false)
                 {
@@ -135,14 +136,15 @@ try {
 		                                                                                + "&id=" + jsonobj.getString("id") + "&q=我要申請帳單分期"));
                       }
                       //column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
-                      String tmId = String.valueOf(detail.getPriority());
-                      if(tm.containsKey(tmId))
+                      int tmId = detail.getPriority();
+                      String threeS = String.format("%3d", tmId);
+                      if(tm.containsKey(threeS + String.valueOf(tmInc)))
                       {
-                        tm.put(String.format("%3s", tmId) + String.valueOf(++tmInc), column);
+                        tm.put(threeS + String.valueOf(++tmInc), column);
                       }
                       else
                       {
-                        tm.put(String.format("%3s", tmId) + String.valueOf(tmInc), column);
+                        tm.put(threeS + String.valueOf(tmInc), column);
                       }
                     }
                 }
