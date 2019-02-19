@@ -1,3 +1,12 @@
+<li class="btnTk"><a class="answer-link" href="tel:02-25768000" target="_blank">立即申請</a></li>
+<li class="btnPhone" data-id="tel:02-25768000"><a class="answer-link" href="javascript:;" target="_blank">立即申請</a></li>
+
+<li class="btnTk"><a class="answer-link" href="http://${transfer}" target="_blank">客服即時通</a></li>
+<li class="btnTransfer" data-id="${tansfer}"><a class="answer-link" href="javascript:;" target="_blank">客服即時通</a></li>
+
+<a class="answer-link" href="http://www.citibank.com.tw/CLI" target="_blank">請點我</a>
+<a class="answer-link btnRedir" data-id="http://www.citibank.com.tw/CLI" href="javascript:;" target="_blank">請點我</a>
+
 28	<br/>自動轉帳	autoTransfer	1
 29	(共用額度)	sharingQuota	1
 30	結帳日<br/>	checkoutBill	1
