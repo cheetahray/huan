@@ -156,12 +156,12 @@ COMMON_SENSE-6,6,,我的繳款紀錄。,,"(繳款)(紀錄)	 // {""alt.editor"":"
 COMMON_SENSE-8,8,,推播帳單到期提醒功能,,"(推播)(帳單)(期限)(提醒)(功能)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""推播帳單到期提醒功能""}
 ","推播帳單到期提醒功能
 ","
-可以！<span style=""color:#0000FF"">簡單4步驟</span>立即設定帳單到期通知，讓您帳單不漏繳 ~<br />
-（1）返回 　<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197236784.png"" style=""height:51px; width:53px"" />　點選左上方選單<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197240654.png"" style=""height:41px; width:48px"" /><br />
-（2）點選【設定】&rarr;啟用推播通知<br />
-（3）點選【管理推播通知】<br />
-（4）勾選【帳單到期提醒】&rarr;啟用成功<br />
-<span style=""color:#FF0000"">❤</span>一隻手機僅能綁定一個網路使用者代號<br />
+可以！<span style=""color:#0000FF"">簡單4步驟</span>立即設定帳單到期通知，讓您帳單不漏繳 ~
+（1）返回 　<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197236784.png"" style=""height:51px; width:53px"" />　點選左上方選單<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197240654.png"" style=""height:41px; width:48px"" />
+（2）點選【設定】&rarr;啟用推播通知
+（3）點選【管理推播通知】
+（4）勾選【帳單到期提醒】&rarr;啟用成功
+<span style=""color:#FF0000"">❤</span>一隻手機僅能綁定一個網路使用者代號
 ※帳單到期通知會在繳款截止日前1工作日發送，若已繳足最低應繳金額就不會收到通知囉~
 
 ",2019/01/29 10:50:09,"<p>可以！<span style=""color:#0000FF"">簡單4步驟</span>立即設定帳單到期通知，讓您帳單不漏繳 ~<br />
@@ -192,11 +192,11 @@ COMMON_SENSE-10030025,10030025,,信用卡申請文件,,"(信用卡)(申請)(文�
 COMMON_SENSE-10030080,10030080,,信用卡有效期限查詢,,"(信用卡)(期限)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡有效期限查詢""}
 ","信用卡有效期限查詢
 ","
-請拿出您的卡片並參考下圖範例：<br />
-有效期限：12/21=2021年12月<br />
- <br />
-<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187931492.png"" style=""height:110px; width:173px"" /><img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187938892.jpg"" style=""height:109px; width:173px"" /><br />
-識別碼（CVV）：720<br />
+請拿出您的卡片並參考下圖範例：
+有效期限：12/21=2021年12月
+ 
+<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187931492.png"" style=""height:110px; width:173px"" /><img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187938892.jpg"" style=""height:109px; width:173px"" />
+識別碼（CVV）：720
 <img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187990826.jpg"" style=""height:109px; width:173px"" />
 
 ",2019/02/18 17:37:09,"<p>請拿出您的卡片並參考下圖範例：<br />
@@ -272,8 +272,8 @@ COMMON_SENSE-10050044,10050044,,信用卡帳單繳款提醒方式,,"(信用卡)(
 COMMON_SENSE-10060075,10060075,,暫停當期帳單自動扣款,,"(暫停)(當期)(帳單)(自動扣款)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""暫停當期帳單自動扣款""}
 ","暫停當期帳單自動扣款
 ","
-要通知我們唷，請點選【客服即時通】由專員為您暫停本期自動扣款。<br />
-<br />
+要通知我們唷，請點選【客服即時通】由專員為您暫停本期自動扣款。
+
 <span style=""color:#FF0000"">❤</span>請務必於繳款截止日前<span style=""color:#40E0D0"">3個工作天</span>提出申請
 
 
@@ -297,14 +297,14 @@ COMMON_SENSE-10060083,10060083,,查詢帳單繳款截止日,,"(帳單)(繳款)(�
 COMMON_SENSE-10100002,10100002,,永久額度調高申請方式,,"(永久)(額度)(調高)(申請)(方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""永久額度調高申請方式""}
 ","永久額度調高申請方式
 ","
-簡單3步驟，申請永久額度調高<br />
-<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187836474.png"" style=""height:161px; width:318px"" /><br />
-前往連結網頁，立即申請：<br />
-<br />
-﹝1﹞iPhone <a class=""answer-link"" href=""http://www.citibank.com.tw/CLI"" target=""_blank"">請點我</a><br />
-<br />
-﹝2﹞Android <a class=""answer-link"" href=""http://www.citibank.com.tw/CLIC"" target=""_blank"">請點我</a><br />
-<br />
+簡單3步驟，申請永久額度調高
+<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547187836474.png"" style=""height:161px; width:318px"" />
+前往連結網頁，立即申請：
+
+﹝1﹞iPhone <a class=""answer-link"" href=""http://www.citibank.com.tw/CLI"" target=""_blank"">請點我</a>
+
+﹝2﹞Android <a class=""answer-link"" href=""http://www.citibank.com.tw/CLIC"" target=""_blank"">請點我</a>
+
 ❤審核約需<span style=""color:#00FFFF"">5個工作天</span>，調整結果會寄發簡訊通知您。
 
 ",2019/02/18 10:16:45,"<p>簡單3步驟，申請永久額度調高<br />
@@ -320,8 +320,8 @@ COMMON_SENSE-10100002,10100002,,永久額度調高申請方式,,"(永久)(額度
 COMMON_SENSE-10100009,10100009,,臨時額度調高申請方式,,"(臨時)(額度)(調高)(申請)(方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""臨時額度調高申請方式""}
 ","臨時額度調高申請方式
 ","
-持卡滿6個月以上，可透過電話理財中心申請調高臨時額度<br />
-<br />
+持卡滿6個月以上，可透過電話理財中心申請調高臨時額度
+
 <span style=""color:#FF0000"">❤</span>調整時間最長30天，且不能刷分期交易唷！
 
 
@@ -354,7 +354,7 @@ COMMON_SENSE-10130002,10130002,,信用卡爭議帳款申訴流程,,"(信用卡)(
 COMMON_SENSE-10130029,10130029,,信用卡國外交易手續費,,"(信用卡)(國外)(交易)(手續費)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡國外交易手續費""}
 ","信用卡國外交易手續費
 ","
-只要收單銀行在國外，不論當時以外幣或新臺幣交易，皆會收取國外交易手續費1.5%。<br />
+只要收單銀行在國外，不論當時以外幣或新臺幣交易，皆會收取國外交易手續費1.5%。
 <span style=""color:#00FFFF"">範例：NT$1000x1.5%=NT$15</span>
 
 ",2019/01/29 10:36:41,"<p>只要收單銀行在國外，不論當時以外幣或新臺幣交易，皆會收取國外交易手續費1.5%。<br />
@@ -370,14 +370,14 @@ COMMON_SENSE-10150004,10150004,,補寄電子帳單費用,,"(補)(寄)(電子帳�
 COMMON_SENSE-10150005,10150005,,信用卡電子帳單開啟密碼,,"(信用卡)(電子帳單)(開啟)(密碼)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡電子帳單開啟密碼""}
 ","信用卡電子帳單開啟密碼
 ","
-開啟電子月結單的密碼如下：<br />
-【本國人】=身份證字號<br />
-　　　　　例如：<span style=""color:#0000FF"">Ａ</span>123456789<br />
-<br />
-【外籍人士】=性別＋西元出生年月日<br />
-　　　　　男：<span style=""color:#0000FF"">Ｍ</span>19800723<br />
-　　　　　女：<span style=""color:#0000FF"">Ｆ</span>19771019<br />
-<br />
+開啟電子月結單的密碼如下：
+【本國人】=身份證字號
+　　　　　例如：<span style=""color:#0000FF"">Ａ</span>123456789
+
+【外籍人士】=性別＋西元出生年月日
+　　　　　男：<span style=""color:#0000FF"">Ｍ</span>19800723
+　　　　　女：<span style=""color:#0000FF"">Ｆ</span>19771019
+
 ※英文字母須<span style=""color:#0000FF"">大寫</span>唷~
 
 ",2019/01/29 10:41:29,"<p>開啟電子月結單的密碼如下：<br />
@@ -393,14 +393,14 @@ COMMON_SENSE-10150005,10150005,,信用卡電子帳單開啟密碼,,"(信用卡)(
 COMMON_SENSE-10150011,10150011,,信用卡電子帳單未收到原因,,"(信用卡)(電子帳單)(未)(收到)(原因)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡電子帳單未收到原因""}
 ","信用卡電子帳單未收到原因
 ","
-收不到電子月結單常見原因如下：<br />
-（1）本期帳單無新增交易且繳款金<br />
-額=0，則不會寄送電子月結單<br />
-<br />
-（2）郵件被阻擋:<br />
-建議將花旗電子信箱加為【聯絡人】<br />
-避免落入垃圾郵件<br />
-<span style=""color:#40E0D0"">estatement@citibank.com.tw<br />
+收不到電子月結單常見原因如下：
+（1）本期帳單無新增交易且繳款金
+額=0，則不會寄送電子月結單
+
+（2）郵件被阻擋:
+建議將花旗電子信箱加為【聯絡人】
+避免落入垃圾郵件
+<span style=""color:#40E0D0"">estatement@citibank.com.tw
 twcitiphone@citi.com</span>
 
 
@@ -443,11 +443,11 @@ COMMON_SENSE-10150051,10150051,,補寄非當期信用卡電子帳單,,"(補)(寄
 COMMON_SENSE-10160241,10160241,,行動生活家app啟用推播通知方式,,"(行動生活家)(啟用)(推播)(通知)(方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""行動生活家app啟用推播通知方式""}
 ","行動生活家app啟用推播通知方式
 ","
-可以！<span style=""color:#0000FF"">簡單4步驟</span>立即設定消費通知，讓您越刷越安心 ~<br />
-（1）返回　<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197293536.png"" style=""height:51px; width:53px"" />　點選左上方選單<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197296347.png"" style=""height:41px; width:48px"" /><br />
-（2）點選【設定】&rarr;啟用推播通知<br />
-（3）點選【管理推播通知】<br />
-（4）勾選【信用卡消費通知】&rarr;啟用成功<br />
+可以！<span style=""color:#0000FF"">簡單4步驟</span>立即設定消費通知，讓您越刷越安心 ~
+（1）返回　<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197293536.png"" style=""height:51px; width:53px"" />　點選左上方選單<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547197296347.png"" style=""height:41px; width:48px"" />
+（2）點選【設定】&rarr;啟用推播通知
+（3）點選【管理推播通知】
+（4）勾選【信用卡消費通知】&rarr;啟用成功
 <span style=""color:#FF0000"">❤</span>一隻手機僅能綁定一個網路使用者代號
 
 ",2019/01/29 10:48:58,"<p>可以！<span style=""color:#0000FF"">簡單4步驟</span>立即設定消費通知，讓您越刷越安心 ~<br />
@@ -460,10 +460,10 @@ COMMON_SENSE-10160241,10160241,,行動生活家app啟用推播通知方式,,"(�
 COMMON_SENSE-10170003,10170003,,信用貸款財力證明,,"(信用貸款)(財力證明)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用貸款財力證明""}
 ","信用貸款財力證明
 ","
-請準備以下任一財力證明即可申請：<br />
-（1）扣繳憑單（最新年度）<br />
-（2）薪資存摺（近３個月）<br />
-（3）正式薪資單（近3個月）<br />
+請準備以下任一財力證明即可申請：
+（1）扣繳憑單（最新年度）
+（2）薪資存摺（近３個月）
+（3）正式薪資單（近3個月）
 （4）所得稅（清）單
 
 ",2019/02/18 12:07:34,"<p>請準備以下任一財力證明即可申請：<br />
@@ -479,14 +479,14 @@ COMMON_SENSE-10170013,10170013,,信用貸款月付金試算,,"(信用貸款)(月
 
 
 <ul>
-	<li>立即試算:0800-600-666</li>
+	<li><a class=""answer-link"" href=""tel:0800-600-666"" target=""_blank"">立即試算</a></li>
 </ul>
-",2019/01/29 11:00:01,"<p>信貸的期數/利率將由專員為您試算~</p>
+",2019/02/19 13:20:52,"<p>信貸的期數/利率將由專員為您試算~</p>
 
 <ul>
-	<li>立即試算:0800-600-666</li>
+	<li><a class=""answer-link"" href=""tel:0800-600-666"" target=""_blank"">立即試算</a></li>
 </ul>
-",,,,,,2019/01/29 10:59:59
+",,,,,,2019/02/19 13:20:50
 COMMON_SENSE-10230018,10230018,,信用卡消費分期繳款方式,,"(信用卡)(消費)(分期)(繳款)(方式) // {""alt.editor"":1,""testCase.editor"":1,""testCase"":""信用卡消費分期繳款方式""}
 ","信用卡消費分期繳款方式
 ","帳單分期後，每期月付金會一併列入信用卡帳單，請於繳款截止日前繳費即可。
@@ -494,8 +494,8 @@ COMMON_SENSE-10230018,10230018,,信用卡消費分期繳款方式,,"(信用卡)(
 COMMON_SENSE-10230071,10230071,,分期聰明付分期試算,,"(分期聰明付)(分期)(試算)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""分期聰明付分期試算""}
 ","分期聰明付分期試算
 ","
-您可透過活動網頁試算分期金額/期數/利率唷。<br />
-<br />
+您可透過活動網頁試算分期金額/期數/利率唷。
+
 ※活動資格請以網頁顯示為主
 
 
@@ -517,10 +517,10 @@ COMMON_SENSE-10230072,10230072,,分期聰明付額度占用,,"(分期聰明付)(
 COMMON_SENSE-10230221,10230221,,線上訂房樂享優惠,,"(上)(訂房)(樂)(享)(優惠)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""線上訂房樂享優惠""}
 ","線上訂房樂享優惠
 ","
-有的！透過花旗卡友專屬網站訂房樂享優惠 !<br />
-（1）Agoda-享最優9折優惠<br />
-（2）Hotels.com-享最優91折優惠<br />
-（3）Booking.com-享禮獻7%回饋<br />
+有的！透過花旗卡友專屬網站訂房樂享優惠 !
+（1）Agoda-享最優9折優惠
+（2）Hotels.com-享最優91折優惠
+（3）Booking.com-享禮獻7%回饋
 （4）Expedia-享最優91折優惠
 
 
@@ -540,8 +540,8 @@ COMMON_SENSE-10230221,10230221,,線上訂房樂享優惠,,"(上)(訂房)(樂)(�
 COMMON_SENSE-10230304,10230304,,台亞全國加油站活動介紹,,"(台)(亞)(全國加油站)(活動)(介紹)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""台亞全國加油站活動介紹""}
 ","台亞全國加油站活動介紹
 ","
-有的！持花旗信用卡於全國/台亞加油站，享汽油每公升最優降1.2元<br />
-<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547188250606.jpg"" style=""height:112px; width:350px"" /><br />
+有的！持花旗信用卡於全國/台亞加油站，享汽油每公升最優降1.2元
+<img src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547188250606.jpg"" style=""height:112px; width:350px"" />
 <span style=""color:#FF0000"">❤</span>使用悠遊卡功能加油不適用此優惠喔
 
 
@@ -559,11 +559,11 @@ COMMON_SENSE-10230304,10230304,,台亞全國加油站活動介紹,,"(台)(亞)(�
 COMMON_SENSE-10230531,10230531,,信用卡KKDAY優惠活動,,"(信用卡)(kkday)(優惠活動)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡KKDAY優惠活動""}
 ","信用卡KKDAY優惠活動
 ","
-有的！「KKDAY暢玩世界 由你做主」<br />
-透過指定網站輸入<span style=""color:#00FFFF"">優惠代碼</span>享：<br />
-（1）全行程94折<br />
-　　 活動代碼：「<span style=""color:#00FFFF"">CITI2018</span>」<br />
-（2）日本一日遊行程9折<br />
+有的！「KKDAY暢玩世界 由你做主」
+透過指定網站輸入<span style=""color:#00FFFF"">優惠代碼</span>享：
+（1）全行程94折
+　　 活動代碼：「<span style=""color:#00FFFF"">CITI2018</span>」
+（2）日本一日遊行程9折
 　 活動代碼：「<span style=""color:#00FFFF"">CITI201801</span>」
 
 
@@ -583,31 +583,31 @@ COMMON_SENSE-10230531,10230531,,信用卡KKDAY優惠活動,,"(信用卡)(kkday)(
 ",,,,,,2019/01/29 10:55:48
 COMMON_SENSE-10230532,10230532,,信用卡的年費計算標準,,"(信用卡)(年費)(計算)(標準)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡年費計算標準""}
 ","信用卡年費計算標準
-","以下為各卡別的年費標準：<br />
+","以下為各卡別的年費標準：
 <img alt="""" src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-02-18/1550456815430.png"" style=""height:410px; width:360px"" />",2019/02/18 17:49:22,"以下為各卡別的年費標準：<br />
 <img alt="""" src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-02-18/1550456815430.png"" style=""height:410px; width:360px"" />",,,,,,2019/02/18 17:49:20
 COMMON_SENSE-10230533,10230533,,信用卡在威秀影城消費有什麼優惠,,"(信用卡)(威秀)(影城)(消費)(哪些)(優惠)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡威秀影城消費哪些優惠""}
 ","信用卡威秀影城消費哪些優惠
-","透過行動市集、威秀影城官網（APP）購票，享以下優惠：<br />
-<img alt="""" src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-02-18/1550458861336.png"" style=""height:209px; width:350px"" /><br />
-<br />
+","透過行動市集、威秀影城官網（APP）購票，享以下優惠：
+<img alt="""" src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-02-18/1550458861336.png"" style=""height:209px; width:350px"" />
+
 *HAPPYGO聯名卡、喜憨兒卡不適用此優惠",2019/02/18 11:44:08,"透過行動市集、威秀影城官網（APP）購票，享以下優惠：<br />
 <img alt="""" src=""http://cit01p181.intumit.com/wise/ckeditor-upload/2019-02-18/1550458861336.png"" style=""height:209px; width:350px"" /><br />
 <br />
 *HAPPYGO聯名卡、喜憨兒卡不適用此優惠",,,,,,2019/02/18 11:44:05
 COMMON_SENSE-10230534,10230534,,申請附卡需要有什麼親屬關係資格嗎,,"(申請)(附卡)(需要)(哪些)(親屬關係)(資格)	 // {""alt.editor"":1,""testCase"":""申請附卡需要哪些親屬關係資格"",""testCase.editor"":1}
 ","申請附卡需要哪些親屬關係資格
-","主附卡的關係資格必須為以下：<br />
-配偶、父母、子女(需年滿15歲)、兄弟姊妹(需年滿20歲)、配偶父母*<br />
-<br />
+","主附卡的關係資格必須為以下：
+配偶、父母、子女(需年滿15歲)、兄弟姊妹(需年滿20歲)、配偶父母*
+
 ＊若附卡申請人為配偶父母，請附配偶身分證正反面影",2019/02/18 11:53:42,"主附卡的關係資格必須為以下：<br />
 配偶、父母、子女(需年滿15歲)、兄弟姊妹(需年滿20歲)、配偶父母*<br />
 <br />
 ＊若附卡申請人為配偶父母，請附配偶身分證正反面影",,,,,,2019/02/18 11:53:39
 COMMON_SENSE-10230535,10230535,,申請滿福貸會有手續費嗎？,,"(申請)(滿福貸)(有)(手續費)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""申請滿福貸有手續費""}
 ","申請滿福貸有手續費
-","滿福貸每筆動用手續費為NT$5999，會在您的首期帳單收取此筆費用。<br />
-<br />
+","滿福貸每筆動用手續費為NT$5999，會在您的首期帳單收取此筆費用。
+
 <span style=""color:rgb(255, 0, 0)"">❤</span>若款項匯入非本行帳戶，會收取匯款手續費NT$50",2019/02/18 12:43:14,"滿福貸每筆動用手續費為NT$5999，會在您的首期帳單收取此筆費用。<br />
 <br />
 <span style=""color:rgb(255, 0, 0)"">&hearts;</span>若款項匯入非本行帳戶，會收取匯款手續費NT$50",,,,,,2019/02/18 12:43:11
@@ -639,4 +639,5 @@ COMMON_SENSE-257621047,257621047,,我的繳款紀錄。,,"(繳款)(紀錄)	 // {
 COMMON_SENSE-258338126,258338126,,叡測試制式文案用,,"叡測試制式文案用	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""叡測試制式文案用""}
 ","叡測試制式文案用
 ",,2019/02/13 16:20:01,,,,,,,2019/02/13 13:34:14
+
 
