@@ -71,8 +71,8 @@ private boolean checkABBlockCode(String blkcd, HashSet set, String currbal)
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
-        //System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
-        //          + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
+                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
         //System.out.println(jsonobj);
         if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.STATEMENT.toString());
@@ -107,6 +107,11 @@ try {
                 TreeMap tm = new TreeMap();
                 for (Info info:infos) {
                     Column column = new Column();
+                    if(StringUtils.isBlank(info.getLogo()))
+                    {
+                       info.setLogo("300");
+                       info.setBlkcd("");
+                    }
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
                     if(detail != null && checkABBlockCode( info.getBlkcd(), set2, info.getCurrBal() ))
                     {
