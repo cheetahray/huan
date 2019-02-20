@@ -1,3 +1,9 @@
+<a href="javascript:;" class="btnTk" data-id="帳單資訊" data-q="帳單應交金額及繳款日" data-talk="查詢我的本期帳單應繳金額及繳款日。">帳單資訊</a>
+
+<li class="btnTk" data-id="帳單資訊" data-q="帳單應交金額及繳款日" data-talk="查詢我的本期帳單應繳金額及繳款日。">
+ <a href="javascript:;">查詢帳單資訊</a>
+</li>
+
 <li class="btnTk"><a class="answer-link" href="tel:02-25768000" target="_blank">立即申請</a></li>
 <li class="btnPhone" data-id="tel:02-25768000"><a class="answer-link" href="javascript:;" target="_blank">立即申請</a></li>
 
