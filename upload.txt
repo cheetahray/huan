@@ -1,8 +1,59 @@
 <a href="javascript:;" class="btnTk" data-id="帳單資訊" data-q="帳單應交金額及繳款日" data-talk="查詢我的本期帳單應繳金額及繳款日。">帳單資訊</a>
 
-<li class="btnTk" data-id="帳單資訊" data-q="帳單應交金額及繳款日" data-talk="查詢我的本期帳單應繳金額及繳款日。">
- <a href="javascript:;">查詢帳單資訊</a>
-</li>
+    "Messages": [
+        {
+            "Columns": [
+                {
+                    "Contents": [
+                        {
+                            "Text": "本期帳單總金額<br\/>$-3,000",
+                            "Type": "text"
+                        },
+                        {
+                            "Text": "最低應繳金額<br\/>$0",
+                            "Type": "text"
+                        },
+                        {
+                            "Text": "帳單結帳日<br\/>2026\/06\/15",
+                            "Type": "text"
+                        },
+                        {
+                            "Text": "繳款截止日<br\/>無需繳款",
+                            "Type": "text"
+                        }
+                    ],
+                    "ExternalActions": [
+                        {
+                            "Text": "未出帳交易明細",
+                            "Type": "url",
+                            "Url": ""
+                        },
+                        {
+                            "Text": "申請帳單分期",
+                            "Type": "url",
+                            "Url": "http:\/\/twwsb-chatbot1u.apac.nsroot.net:9080\/qa-ajax.jsp?apikey=3558457160eac62a1cdd&q=我要申請帳單分期"
+                        }
+                    ],
+                    "ImageText": "···· 6538",
+                    "ImageUrl": "92817AE3.png",
+                    "Title": "現金回饋白金卡"
+                },
+                {
+                    "Contents": [
+                        {
+                            "Text": "查詢帳單資訊請點下方MENU，選擇「客服即時通」由專員為您查詢。",
+                            "Type": "text"
+                        }
+                    ],
+                    "ImageText": "···· 9207",
+                    "ImageUrl": "D32E0061.png",
+                    "Title": "饗樂生活御璽悠遊卡"
+                }
+            ],
+            "Id": "",
+            "Type": "carousel"
+        }
+    ],
 
 <li class="btnTk"><a class="answer-link" href="tel:02-25768000" target="_blank">立即申請</a></li>
 <li class="btnPhone" data-id="tel:02-25768000"><a class="answer-link" href="javascript:;" target="_blank">立即申請</a></li>
