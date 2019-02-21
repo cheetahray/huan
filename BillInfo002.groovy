@@ -118,29 +118,36 @@ try {
                       column.setImageUrl(detail.getImageUrl());
                       column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
                       column.setTitle(detail.getTitle() + ( ( set1.contains(info.getLogo()) || checkBlkcd(info.getBlkcd(),set1) )?formalAns("alreadyCancel"):"") );
-                      column.addContent( newContent( Content.Type.TEXT, formalAns("totalAmountofCurrentBill") +
-                                                     CitiUtil.formatMoney( info.getEndBal(), CitiUtil.fontColor.BLUE ) ) );
-                      column.addContent( newContent( Content.Type.TEXT, formalAns("miniAmountPayment") + CitiUtil.formatMoney(info.getTotAmtDue(), CitiUtil.fontColor.BLUE) ) );
-                      column.addContent( newContent( Content.Type.TEXT, formalAns("billCheckoutDate") + info.getStmtday() ) );
-                      int endbal = Integer.valueOf(info.getEndBal());
-                      if (endbal > 0)
+                      if(StringUtils.isBlank(info.getStmtday()))
                       {
-                          column.addContent( newContent( Content.Type.TEXT, formalAns("paymentDeadline") +
-                                                     info.getDueDt() + (info.getAutopay().equals("Y")?formalAns("autoTransfer"):"") ) );
+                        column.addContent( newContent( Content.Type.TEXT, formalAns("noStateMent") ) );
                       }
                       else
                       {
-                          column.addContent( newContent( Content.Type.TEXT, formalAns("paymentDeadline") + formalAns("noPayment") ) );
+                        column.addContent( newContent( Content.Type.TEXT, formalAns("totalAmountofCurrentBill") +
+                                                       CitiUtil.formatMoney( info.getEndBal(), CitiUtil.fontColor.BLUE ) ) );
+                        column.addContent( newContent( Content.Type.TEXT, formalAns("miniAmountPayment") + CitiUtil.formatMoney(info.getTotAmtDue(), CitiUtil.fontColor.BLUE) ) );
+                        column.addContent( newContent( Content.Type.TEXT, formalAns("billCheckoutDate") + info.getStmtday() ) );
+                        int endbal = Integer.valueOf(info.getEndBal());
+                        if (endbal > 0)
+                        {
+                            column.addContent( newContent( Content.Type.TEXT, formalAns("paymentDeadline") +
+                                                       info.getDueDt() + (info.getAutopay().equals("Y")?formalAns("autoTransfer"):"") ) );
+                        }
+                        else
+                        {
+                            column.addContent( newContent( Content.Type.TEXT, formalAns("paymentDeadline") + formalAns("noPayment") ) );
+                        }
+                        //column.addExternalActions(newAction(Action.Type.URL,"本期帳單明細", CitiUtil.getMyLink() + WiseSystemConfigFacade.getInstance().get().getContextPath()
+                        // + "/citi-detail.jsp?cardno=" + (cnt++) + "&apikey=" + ctx.getCtxAttr("_bundle").get("apikey") + "&id=" + ctx.getCtxAttr("_bundle").get("id")));
+                        column.addExternalActions(newAction(Action.Type.URL,"未出帳交易明細",CitiUtil.unTranDetail));
+                        if(StringUtils.isEmpty(info.getBlkcd()))
+                        {
+                            column.addExternalActions(newAction(Action.Type.URL,"申請帳單分期",CitiUtil.getMyLink() + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey")
+                                                                                         /* + "&id=" + jsonobj.getString("id")*/ + "&q=我要申請帳單分期"));
+                        }
+                        //column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
                       }
-                      //column.addExternalActions(newAction(Action.Type.URL,"本期帳單明細", CitiUtil.getMyLink() + WiseSystemConfigFacade.getInstance().get().getContextPath()
-                      // + "/citi-detail.jsp?cardno=" + (cnt++) + "&apikey=" + ctx.getCtxAttr("_bundle").get("apikey") + "&id=" + ctx.getCtxAttr("_bundle").get("id")));
-                      column.addExternalActions(newAction(Action.Type.URL,"未出帳交易明細",CitiUtil.unTranDetail));
-                      if(StringUtils.isEmpty(info.getBlkcd()))
-                      {
-                          column.addExternalActions(newAction(Action.Type.URL,"申請帳單分期",CitiUtil.getMyLink() + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey")
-		                                                                                + "&id=" + jsonobj.getString("id") + "&q=我要申請帳單分期"));
-                      }
-                      //column.addExternalActions(newAction(Action.Type.URL,"立刻繳款",CitiUtil.payRightNow));
                       int tmId = detail.getPriority();
                       String threeS = String.format("%3d", tmId);
                       if(tm.containsKey(threeS + String.valueOf(tmInc)))
