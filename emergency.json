@@ -25,11 +25,13 @@
       "Columns": [
         {
           "ImageUrl": "kv-l.png",
-          "ImageText": "Image Description"
+          "ImageText": "Image Description",
+          "HyperLink": "https://www.citibank.com.tw"
         },
         {
           "ImageUrl": "kv-l.png",
-          "ImageText": "Image Description"
+          "ImageText": "Image Description",
+          "HyperLink": "https://www.citibank.com.tw"
         }
       ]
     },
