@@ -151,14 +151,6 @@ try {
                     CitiDeep detail = CitiDeep.alist(info.getLogo());
                     if(detail != null  && !set2.contains(info.getLogo()) && !checkBlkcd(info.getBlkcd(),set2))
                     {
-                      for (List place: places)
-                      {
-                          HashSet set = place.get(1);
-                          if(place.get(0) == false && set.contains(info.getLogo()))
-                          {
-                              place.set(0,true);
-                          }
-                      }
                       if(set1.contains(info.getLogo()) || checkBlkcd(info.getBlkcd(),set1))
                       {
                           continue; //column.setTitle(detail.getTitle() + formalAns("alreadyCancel") );
@@ -167,6 +159,14 @@ try {
                       {
                           column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
                           column.setTitle(detail.getTitle());
+                      }
+                      for (List place: places)
+                      {
+                          HashSet set = place.get(1);
+                          if(place.get(0) == false && set.contains(info.getLogo()))
+                          {
+                              place.set(0,true);
+                          }
                       }
                       int tmId = detail.getPriority();
                       String threeS = String.format("%3d", tmId);
