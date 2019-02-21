@@ -71,9 +71,9 @@ private boolean checkABBlockCode(String blkcd, HashSet set, String currbal)
 try {
     if (ctx.currentQuestion != null && ctx.currentQuestion.length() > 0) {
         JSONObject jsonobj = (JSONObject)ctx.getCtxAttr("_bundle");
-        //System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
-        //          + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
-        System.out.println(jsonobj);
+        System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
+                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+        //System.out.println(jsonobj);
         if(jsonobj.has("id")) {
                 CardInfo cardinfo = ctx.getCtxAttr(Result.Postfix.RESENDESTMT.toString());
                 if (cardinfo == null || cardinfo.getResult().getCode() != 0) 
@@ -117,21 +117,29 @@ try {
                             try {
                                 column.setImageUrl(detail.getImageUrl());
                                 column.setImageText(info.getCardno().replaceFirst(".*(\\d{4})", "···· \$1"));
-                                column.setTitle(detail.getTitle() + ( ( set1.contains(info.getLogo()) || checkBlkcd(info.getLogo(),set1) )?formalAns("alreadyCancel"):""));
+                                column.setTitle(detail.getTitle() + ( ( set1.contains(info.getLogo()) || checkBlkcd(info.getBlkcd(),set1) )?formalAns("alreadyCancel"):""));
                                 
                                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
                                 long rightnow = System.currentTimeMillis();
-                                Date date = sdf.parse(info.getStmtday());
-                                long diffInMillies = (rightnow - date.getTime());
-                                long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
-                                column.addContent( newContent(Content.Type.TEXT, formalAns("checkoutBill") + CitiUtil.formatDate(date,"MM/dd") ) );
-                                if(diff <= 2 && diff >= 0)
+                                if(StringUtils.isNotBlank(info.getStmtday()))
                                 {
-                                    column.addContent( newContent(Content.Type.TEXT, formalAns("waitForTwoDays")) );
+                                    Date date = sdf.parse(info.getStmtday());
+                                    long diffInMillies = (rightnow - date.getTime());
+                                    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);  
+                                    column.addContent( newContent(Content.Type.TEXT, formalAns("checkoutBill") + CitiUtil.formatDate(date,"MM/dd") ) );
+                                    if(diff <= 2 && diff >= 0)
+                                    {
+                                        column.addContent( newContent(Content.Type.TEXT, formalAns("waitForTwoDays")) );
+                                    }
+                                    else
+                                    {
+                                        column.addContent( newContent(Content.Type.TEXT, formalAns("emailBox") + info.getEmail() ) );
+                                    }
                                 }
                                 else
                                 {
-                                    column.addContent( newContent(Content.Type.TEXT, formalAns("emailBox") + info.getEmail() ) );
+                                    column.addContent( newContent(Content.Type.TEXT, formalAns("checkoutBill") + "－－－") );
+                                    column.addContent( newContent(Content.Type.TEXT, formalAns("clickCustomerService")) );
                                 }
                             } catch (URISyntaxException e) {
                                 // TODO Auto-generated catch block
@@ -180,10 +188,10 @@ try {
                     msgbtn.setType(Message.Type.BUTTONS);  
                     msgbtn.setText(formalAns("nowYouHaveNoEmail"));
                     msgbtn.addAction(newAction(Action.Type.URL,formalAns("eLoveEarthTogether"), loveEarth));
-                    msgbtn.addAction(newAction(Action.Type.URL,"帳單資訊", CitiUtil.getMyLink()
-                                 + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey") // + "&UserID=" + jsonobj.getString("UserID")
-                                 + "&id=" + jsonobj.getString("id") + "&q=帳單應交金額及繳款日" // + CitiUtil.billInfo
-                                 ));
+                    //msgbtn.addAction(newAction(Action.Type.URL,"帳單資訊", CitiUtil.getMyLink()
+                    //             + "/qa-ajax.jsp?apikey=" + jsonobj.getString("apikey") // + "&UserID=" + jsonobj.getString("UserID")
+                    //             + "&id=" + jsonobj.getString("id") + "&q=帳單應交金額及繳款日" // + CitiUtil.billInfo
+                    //             ));
                     jsonInString = mapper.writeValueAsString(msgbtn);
                     jsonInString = "[" + jsonInString + "]";
                 }
