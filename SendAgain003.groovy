@@ -138,7 +138,7 @@ try {
                                 }
                                 else
                                 {
-                                    column.addContent( newContent(Content.Type.TEXT, formalAns("checkoutBill") + "－－－") );
+                                    column.addContent( newContent(Content.Type.TEXT, "結帳帳單<br/>－－－") );
                                     column.addContent( newContent(Content.Type.TEXT, formalAns("clickCustomerService")) );
                                 }
                             } catch (URISyntaxException e) {
