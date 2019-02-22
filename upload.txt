@@ -10,6 +10,9 @@ http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547188250606.jpg
 http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547188250606.jpg
 http://cit01p181.intumit.com/wise/ckeditor-upload/2019-02-18/1550456815430.png
 
+System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
+                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
+		  
 <li class="btnTk"><a class="answer-link" href="tel:02-25768000" target="_blank">立即申請</a></li>
 <li class="btnPhone" data-id="tel:02-25768000"><a class="answer-link" href="javascript:;" target="_blank">立即申請</a></li>
 
