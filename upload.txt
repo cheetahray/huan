@@ -10,6 +10,8 @@ http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547188250606.jpg
 http://cit01p181.intumit.com/wise/ckeditor-upload/2019-01-11/1547188250606.jpg
 http://cit01p181.intumit.com/wise/ckeditor-upload/2019-02-18/1550456815430.png
 
+L:\11共用資料夾\09.DS\AI教材-Sabrina Kuan\Chatbot 2500題\給Tracy的猜你想問\猜你想問圖庫
+
 System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
                   + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
 		  
