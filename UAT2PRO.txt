@@ -1,0 +1,20 @@
+3558457160eac62a1cdd
+
+-Dwise.version=SRBT -Dsolr.solr.home=./kernel -XX:MaxPermSize=256M -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -Dh2.baseDir=./kernel -Dsql=MYSQL -Duser.timezone=Asia/Taipei -Dfile.encoding=UTF-8 -Dmicrosoft.stt.key=34df7c4802d84e699e06217e82dde6a3 -Dmicrosoft.tts.key=34df7c4802d84e699e06217e82dde6a3
+
+http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=3558457160eac62a1cdd&id=迪普token&q=卡片資訊
+http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=3558457160eac62a1cdd&id=迪普token&q=帳單應交金額及繳款日
+http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=3558457160eac62a1cdd&id=迪普token&q=請補寄電子月結單
+http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=3558457160eac62a1cdd&id=迪普token&q=最夯權益都在這
+http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=3558457160eac62a1cdd&id=迪普token&q=申請帳單分期與信貸
+http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=3558457160eac62a1cdd&id=迪普token&q=繳款紀錄
+
+1. 將 UAT 的 /app/ECHAT/Websphere/Liberty 搬去(rsync?) PRO 的 /app/ECHAT/Websphere
+2. 修改 PRO /app/ECHAT/Websphere/Liberty/usr/servers/SmartRobot/hibernate.cfg.xml 的 DB 連線，查 ip 就查得到，要有寫入權限，11F User 將來要看報表
+3. 執行 PRO 的 /app/ECHAT/Websphere/Liberty/bin/server start SmartRobot
+4. 查 PRO 的 DB 是否有被 Hibernate 建立起來
+5. 以下是Ray的工作，權作紀錄
+6. 寫入卡片權益資料表
+7. 寫入制式文案資料
+8. 測試
+9. 提單將 UAT 的排程 Job 全部加入 PRO
