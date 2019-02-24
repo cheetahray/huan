@@ -57,7 +57,7 @@ private boolean checkABBlockCode(String blkcd, HashSet set, String currbal)
 {
     boolean isAB = checkBlkcd(blkcd, set);
     boolean isBlkcdEmpty = StringUtils.isEmpty(currbal);
-    return why = ( !isAB || 
+    return ( !isAB || 
                ( isAB && 
                    ( isBlkcdEmpty || 
                        (   !isBlkcdEmpty && currbal.matches(CitiUtil.isNumeric) && 
