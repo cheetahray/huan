@@ -1,84 +1,177 @@
-L:\11共用資料夾\09.DS\AI教材-Sabrina Kuan\Chatbot 2500題\給Tracy的猜你想問\猜你想問圖庫\用Robot_Editor上傳後的圖檔名
-
-System.out.println("http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=" + jsonobj.get("apikey")
-                  + "&id=" + URLEncoder.encode(jsonobj.get("id"), "UTF-8") + "&q=" + jsonobj.get("q") );
-		  
-<li class="btnTk"><a class="answer-link" href="tel:02-25768000" target="_blank">立即申請</a></li>
-<li class="btnPhone" data-id="tel:02-25768000"><a class="answer-link" href="javascript:;" target="_blank">立即申請</a></li>
-
-<li class="btnTk"><a class="answer-link" href="http://${transfer}" target="_blank">客服即時通</a></li>
-<li class="btnTransfer" data-id="${tansfer}"><a class="answer-link" href="javascript:;" target="_blank">客服即時通</a></li>
-
-<a class="answer-link" href="http://www.citibank.com.tw/CLI" target="_blank">請點我</a>
-<a class="answer-link btnRedir" data-id="http://www.citibank.com.tw/CLI" href="javascript:;" target="_blank">請點我</a>
-
-28	<br/>自動轉帳	autoTransfer	1
-29	(共用額度)	sharingQuota	1
-30	結帳日<br/>	checkoutBill	1
-31	(已取消)	alreadyCancel	1
-32	目前溢繳金額<br/>	currentOverpayAmout	1
-33	預計一小時內寄到您的信箱：<br/>	emailBox	1
-34	(獨立額度)	singleQuota	1
-35	帳單結帳日<br/>	billCheckoutDate	1
-36	無須繳款	noPayment	1
-37	e起愛地球救救北極熊，註冊電子月結單讓你對帳最簡單。	poleBear	1
-38	本期帳單總金額<br/>	totalAmountofCurrentBill	1
-39	可用額度<br/>	availableCredit	1
-40	信用總額度<br/>	totalCredit	1
-41	本期帳單交易明細	currBillTranDetail	1
-42	最低應繳金額<br/>	miniAmountPayment	1
-43	繳款截止日<br/>	paymentDeadline	1
-44	已使用額度<br/>	usedQuata	1
-45	您可能還想知道：	youMayWannaKnow	1
-46	您名下暫無有效的信用卡，查詢卡片資訊請點下方MENU，選擇「客服即時通」由專員為您查詢。	noCardInfo	1
-47	查詢帳單資訊請點下方MENU，選擇「客服即時通」由專員為您查詢。	noStateMent	1
-48	目前您沒有留存電子信箱，立即前往：	nowYouHaveNoEmail	1
-49	註冊電子月結單，e起愛地球	eLoveEarthTogether	1
-50	您好，我們剛剛已收到您補寄電子月結單的申請，預計1小時內會補寄到您留存在花旗的電子信箱，請您在確認您的郵件，謝謝。	emailInOneHour	1
-51	申請成功後 :<ol><li>七個工作天內簡訊或郵寄本服務約定條款到您在本行留存的行動電話或住家地址。</li><li>您名下所有信用卡/信貸將自動完成電子月結單申請。</li><li>第一個月如有消費會同時寄送紙本及電子月結單給您，日後僅寄送電子月結單。</li></ol>	sevenDays	1
-52	我同意申請電子月結單	IAgreeEmail	1
-53	補寄電子月結單請點下方 MENU, 選擇「客服即時通」由專員為您處理。	clickCustomerService	1
-54	帳單還在製作中唷，會在結帳日後 2 個工作天寄出，請您耐心等候唷！	waitForTwoDays	1
-55	您最近一次帳單結帳後，沒有新增的繳款入帳紀錄	noNewPymRecord	1
-56	好的，請點選“馬上申請”，由客服即時通專員為您服務。	applyNowCustomerService	1
-57	現在非專員服務時間，請於09:00-21:00再次操作，由客服即時通專員為您服務。	notWorkingHourNow	1
-58	好的，請點選“馬上申請”，由信貸專員為您服務。	applyNowForLoan	1
-
-CitiDeep.save(1,"807","Prestige卡","9B2E3BB4.png","第4晚","全球精選飯店<br>免費住宿","8次/年","免費國際機場<br>接或送服務","無限次","使用全球<br>機場貴賓室","「若您欲申辦Citi Prestige，請來電<a href="tel:02-2183-8585">(02)2183-8585</a>，將由專人為您服務，謝謝」","https://www.citibank.com.tw/global_docs/chi/cc/160121_prestige/index.htm","紅利點數",1);
-CitiDeep.save(2,"559","寰旅尊尚世界悠遊卡","EE1C9737.png","4次/年","免費國際機場<br>接或送服務","$20/哩","不分國內外消費","無限次","使用全球<br>機場貴賓室","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407","https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermilesworld-card.htm","哩程",2);
-CitiDeep.save(3,"558","寰旅尊尚世界卡","EE1C9737.png","4次/年","免費國際機場<br>接或送服務","$20/哩","不分國內外消費","無限次","使用全球<br>機場貴賓室","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407","https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermilesworld-card.htm","哩程",2);
-CitiDeep.save(4,"593;595","寰旅世界悠遊卡","EE1C9737.png","$20/哩","不分國內外消費","終身有效","持卡期間哩程<br>終身有效","60家航空","哩程自由換<br>(星空、天合聯盟等)","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407","https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermiles-card.htm","哩程",3);
-CitiDeep.save(5,"597;554;550;510","寰旅世界卡","EE1C9737.png","$20/哩","不分國內外消費","終身有效","持卡期間哩程<br>終身有效","60家航空","哩程自由換<br>(星空、天合聯盟等)","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=1&Media=407","https://www.citibank.com.tw/sim/zh-tw/credit-cards/premiermiles-card.htm","哩程",3);
-CitiDeep.save(6,"451","現金回饋御璽悠遊卡","C8EE464D.png","1.5%","百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋","0.5%","一般消費回饋","6折","最夯威秀<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm","現金回饋",4);
-CitiDeep.save(7,"847;848;849","現金回饋御璽卡","C8EE464D.png","1.5%","百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋","0.5%","一般消費回饋","6折","最夯威秀<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm","現金回饋",4);
-CitiDeep.save(8,"028;432;439;496","現金回饋白金卡","C3132271.png","1.5%","百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋","0.5%","一般消費回饋","6折","最夯威秀<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm","現金回饋",4);
-CitiDeep.save(9,"461","現金回饋白金悠遊卡","C3132271.png","1.5%","百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋","0.5%","一般消費回饋","6折","最夯威秀<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm","現金回饋",4);
-CitiDeep.save(10,"420","PChome Prime聯名御璽悠遊卡","9060B945.png","6%","PChome消費<br>最高回饋","1.5%","海外消費回饋","$0","首年免年費","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=15&Media=381","https://www.citibank.com.tw/sim/zh-tw/credit-cards/pchome-card.htm","聯名點數",5);
-CitiDeep.save(11,"421","PChome Prime聯名白金悠遊卡","A81F3CDF.png","6%","PChome消費<br>最高回饋","1.5%","海外消費回饋","$0","首年免年費","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=15&Media=381","https://www.citibank.com.tw/sim/zh-tw/credit-cards/pchome-card.htm","聯名點數",5);
-CitiDeep.save(12,"947","饗樂生活御璽悠遊卡","D32E0061.png","王品買一送一","首次申辦，<br>首年生日享優惠","6折","最夯威秀<br>購票優惠","$15/點","王品集團指定餐廳 、<br>威秀購票享優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=3&Media=315","https://www.citibank.com.tw/sim/zh-tw/credit-cards/privileges-card.htm","紅利點數",6);
-CitiDeep.save(13,"802","饗樂生活御璽卡","D32E0061.png","王品買一送一","首次申辦，<br>首年生日享優惠","6折","最夯威秀<br>購票優惠","$15/點","王品集團指定餐廳 、<br>威秀購票享優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=3&Media=315","https://www.citibank.com.tw/sim/zh-tw/credit-cards/privileges-card.htm","紅利點數",6);
-CitiDeep.save(14,"462","饗樂生活白金悠遊卡","CCA0809B.png","王品買一送一","首次申辦，<br>首年生日享優惠","6折","最夯威秀<br>購票優惠","$15/點","王品集團指定餐廳 、<br>威秀購票享優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=3&Media=315","https://www.citibank.com.tw/sim/zh-tw/credit-cards/privileges-card.htm","紅利點數",6);
-CitiDeep.save(15,"263;197","饗樂生活白金卡","CCA0809B.png","王品買一送一","首次申辦，<br>首年生日享優惠","6折","最夯威秀<br>購票優惠","$15/點","王品集團指定餐廳 、<br>威秀購票享優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=3&Media=315","https://www.citibank.com.tw/sim/zh-tw/credit-cards/privileges-card.htm","紅利點數",6);
-CitiDeep.save(16,"948","超級紅利回饋御璽悠遊卡","3D4CFB25.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
-CitiDeep.save(17,"494","超級紅利回饋御璽卡","3D4CFB25.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
-CitiDeep.save(18,"463","超級紅利回饋白金悠遊卡","C82E091D.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
-CitiDeep.save(19,"492;018;023;130;138;230;238;333;338;417;427","超級紅利回饋白金卡","F7507041.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
-CitiDeep.save(20,"594","超級紅利回饋鈦金卡","4B1BD633.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
-CitiDeep.save(21,"241;266","HAPPY GO聯名卡","78C2252F.png","1倍","一般消費單筆每滿$100<br/>享HAPPY GO點數1點","2倍","特約商店點數<br/>2倍回饋","3倍","5大百貨/商店<br/>點數3倍回饋","請來電<a href="tel:02-2183-8585">(02)2183-8585</a>，將由專人為您服務，謝謝","https://www.citibank.com.tw/global_docs/chi/cc/120604_happygo/index.htm","HAPPY GO點數",8);
-CitiDeep.save(22,"256;808","現金回饋PLUS御璽悠遊卡","PLUS_CARDFACE.png","1","等待上線","2","等待上線","3","等待上線","不提供新卡申請","https://www.citibank.com.tw/sim/index.htm","現金回饋",9);
-CitiDeep.save(23,"400;499","鑽石卡","D8E8D615.png","2次/年","免費國際機場<br>接或送服務","5★級","飯店頂級饗宴<br/>最優75折","無限次","使用全球<br>機場貴賓室","不提供新卡申請","https://www.citibank.com.tw/global_docs/chi/cc/diamond2013/page1_2.htm","紅利點數",10);
-CitiDeep.save(24,"599;330;500","鑽石卡","965645EB.png","2次/年","免費國際機場<br>接或送服務","5★級","飯店頂級饗宴<br/>最優75折","無限次","使用全球<br>機場貴賓室","不提供新卡申請","https://www.citibank.com.tw/global_docs/chi/cc/diamond2013/page1_2.htm","紅利點數",10);
-CitiDeep.save(25,"454;450;410;567;151;251;200","寰旅御璽卡","A8960231.png","終身有效","持卡期間哩程<br>終身有效","$20/哩","不分國內外消費","60家航空","哩程自由換<br>(星空、天合聯盟等)","不提供新卡申請","https://www.citibank.com.tw/global_docs/chi/ap/ap_premiermiles-signature_manual.pdf","哩程",11);
-CitiDeep.save(26,"845;804","現金回饋無限悠遊卡","8C93276F.png","0.88%","國內一般<br>消費回饋","1.5%","海外消費回饋","4次/年","桃園/高雄國際機場<br>外圍免費停車","不提供新卡申請","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card-infinite.htm","現金回饋",12);
-CitiDeep.save(27,"803;846","現金回饋無限卡","8C93276F.png","0.88%","國內一般<br>消費回饋","1.5%","海外消費回饋","4次/年","桃園/高雄國際機場<br>外圍免費停車","不提供新卡申請","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card-infinite.htm","現金回饋",12);
-CitiDeep.save(28,"440;484","透明卡","15A27467.png","2%","國內加油費、行動通話費<br>滿額享最高回饋","$30/點","一般消費回饋<br>無上限","6折","威秀最狂<br>購票優惠","不提供新卡申請","https://www.citibank.com.tw/sim/zh-tw/credit-cards/clear-card.htm","紅利點數/現金回饋",13);
-CitiDeep.save(29,"584;540","透明卡","61B5420D.png","2%","國內加油費、行動通話費<br>滿額享最高回饋","$30/點","一般消費回饋<br>無上限","6折","威秀最狂<br>購票優惠","不提供新卡申請","https://www.citibank.com.tw/sim/zh-tw/credit-cards/clear-card.htm","紅利點數/現金回饋",13);
-CitiDeep.save(30,"160;260","喜憨兒卡","98C4233E.png","0.275%","捐給「喜憨兒社會福利基金會」<br>(提撥自每筆消費)","終身有效","持卡期間點數<br>終身有效","2000萬","公共運輸<br>旅行平安險","不提供新卡申請","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cau-card.htm","紅利點數",14);
-CitiDeep.save(31,"650;651;652;660;680;681","大來卡","9DCEF1FC.png","","","","","","","不提供新卡申請","","",15);
-CitiDeep.save(32,"458;140;106;009;300;805;973;190","UAT專用","UAT_CARDFACE.jpg","1","PAT無此LOGO","2","PAT無此LOGO","3","PAT無此LOGO","不提供新卡申請","https://www.citibank.com.tw/sim/index.htm","",16);
-CitiDeep.save(33,"010;532;539;596;120","現金回饋白金卡","92817AE3.png","1.5%","百貨、加油、生鮮量販超市<br>消費滿額可享最高回饋","0.5%","一般消費回饋","6折","最夯威秀<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=322","https://www.citibank.com.tw/sim/zh-tw/credit-cards/cashback-card.htm","現金回饋",4);
-CitiDeep.save(34,"004;005;334;335;517;527;592","超級紅利回饋白金卡","4B1BD633.png","$30/點","一般消費回饋<br>無上限","3倍","4大族群天天3倍回饋<br>(含原1倍回饋)","6折","威秀最狂<br>購票優惠","https://www.citibank.com.tw/credit-cards/application/index.html?CardType=2&Media=313","https://www.citibank.com.tw/sim/zh-tw/credit-cards/super-rewards-card.htm","紅利點數",7);
-
-import com.intumit.solr.robot.RobotFormalAnswers;
-System.out.println(RobotFormalAnswers.getKeyValueMap(ctx.getTenant().getId()));
-RobotFormalAnswers.saveMapForInit(ctx.getTenant().getId(),RobotFormalAnswers.getKeyValueMap(ctx.getTenant().getId()));
+id	question	question_alt	question_test_case
+1	我的卡片資訊	"(卡片)(資訊)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""我的卡片資訊""}
+"	"我的卡片資訊
+"
+2	查詢我的本期帳單應交金額及繳款日	"(帳單)(應交)(金額)(及)(繳款)(日)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""查詢我的本期帳單應交金額及繳款日""}
+"	"查詢我的本期帳單應交金額及繳款日
+"
+3	請補寄我的電子月結單。	"(請)(補)(寄)(電子)(月結單)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""請補寄我的電子月結單。""}
+(補)(寄)(電子)(月結單)	 // {""alt.editor"":""3"",""testCase.editor"":""3"",""testCase"":""補寄我的電子月結單""}
+"	"請補寄我的電子月結單。
+補寄我的電子月結單
+"
+4	最夯權益都在這	"(信用卡)(有哪些)(權益)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡有哪些權益""}
+(最)(夯)(權益)(都)(這)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""最夯權益都在這""}
+"	"信用卡有哪些權益
+最夯權益都在這
+"
+5	申請帳單分期與信貸	"(申請)(帳單)(分期)(與)(信貸)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""申請帳單分期與信貸""}
+"	"申請帳單分期與信貸
+"
+6	我的繳款紀錄。	"(繳款)(紀錄)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""我的繳款紀錄。""}
+"	"我的繳款紀錄。
+"
+9	查詢緊急公告內容	"(首頁)(公告)(通知)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""查詢首頁公告通知""}
+(緊急)(公告)(通知)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""查詢緊急公告通知""}
+"	"查詢首頁公告通知
+查詢緊急公告通知
+"
+10000011	我的信用卡點數會過期嗎	"(永久)(額度)(調高)(申請)(方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""永久額度調高申請方式""}
+(信用卡)(點數)(會)(過期)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""我的信用卡點數會過期嗎？""}"	"永久額度調高申請方式
+我的信用卡點數會過期嗎？
+"
+10000012	臨時額度調高申請方式	"(臨時)(額度)(調高)(申請)(方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""臨時額度調高申請方式""}
+(如何)(申請)(調高)(臨時)(額度) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""如何申請調高臨時額度？""}
+"	"臨時額度調高申請方式
+如何申請調高臨時額度？
+"
+10000013	查詢帳單繳款截止日	"(最近)(一期)(帳單)(最晚)(什麼)(時候)(要)(繳款) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""我最近一期帳單最晚什麼時候要繳款？""}
+(帳單)(繳款)(期限)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""查詢帳單繳款截止日""}
+"	"我最近一期帳單最晚什麼時候要繳款？
+查詢帳單繳款截止日
+"
+10000014	信用卡有效期限查詢	"(信用卡)(期限)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡有效期限查詢""}
+(如何)(辨別)(信用卡)(期限)(與)(識別碼) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""如何辨別信用卡有效期限與識別碼？""}
+"	"信用卡有效期限查詢
+如何辨別信用卡有效期限與識別碼？
+"
+10000015	為什麼我的卡片跟你們顯示的不同	"(為什麼)(手上)(卡片)(顯示)(圖案)(不同) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""為什麼我手上的卡片跟你們顯示的圖案不同？""}
+(為什麼)(卡片)(顯示)(不同)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""為什麼我的卡片跟你們顯示的不同""}
+"	"為什麼我手上的卡片跟你們顯示的圖案不同？
+為什麼我的卡片跟你們顯示的不同
+"
+10000021	行動生活家app啟用推播通知方式	"(行動生活家)(啟用)(推播)(通知)(方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""行動生活家app啟用推播通知方式""}
+(可以)(一筆)(刷卡)(消費)(都)(通知)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""可以每一筆刷卡消費都通知我嗎？""}
+"	"行動生活家app啟用推播通知方式
+可以每一筆刷卡消費都通知我嗎？
+"
+10000022	推播帳單到期提醒功能	"(推播)(帳單)(期限)(提醒)(功能)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""推播帳單到期提醒功能""}
+(帳單)(期限)(時)(可以)(提醒)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""帳單到期時可以提醒我嗎？""}
+"	"推播帳單到期提醒功能
+帳單到期時可以提醒我嗎？
+"
+10000023	信用卡爭議帳款申訴流程	"(信用卡)(爭議帳款)(申訴)(流程)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡爭議帳款申訴流程""}
+(帳單)(明細)(有)(不是)(消費)(怎麼辦) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""帳單明細有不是我的消費怎麼辦？""}
+"	"信用卡爭議帳款申訴流程
+帳單明細有不是我的消費怎麼辦？
+"
+10000024	信用卡國外交易手續費	"(信用卡)(國外)(交易)(手續費)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡國外交易手續費""}
+(國外)(交易)(手續費)(怎麼)(算) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""國外交易手續費怎麼算？""}
+"	"信用卡國外交易手續費
+國外交易手續費怎麼算？
+"
+10000025	暫停當期帳單自動扣款	"(暫停)(當期)(帳單)(自動扣款)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""暫停當期帳單自動扣款""}
+(已經)(先)(繳款)(要)(通知)(暫停)(自動扣款)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""我已經先繳款，要通知你們暫停本期自動扣款嗎？""}
+"	"暫停當期帳單自動扣款
+我已經先繳款，要通知你們暫停本期自動扣款嗎？
+"
+10000031	補寄非當期信用卡電子帳單	"(可以)(補)(寄)(月份)(帳單)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""可以補寄其他月份的帳單嗎？""}
+(補)(寄)(非)(當期)(信用卡)(電子帳單)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""補寄非當期信用卡電子帳單""}
+"	"可以補寄其他月份的帳單嗎？
+補寄非當期信用卡電子帳單
+"
+10000032	信用卡電子帳單開啟密碼	"(信用卡)(電子帳單)(開啟)(密碼)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡電子帳單開啟密碼""}
+(開啟)(電子)(月結單)(密碼)(是)(什麼) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""開啟電子月結單的密碼是什麼？""}
+"	"信用卡電子帳單開啟密碼
+開啟電子月結單的密碼是什麼？
+"
+10000033	補寄電子帳單費用	"(補)(寄)(電子帳單)(費用)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""補寄電子帳單費用""}
+(補)(寄)(電子)(月結單)(要)(收費)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""補寄電子月結單要收費嗎？""}
+"	"補寄電子帳單費用
+補寄電子月結單要收費嗎？
+"
+10000034	信用卡電子帳單未收到原因	"(信用卡)(電子帳單)(未)(收到)(原因)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡電子帳單未收到原因""}
+(為什麼)(常)(收不到)(電子)(月結單) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""為什麼常收不到電子月結單？""}
+"	"信用卡電子帳單未收到原因
+為什麼常收不到電子月結單？
+"
+10000035	信用卡帳單繳款提醒方式	"(信用卡)(帳單)(繳款)(提醒)(方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡帳單繳款提醒方式""}
+(會)(主動)(提醒)(繳款)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""你們會主動提醒我繳款嗎？""}
+"	"信用卡帳單繳款提醒方式
+你們會主動提醒我繳款嗎？
+"
+10000041	信用卡在威秀影城消費有什麼優惠	"(信用卡)(威)(秀)(影城)(消費)(有)(什麼)(優惠) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""信用卡在威秀影城消費有什麼優惠？""}
+(信用卡)(威)(秀)(影城)(消費)(哪些)(優惠) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""信用卡威秀影城消費哪些優惠""}
+"	"信用卡在威秀影城消費有什麼優惠？
+信用卡威秀影城消費哪些優惠
+"
+10000042	台亞全國加油站活動介紹	"(台)(亞)(全國加油站)(活動)(介紹)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""台亞全國加油站活動介紹""}
+(信用卡)(加油)(有)(優惠)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""信用卡加油有優惠嗎？""}
+"	"台亞全國加油站活動介紹
+信用卡加油有優惠嗎？
+"
+10000043	信用卡的年費計算標準	"(信用卡)(年費)(計算)(標準)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡年費計算標準""}
+(信用卡)(年)(計算)(標準) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""信用卡的年費計算標準？""}
+"	"信用卡年費計算標準
+信用卡的年費計算標準？
+"
+10000044	申請附卡需要有什麼親屬關係資格嗎	"(申請)(附)(卡)(需要)(有)(什麼)(親屬關係)(資格)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""申請附卡需要有什麼親屬關係資格嗎？""}
+(申請)(附)(卡)(需要)(哪些)(親屬關係)(資格) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""申請附卡需要哪些親屬關係資格""}
+"	"申請附卡需要有什麼親屬關係資格嗎？
+申請附卡需要哪些親屬關係資格
+"
+10000045	信用卡申請文件	"(信用卡)(申請)(文件)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡申請文件""}
+(人)(申辦)(信用卡)(需要)(什麼)(文件) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""本國人申辦信用卡需要什麼文件？""}
+"	"信用卡申請文件
+本國人申辦信用卡需要什麼文件？
+"
+10000051	申請滿福貸會有手續費嗎	"(申請)(福)(會)(有)(手續費)(嗎) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""申請滿福貸會有手續費嗎？""}
+(申請)(滿福貸)(有)(手續費)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""申請滿福貸有手續費""}
+"	"申請滿福貸會有手續費嗎？
+申請滿福貸有手續費
+"
+10000052	滿福貸最快何時可以撥款	"(福)(最快)(何時)(可以)(撥款) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""滿福貸最快何時可以撥款？""}
+(滿福貸)(最快)(何時)(可以)(撥款)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""滿福貸最快何時可以撥款""}
+"	"滿福貸最快何時可以撥款？
+滿福貸最快何時可以撥款
+"
+10000053	信用貸款財力證明	"(信用貸款)(財力證明)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用貸款財力證明""}
+(申請)(信貸)(要)(準備)(哪些)(財力證明) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""申請信貸要準備哪些財力證明？""}
+"	"信用貸款財力證明
+申請信貸要準備哪些財力證明？
+"
+10000054	信用卡消費分期繳款方式	"(信用卡)(消費)(分期)(繳款)(方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""信用卡消費分期繳款方式""}
+(帳單)(分期)(後)(什麼)(時候)(要)(繳款) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""帳單分期後我什麼時候要繳款？""}
+"	"信用卡消費分期繳款方式
+帳單分期後我什麼時候要繳款？
+"
+10000055	分期聰明付額度占用	"(帳單)(分期)(會)(不會)(占用)(信用卡)(額度) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""帳單分期會不會占用我的信用卡額度？""}
+(分期聰明付)(額度)(占用)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""分期聰明付額度占用""}
+"	"帳單分期會不會占用我的信用卡額度？
+分期聰明付額度占用
+"
+10000061	繳款未入帳處理方式	"(已經)(繳款)(卻)(沒有)(查到)(繳款)(紀錄)(怎麼辦) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""我已經繳款了卻沒有查到繳款紀錄怎麼辦？""}
+(繳款)(未入帳)(處理方式)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""繳款未入帳處理方式""}
+"	"我已經繳款了卻沒有查到繳款紀錄怎麼辦？
+繳款未入帳處理方式
+"
+10000062	查詢ATM轉帳繳款入帳時間	"(atm)(轉帳)(繳款)(什麼)(時候)(會)(入帳) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""ATM轉帳繳款什麼時候會入帳？""}
+(atm)(轉帳)(繳款)(入帳)(時間)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""查詢ATM轉帳繳款入帳時間""}
+"	"ATM轉帳繳款什麼時候會入帳？
+查詢ATM轉帳繳款入帳時間
+"
+10000063	查詢超商繳款入帳時間	"(超商)(繳款)(什麼)(時候)(會)(入帳) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""超商繳款什麼時候會入帳？""}
+(超商)(繳款)(入帳)(時間)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""查詢超商繳款入帳時間""}
+"	"超商繳款什麼時候會入帳？
+查詢超商繳款入帳時間
+"
+10000064	查詢銀行匯款入帳時間	"(匯款)(電匯)(繳款)(什麼)(時候)(會)(入帳) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""匯款(電匯)繳款什麼時候會入帳？""}
+(銀行)(匯款)(入帳)(時間)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""查詢銀行匯款入帳時間""}
+"	"匯款(電匯)繳款什麼時候會入帳？
+查詢銀行匯款入帳時間
+"
+10000065	查詢語音繳款入帳時間	"(語音)(繳款)(什麼)(時候)(會)(入帳) // {""alt.editor"":3,""testCase.editor"":3,""testCase"":""語音繳款什麼時候會入帳？""}
+(語音)(繳款)(入帳)(時間)	 // {""alt.editor"":""1"",""testCase.editor"":""1"",""testCase"":""查詢語音繳款入帳時間""}
+"	"語音繳款什麼時候會入帳？
+查詢語音繳款入帳時間
+"
