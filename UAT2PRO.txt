@@ -10,11 +10,13 @@ http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=3558457160ea
 http://twwsb-chatbot1u.apac.nsroot.net:9080/wise/qa-ajax.jsp?apikey=3558457160eac62a1cdd&id=迪普token&q=繳款紀錄
 
 1. 將 UAT 的 /app/ECHAT/Websphere/Liberty 搬去(rsync?) PRO 的 /app/ECHAT/Websphere
-2. 修改 PRO /app/ECHAT/Websphere/Liberty/usr/servers/SmartRobot/hibernate.cfg.xml 的 DB 連線，查 ip 就查得到，要有寫入權限，11F User 將來要看報表
-3. 執行 PRO 的 /app/ECHAT/Websphere/Liberty/bin/server start SmartRobot
-4. 查 PRO 的 DB 是否有被 Hibernate 建立起來
-5. 以下是Ray的工作，權作紀錄
-6. 寫入卡片權益資料表
-7. 寫入制式文案資料
-8. 測試
-9. 提單將 UAT 的排程 Job 全部加入 PRO
+2. 修改 PRO /app/ECHAT/Websphere/Liberty/usr/servers/SmartRobot/hibernate.cfg.xml 的 DB 連線，查 ip 就查得到，要有寫入權限，11F 的 User 將來要看報表
+3. 修改連往瑛聲後台的 API
+4. 執行 PRO 的 /app/ECHAT/Websphere/Liberty/bin/server start SmartRobot
+5. 查 PRO 的 DB 是否有被 Hibernate 建立起來
+6. 接下來是Ray的工作，紀錄如下
+7. 寫入卡片權益資料表
+8. 寫入制式文案資料
+9. 檢查 ln -s '/apps/ECHAT/WebSphere/Liberty/usr/servers/SmartRobot/kernel' '/apps/ECHAT/WebSphere/Liberty/usr/servers/kernel'
+10. 開始測試
+11. 提單將 UAT 的排程 Job 全部加入 PRO

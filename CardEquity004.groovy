@@ -134,11 +134,12 @@ try {
                 List places = Arrays.asList(Arrays.asList(false,new HashSet<>(CitiDeep.logos(1)),"807"), 
                                             Arrays.asList(false,new HashSet<>(CitiDeep.logos(2)),"558"), 
                                             Arrays.asList(false,new HashSet<>(CitiDeep.logos(3)),"554"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(4)),"451"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(5)),"420"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(6)),"947"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(7)),"463"),
-                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(8)),"241")
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(4)),"256"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(5)),"451"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(6)),"420"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(7)),"947"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(8)),"463"),
+                                            Arrays.asList(false,new HashSet<>(CitiDeep.logos(9)),"241")
                                            );
                 MessageCarousel msgcrl = new MessageCarousel();
                 msgcrl.setId("");
@@ -192,7 +193,10 @@ try {
                         Column column = new Column();
                         CitiDeep detail = CitiDeep.alist(place.get(2));
                         column.setImageText("");
-                        column.setTitle(detail.getTitle().replace("白金", "").replace("悠遊", "").replace("御璽", ""));
+                        String title = detail.getTitle().replace("白金", "").replace("悠遊", "");
+                        if(!title.contains("PLUS"))
+                            title = title.replace("御璽", "")
+                        column.setTitle(title);
                         msgcrl.addColumn(setColumn(column, detail, false));   
                     }
                 }

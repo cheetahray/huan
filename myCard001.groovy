@@ -86,7 +86,7 @@ try {
                 set3.addAll(CitiUtil.s1);
                 set3.addAll(CitiUtil.s2);
                 set3.remove("U");
-                set3.addAll(CitiDeep.logos(8));
+                set3.addAll(CitiDeep.logos(9));
                 set3.addAll(CitiDeep.logos(13));
                 int tmInc = 0;
                 List<Info> infos = cardinfo.getInfos();

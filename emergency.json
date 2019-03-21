@@ -24,14 +24,14 @@
       "Type": "carousel",
       "Columns": [
         {
-          "ImageUrl": "kv-l.png",
-          "ImageText": "Image Description",
-          "HyperLink": "https://www.citibank.com.tw"
+          "ImageUrl": "huanqiuliyu.jpg",
+          "ImageText": "環球禮遇",
+          "HyperLink": "https://www.citiworldprivileges.com/tw-taipei-zht"
         },
         {
-          "ImageUrl": "kv-l.png",
-          "ImageText": "Image Description",
-          "HyperLink": "https://www.citibank.com.tw"
+          "ImageUrl": "jhihganshenghuo.jpg",
+          "ImageText": "質感生活",
+          "HyperLink": "https://www.citibank.com.tw/sim/blog/index.html"
         }
       ]
     },

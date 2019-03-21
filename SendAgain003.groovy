@@ -138,7 +138,7 @@ try {
                                 }
                                 else
                                 {
-                                    column.addContent( newContent(Content.Type.TEXT, "結帳帳單<br/>－－－") );
+                                    column.addContent( newContent(Content.Type.TEXT, "結帳日<br/>－－－") );
                                     column.addContent( newContent(Content.Type.TEXT, formalAns("clickCustomerService")) );
                                 }
                             } catch (URISyntaxException e) {
@@ -212,8 +212,8 @@ try {
                         msgtxt.setType(Message.Type.TEXT);
                         msgtxt.setText("<div class='talk_btns'><div class='talk_box blue citi_icon bearW'><span class='blue'>" + formalAns("poleBear") + 
                                "</span><br><br><b class='notice_btn'>注意事項</b> <div class='notice_content'> " + formalAns("sevenDays") + 
-                               "</div></div><div class='btn_item center'><ul><li class='btnRedir' data-id='" + loveEarth + "'><a href='javascript:;'>"
-                               + formalAns("IAgreeEmail") + "</a></li></ul></div></div>");
+                               "</div></div><div class='btn_item center'><ul><li class='btnRedir' data-id='" + loveEarth + 
+                               "' data-l='" + formalAns("IAgreeEmail") + "'><a href='javascript:;'>" + formalAns("IAgreeEmail") + "</a></li></ul></div></div>");
                         String jsonInTxt = mapper.writeValueAsString(msgtxt);
                         jsonInString = "[" + jsonInString + "," + jsonInTxt + "]";
                     }
