@@ -1,0 +1,18 @@
+Apikey
+CitiDeep
+RobotFormalAnswers
+Tenant
+	
+Dsn=MultiChannelAnswer;Driver={SQL Server Native Client 11.0};database=ESB01P181;uid=sa;pwd=Intumit!!
+
+Dsn=SurFace;Driver={SQL Server};database=CTIDB;uid=OLAPUSER;pwd=ds123456
+
+Dsn=MacBook;Driver={SQL Server};database=ISOK;uid=OLAPUSER;pwd=ds123456
+
+WiseSystemConfig
+QAUserType
+QAChannel
+EventType
+AdminUser
+AdminGroup
+AdminLocation

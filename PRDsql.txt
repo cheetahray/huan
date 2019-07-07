@@ -1,0 +1,1774 @@
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[AmbiguityDatabase]    Script Date: 2019/7/7 上午 11:22:57 
+DROP TABLE [dbo].[AmbiguityDatabase]
+GO
+******/
+/****** Object:  Table [dbo].[AmbiguityDatabase]    Script Date: 2019/7/7 上午 11:22:57 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AmbiguityDatabase](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[disambiguation] [varchar](255) NULL,
+	[enabled] [tinyint] NOT NULL,
+	[sentence] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[Apikey]    Script Date: 2019/7/7 上午 11:23:10 
+DROP TABLE [dbo].[Apikey]
+GO
+******/
+/****** Object:  Table [dbo].[Apikey]    Script Date: 2019/7/7 上午 11:23:10 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Apikey](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[apikey] [varchar](32) NULL,
+	[callCounter] [numeric](19, 0) NULL,
+	[enableApikey] [tinyint] NULL,
+	[enableRateLimitByIP] [tinyint] NULL,
+	[enableRateLimitByQAContext] [tinyint] NULL,
+	[expireDate] [datetime] NULL,
+	[name] [varchar](255) NULL,
+	[publishDate] [datetime] NULL,
+	[rateLimitByIpPerSec] [int] NULL,
+	[rateLimitByQAContextPerSec] [int] NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[AutoEvaluationLog]    Script Date: 2019/7/7 上午 11:23:24 
+DROP TABLE [dbo].[AutoEvaluationLog]
+GO
+******/
+/****** Object:  Table [dbo].[AutoEvaluationLog]    Script Date: 2019/7/7 上午 11:23:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AutoEvaluationLog](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[apiMark] [int] NULL,
+	[correctAnswerId] [numeric](19, 0) NULL,
+	[evaluationLogEntityId] [int] NULL,
+	[myTimestamp] [datetime] NULL,
+	[qtime] [int] NULL,
+	[resultStatus] [int] NULL,
+	[robotAnswerId] [numeric](19, 0) NULL,
+	[scheduleNote] [varchar](255) NULL,
+	[scheduleTimestamp] [numeric](19, 0) NULL,
+	[score] [float] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[BlackKeyword]    Script Date: 2019/7/7 上午 11:37:03 
+DROP TABLE [dbo].[BlackKeyword]
+GO
+******/
+/****** Object:  Table [dbo].[BlackKeyword]    Script Date: 2019/7/7 上午 11:37:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[BlackKeyword](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[keyword] [varchar](255) NULL,
+	[saveTime] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[CitiDeep]    Script Date: 2019/7/7 上午 11:37:15 
+DROP TABLE [dbo].[CitiDeep]
+GO
+******/
+/****** Object:  Table [dbo].[CitiDeep]    Script Date: 2019/7/7 上午 11:37:15 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CitiDeep](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ApplyNow] [varchar](255) NULL,
+	[CardType] [varchar](128) NOT NULL,
+	[ImageUrl] [varchar](255) NULL,
+	[KnowMore] [varchar](255) NULL,
+	[OfferName1] [varchar](64) NULL,
+	[OfferName2] [varchar](64) NULL,
+	[OfferName3] [varchar](64) NULL,
+	[OfferText1] [varchar](64) NULL,
+	[OfferText2] [varchar](64) NULL,
+	[OfferText3] [varchar](64) NULL,
+	[Priority] [int] NOT NULL,
+	[Reward] [varchar](255) NULL,
+	[Title] [varchar](64) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[ClickLog]    Script Date: 2019/7/7 上午 11:37:26 
+DROP TABLE [dbo].[ClickLog]
+GO
+******/
+/****** Object:  Table [dbo].[ClickLog]    Script Date: 2019/7/7 上午 11:37:26 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ClickLog](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[target] [varchar](255) NULL,
+	[func] [varchar](255) NULL,
+	[_identity] [varchar](255) NULL,
+	[logtime] [datetime] NULL,
+	[clickId] [varchar](255) NULL,
+	[clickTitle] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[ColumnNameMapping]    Script Date: 2019/7/7 上午 11:37:37 
+DROP TABLE [dbo].[ColumnNameMapping]
+GO
+******/
+/****** Object:  Table [dbo].[ColumnNameMapping]    Script Date: 2019/7/7 上午 11:37:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ColumnNameMapping](
+	[columnName] [varchar](255) NOT NULL,
+	[mappingName] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[columnName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[CURDLog]    Script Date: 2019/7/7 上午 11:37:47 
+DROP TABLE [dbo].[CURDLog]
+GO
+******/
+/****** Object:  Table [dbo].[CURDLog]    Script Date: 2019/7/7 上午 11:37:47 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CURDLog](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[action] [varchar](255) NULL,
+	[coreName] [varchar](255) NULL,
+	[entityName] [varchar](255) NULL,
+	[primaryKey] [varchar](255) NULL,
+	[timestamp] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[DataConfig]    Script Date: 2019/7/7 上午 11:38:01 
+DROP TABLE [dbo].[DataConfig]
+GO
+******/
+/****** Object:  Table [dbo].[DataConfig]    Script Date: 2019/7/7 上午 11:38:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DataConfig](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[deleteQueryFrom] [varchar](255) NULL,
+	[deleteQueryWhere] [text] NULL,
+	[deltaQueryFrom] [varchar](255) NULL,
+	[deltaQueryWhere] [text] NULL,
+	[entityName] [varchar](255) NULL,
+	[jdbcDriver] [varchar](255) NULL,
+	[jdbcPass] [varchar](255) NULL,
+	[jdbcUri] [varchar](255) NULL,
+	[jdbcUser] [varchar](255) NULL,
+	[sqlQuery] [text] NULL,
+	[targetCoreName] [varchar](255) NULL,
+	[transformers] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+/****** 
+ALTER TABLE [dbo].[DataField] DROP CONSTRAINT [FK60641B50864D3720]
+GO
+
+Object:  Table [dbo].[DataField]    Script Date: 2019/7/7 上午 11:38:12 
+DROP TABLE [dbo].[DataField]
+GO
+******/
+/****** Object:  Table [dbo].[DataField]    Script Date: 2019/7/7 上午 11:38:12 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DataField](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[appliedTransformers] [varchar](255) NULL,
+	[comments] [varchar](128) NULL,
+	[dbColumnName] [varchar](255) NULL,
+	[dbColumnType] [varchar](255) NULL,
+	[facetable] [tinyint] NOT NULL,
+	[ignored] [tinyint] NOT NULL,
+	[indexFieldName] [varchar](255) NULL,
+	[mainDate] [tinyint] NOT NULL,
+	[mainText] [tinyint] NOT NULL,
+	[mainTitle] [tinyint] NOT NULL,
+	[primaryKey] [tinyint] NOT NULL,
+	[searchable] [tinyint] NOT NULL,
+	[config_id] [int] NULL,
+	[idx] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[DataField]  WITH CHECK ADD  CONSTRAINT [FK60641B50864D3720] FOREIGN KEY([config_id])
+REFERENCES [dbo].[DataConfig] ([id])
+GO
+
+ALTER TABLE [dbo].[DataField] CHECK CONSTRAINT [FK60641B50864D3720]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[DataSet]    Script Date: 2019/7/7 上午 11:38:26 
+DROP TABLE [dbo].[DataSet]
+GO
+******/
+/****** Object:  Table [dbo].[DataSet]    Script Date: 2019/7/7 上午 11:38:26 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DataSet](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[advancedDateField] [varchar](512) NULL,
+	[bodyFields] [varchar](512) NULL,
+	[coreName] [varchar](255) NULL,
+	[defaultSort] [varchar](32) NULL,
+	[displayRows] [varchar](255) NULL,
+	[dsOrder] [numeric](19, 0) NULL,
+	[enable] [tinyint] NULL,
+	[facetQueries] [text] NULL,
+	[facets] [varchar](512) NULL,
+	[fieldHighlight] [varchar](512) NULL,
+	[fieldMlt] [varchar](512) NULL,
+	[fieldMltCount] [numeric](19, 0) NULL,
+	[fieldMltName1] [varchar](512) NULL,
+	[fieldMltName2] [varchar](512) NULL,
+	[fieldMltName3] [varchar](512) NULL,
+	[fieldMltValue1] [varchar](512) NULL,
+	[fieldMltValue2] [varchar](512) NULL,
+	[fieldMltValue3] [varchar](512) NULL,
+	[fieldWeight] [varchar](512) NULL,
+	[fieldWiki] [varchar](512) NULL,
+	[fieldWikiCount] [numeric](19, 0) NULL,
+	[filters] [text] NULL,
+	[fuzzyField] [varchar](512) NULL,
+	[fuzzyFieldWeight] [varchar](512) NULL,
+	[fuzzySearch] [tinyint] NULL,
+	[name] [varchar](255) NULL,
+	[nameField] [varchar](32) NULL,
+	[queryBoost] [varchar](512) NULL,
+	[queryBoostMultiply] [varchar](512) NULL,
+	[rss] [tinyint] NULL,
+	[sortables] [varchar](512) NULL,
+	[visible] [tinyint] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[DepositInterestRateDict]    Script Date: 2019/7/7 上午 11:38:39 
+DROP TABLE [dbo].[DepositInterestRateDict]
+GO
+******/
+/****** Object:  Table [dbo].[DepositInterestRateDict]    Script Date: 2019/7/7 上午 11:38:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DepositInterestRateDict](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[enabled] [tinyint] NOT NULL,
+	[keyword] [varchar](255) NULL,
+	[purposes] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[DeviceBinding]    Script Date: 2019/7/7 上午 11:38:50 
+DROP TABLE [dbo].[DeviceBinding]
+GO
+******/
+/****** Object:  Table [dbo].[DeviceBinding]    Script Date: 2019/7/7 上午 11:38:50 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DeviceBinding](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[deviceToken] [varchar](300) NULL,
+	[nid] [varchar](32) NULL,
+	[status] [varchar](255) NULL,
+	[updateTime] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[deviceToken] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[nid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[DictionaryDatabase]    Script Date: 2019/7/7 上午 11:39:02 
+DROP TABLE [dbo].[DictionaryDatabase]
+GO
+******/
+/****** Object:  Table [dbo].[DictionaryDatabase]    Script Date: 2019/7/7 上午 11:39:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DictionaryDatabase](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[category] [varchar](255) NULL,
+	[enableQaScopeRestriction] [tinyint] NULL,
+	[enabled] [tinyint] NOT NULL,
+	[keyword] [varchar](255) NULL,
+	[purposes] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[DihLogEntity]    Script Date: 2019/7/7 上午 11:39:14 
+DROP TABLE [dbo].[DihLogEntity]
+GO
+******/
+/****** Object:  Table [dbo].[DihLogEntity]    Script Date: 2019/7/7 上午 11:39:14 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DihLogEntity](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[coreName] [varchar](32) NULL,
+	[errors] [text] NULL,
+	[eventSource] [varchar](64) NULL,
+	[parameters] [varchar](512) NULL,
+	[stats] [varchar](512) NULL,
+	[statusMessage] [text] NULL,
+	[timestamp] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[ElevatorSet]    Script Date: 2019/7/7 上午 11:48:20 
+DROP TABLE [dbo].[ElevatorSet]
+GO
+******/
+/****** Object:  Table [dbo].[ElevatorSet]    Script Date: 2019/7/7 上午 11:48:20 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ElevatorSet](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[addedAfterFixed] [text] NULL,
+	[creator] [varchar](64) NULL,
+	[dsId] [varchar](512) NULL,
+	[facetQueryFixedAtTop] [text] NULL,
+	[fixedAtTop] [text] NULL,
+	[hidden] [text] NULL,
+	[query] [varchar](512) NULL,
+	[timestamp] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[EntityDatabase]    Script Date: 2019/7/7 上午 11:48:32 
+DROP TABLE [dbo].[EntityDatabase]
+GO
+******/
+/****** Object:  Table [dbo].[EntityDatabase]    Script Date: 2019/7/7 上午 11:48:32 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[EntityDatabase](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[category] [varchar](255) NULL,
+	[code] [varchar](255) NULL,
+	[enabled] [tinyint] NOT NULL,
+	[entityType] [int] NULL,
+	[entityValues] [text] NULL,
+	[fromIndex] [tinyint] NULL,
+	[name] [varchar](255) NULL,
+	[subEntities] [text] NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[EvaluationLogEntity]    Script Date: 2019/7/7 上午 11:48:44 
+DROP TABLE [dbo].[EvaluationLogEntity]
+GO
+******/
+/****** Object:  Table [dbo].[EvaluationLogEntity]    Script Date: 2019/7/7 上午 11:48:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[EvaluationLogEntity](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[admId] [int] NULL,
+	[autoRobotAnswerId] [numeric](19, 0) NULL,
+	[clientIp] [varchar](64) NULL,
+	[conversations] [text] NULL,
+	[correctAnswerId] [numeric](19, 0) NULL,
+	[description] [varchar](255) NULL,
+	[eservice] [varchar](255) NULL,
+	[flag] [int] NOT NULL,
+	[lastTestResult] [int] NULL,
+	[lastTestResultTimestamp] [datetime] NULL,
+	[logSource] [varchar](64) NULL,
+	[namespace] [varchar](32) NULL,
+	[originalTime] [varchar](255) NULL,
+	[qaCategory] [varchar](512) NULL,
+	[qtime] [int] NULL,
+	[question] [varchar](4000) NULL,
+	[reviewStatus] [int] NULL,
+	[robotAnswerId] [numeric](19, 0) NULL,
+	[score] [float] NULL,
+	[sourceRef] [varchar](256) NULL,
+	[suggestQaTemplateKeywords] [varchar](512) NULL,
+	[suggestQaTemplateMkey] [varchar](16) NULL,
+	[tenantId] [int] NULL,
+	[timestamp] [datetime] NULL,
+	[userType] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[EvaluationLogEntityUpdateLog]    Script Date: 2019/7/7 上午 11:49:00 
+DROP TABLE [dbo].[EvaluationLogEntityUpdateLog]
+GO
+******/
+/****** Object:  Table [dbo].[EvaluationLogEntityUpdateLog]    Script Date: 2019/7/7 上午 11:49:00 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[EvaluationLogEntityUpdateLog](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[admId] [int] NULL,
+	[autoRobotAnswerId] [numeric](19, 0) NULL,
+	[clientIp] [varchar](64) NULL,
+	[conversations] [text] NULL,
+	[correctAnswerId] [numeric](19, 0) NULL,
+	[description] [varchar](255) NULL,
+	[eservice] [varchar](255) NULL,
+	[evaluationLogEntityId] [int] NOT NULL,
+	[flag] [int] NOT NULL,
+	[lastTestResult] [int] NULL,
+	[lastTestResultTimestamp] [datetime] NULL,
+	[logSource] [varchar](64) NULL,
+	[logTimestamp] [datetime] NULL,
+	[namespace] [varchar](32) NULL,
+	[originalTime] [varchar](255) NULL,
+	[qaCategory] [varchar](512) NULL,
+	[qtime] [int] NULL,
+	[question] [varchar](4000) NULL,
+	[reviewStatus] [int] NULL,
+	[robotAnswerId] [numeric](19, 0) NULL,
+	[score] [float] NULL,
+	[sourceRef] [varchar](256) NULL,
+	[suggestQaTemplateKeywords] [varchar](512) NULL,
+	[suggestQaTemplateMkey] [varchar](16) NULL,
+	[tenantId] [int] NULL,
+	[timestamp] [datetime] NULL,
+	[updateByAdmId] [int] NULL,
+	[userType] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[Form]    Script Date: 2019/7/7 下午 12:28:35 
+DROP TABLE [dbo].[Form]
+GO
+******/
+/****** Object:  Table [dbo].[Form]    Script Date: 2019/7/7 下午 12:28:35 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Form](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[formContent] [text] NULL,
+	[status] [int] NULL,
+	[submitDate] [datetime] NULL,
+	[tenantId] [int] NULL,
+	[uid] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[FrontEndUser]    Script Date: 2019/7/7 下午 12:28:46 
+DROP TABLE [dbo].[FrontEndUser]
+GO
+******/
+/****** Object:  Table [dbo].[FrontEndUser]    Script Date: 2019/7/7 下午 12:28:46 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FrontEndUser](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[apikey] [varchar](255) NULL,
+	[email] [varchar](255) NULL,
+	[name] [varchar](255) NULL,
+	[password] [varchar](255) NULL,
+	[tenantIds] [varchar](128) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[GroupDataSet]    Script Date: 2019/7/7 下午 12:28:56 
+DROP TABLE [dbo].[GroupDataSet]
+GO
+******/
+/****** Object:  Table [dbo].[GroupDataSet]    Script Date: 2019/7/7 下午 12:28:56 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[GroupDataSet](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[dataSetId] [int] NOT NULL,
+	[dataSetViewAdminCURD] [int] NOT NULL,
+	[groupId] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[groupId] ASC,
+	[dataSetId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[IntentDatabase]    Script Date: 2019/7/7 下午 12:29:20 
+DROP TABLE [dbo].[IntentDatabase]
+GO
+******/
+/****** Object:  Table [dbo].[IntentDatabase]    Script Date: 2019/7/7 下午 12:29:20 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[IntentDatabase](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[category] [varchar](255) NULL,
+	[enabled] [tinyint] NOT NULL,
+	[keywords] [text] NULL,
+	[tag] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+/****** 
+ALTER TABLE [dbo].[KeywordToIdRecord] DROP CONSTRAINT [FK64F55790E604C369]
+GO
+
+Object:  Table [dbo].[KeywordToIdRecord]    Script Date: 2019/7/7 下午 12:29:38 
+DROP TABLE [dbo].[KeywordToIdRecord]
+GO
+******/
+/****** Object:  Table [dbo].[KeywordToIdRecord]    Script Date: 2019/7/7 下午 12:29:38 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[KeywordToIdRecord](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[idRecord] [varchar](255) NULL,
+	[modifyTime] [datetime] NULL,
+	[viewTime] [int] NOT NULL,
+	[viewRecordEntity_id] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[MultiChannelAnswer]    Script Date: 2019/7/7 下午 12:29:52 
+DROP TABLE [dbo].[MultiChannelAnswer]
+GO
+******/
+/****** Object:  Table [dbo].[MultiChannelAnswer]    Script Date: 2019/7/7 下午 12:29:52 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MultiChannelAnswer](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[answer] [text] NULL,
+	[answerMood] [varchar](255) NULL,
+	[answerType] [varchar](255) NULL,
+	[answerVoice] [varchar](255) NULL,
+	[channel] [varchar](255) NULL,
+	[channelTypeConfig] [text] NULL,
+	[disable] [tinyint] NOT NULL,
+	[extraParameters] [text] NULL,
+	[lastUpdated] [datetime] NULL,
+	[lineMKey] [varchar](255) NULL,
+	[qaId] [varchar](255) NULL,
+	[tags] [text] NULL,
+	[tenantId] [int] NOT NULL,
+	[userType] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[PushData]    Script Date: 2019/7/7 下午 12:51:35 
+DROP TABLE [dbo].[PushData]
+GO
+******/
+/****** Object:  Table [dbo].[PushData]    Script Date: 2019/7/7 下午 12:51:35 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PushData](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[contentType] [varchar](255) NULL,
+	[createdTime] [datetime] NULL,
+	[pushContent] [text] NULL,
+	[targetChannels] [varchar](255) NULL,
+	[targetChannelsType] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+	[traceCode] [varchar](128) NULL,
+	[updateTime] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[QAAltBuild]    Script Date: 2019/7/7 下午 12:51:55 
+DROP TABLE [dbo].[QAAltBuild]
+GO
+******/
+/****** Object:  Table [dbo].[QAAltBuild]    Script Date: 2019/7/7 下午 12:51:55 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[QAAltBuild](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[createdTime] [datetime] NULL,
+	[docId] [varchar](64) NULL,
+	[kid] [numeric](19, 0) NOT NULL,
+	[qAltTpls] [text] NULL,
+	[tenantId] [int] NULL,
+	[userName] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[QAAltTemplate]    Script Date: 2019/7/7 下午 12:52:58 
+DROP TABLE [dbo].[QAAltTemplate]
+GO
+******/
+/****** Object:  Table [dbo].[QAAltTemplate]    Script Date: 2019/7/7 下午 12:52:58 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[QAAltTemplate](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[description] [varchar](512) NULL,
+	[mkey] [varchar](8) NULL,
+	[name] [varchar](250) NULL,
+	[priority] [int] NOT NULL,
+	[suggestPatterns] [text] NULL,
+	[template] [text] NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[QADialogConfig]    Script Date: 2019/7/7 下午 12:53:32 
+DROP TABLE [dbo].[QADialogConfig]
+GO
+******/
+/****** Object:  Table [dbo].[QADialogConfig]    Script Date: 2019/7/7 下午 12:53:32 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[QADialogConfig](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[deleteMark] [tinyint] NULL,
+	[dialogConfig] [text] NULL,
+	[dialogDesc] [text] NULL,
+	[dialogName] [varchar](64) NULL,
+	[dialogTimestamp] [datetime] NULL,
+	[mkey] [varchar](32) NULL,
+	[oldMode] [tinyint] NULL,
+	[publishedVersionNumber] [int] NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[QADialogConfigVersion]    Script Date: 2019/7/7 下午 12:53:41 
+DROP TABLE [dbo].[QADialogConfigVersion]
+GO
+******/
+/****** Object:  Table [dbo].[QADialogConfigVersion]    Script Date: 2019/7/7 下午 12:53:41 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[QADialogConfigVersion](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[contributor] [int] NULL,
+	[dialogConfig] [text] NULL,
+	[dialogTimestamp] [datetime] NULL,
+	[mkey] [varchar](32) NULL,
+	[tenantId] [int] NULL,
+	[versionComment] [text] NULL,
+	[versionNumber] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[QAPattern]    Script Date: 2019/7/7 下午 12:53:59 
+DROP TABLE [dbo].[QAPattern]
+GO
+******/
+/****** Object:  Table [dbo].[QAPattern]    Script Date: 2019/7/7 下午 12:53:59 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[QAPattern](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[answerPeriod] [varchar](128) NULL,
+	[answerTemplate] [text] NULL,
+	[answerVoice] [text] NULL,
+	[dataAggregator] [varchar](128) NULL,
+	[dataSource] [int] NULL,
+	[maxMatched] [int] NOT NULL,
+	[mkey] [varchar](8) NULL,
+	[previewParameters] [text] NULL,
+	[questionTemplate] [varchar](512) NULL,
+	[specialRestriction] [text] NULL,
+	[staticAnswer] [text] NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[RecommendKeyword]    Script Date: 2019/7/7 下午 12:54:27 
+DROP TABLE [dbo].[RecommendKeyword]
+GO
+******/
+/****** Object:  Table [dbo].[RecommendKeyword]    Script Date: 2019/7/7 下午 12:54:27 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[RecommendKeyword](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[keyword] [varchar](255) NULL,
+	[sort] [int] NULL,
+	[os] [varchar](255) NULL,
+	[url] [varchar](255) NULL,
+	[saveTime] [datetime] NULL,
+	[target] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[RichMessage]    Script Date: 2019/7/7 下午 12:54:44 
+DROP TABLE [dbo].[RichMessage]
+GO
+******/
+/****** Object:  Table [dbo].[RichMessage]    Script Date: 2019/7/7 下午 12:54:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[RichMessage](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[createdTime] [datetime] NULL,
+	[expireTime] [datetime] NULL,
+	[mkey] [varchar](32) NULL,
+	[msgDesc] [varchar](255) NULL,
+	[msgName] [varchar](200) NULL,
+	[msgTemplate] [text] NULL,
+	[msgType] [varchar](32) NULL,
+	[tenantId] [int] NULL,
+	[updateTime] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[RichMessageWeb]    Script Date: 2019/7/7 下午 12:55:06 
+DROP TABLE [dbo].[RichMessageWeb]
+GO
+******/
+/****** Object:  Table [dbo].[RichMessageWeb]    Script Date: 2019/7/7 下午 12:55:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[RichMessageWeb](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[createdTime] [datetime] NULL,
+	[expireTime] [datetime] NULL,
+	[mkey] [varchar](32) NULL,
+	[msgDesc] [varchar](255) NULL,
+	[msgName] [varchar](200) NULL,
+	[msgTemplate] [text] NULL,
+	[msgType] [varchar](32) NULL,
+	[tenantId] [int] NULL,
+	[updateTime] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[RobotFormalAnswers]    Script Date: 2019/7/7 下午 12:59:59 
+DROP TABLE [dbo].[RobotFormalAnswers]
+GO
+******/
+/****** Object:  Table [dbo].[RobotFormalAnswers]    Script Date: 2019/7/7 下午 12:59:59 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[RobotFormalAnswers](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[answers] [varchar](255) NULL,
+	[keyName] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[keyName] ASC,
+	[tenantId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[RobotFormalAnswersSticker]    Script Date: 2019/7/7 下午 01:00:23 
+DROP TABLE [dbo].[RobotFormalAnswersSticker]
+GO
+******/
+/****** Object:  Table [dbo].[RobotFormalAnswersSticker]    Script Date: 2019/7/7 下午 01:00:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[RobotFormalAnswersSticker](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[answers] [varchar](255) NULL,
+	[height] [int] NULL,
+	[keyName] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+	[width] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[ScheduleLogEntity]    Script Date: 2019/7/7 下午 01:00:35 
+DROP TABLE [dbo].[ScheduleLogEntity]
+GO
+******/
+/****** Object:  Table [dbo].[ScheduleLogEntity]    Script Date: 2019/7/7 下午 01:00:35 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ScheduleLogEntity](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[errors] [text] NULL,
+	[eventSource] [varchar](64) NULL,
+	[parameters] [text] NULL,
+	[stats] [text] NULL,
+	[statusMessage] [varchar](512) NULL,
+	[timestamp] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[SearchKeywordLog]    Script Date: 2019/7/7 下午 01:01:02 
+DROP TABLE [dbo].[SearchKeywordLog]
+GO
+******/
+/****** Object:  Table [dbo].[SearchKeywordLog]    Script Date: 2019/7/7 下午 01:01:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SearchKeywordLog](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[name] [varchar](255) NULL,
+	[func] [varchar](255) NULL,
+	[logtime] [datetime] NULL,
+	[frequency] [numeric](19, 0) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[SearchKeywordLogStatisticsHourly]    Script Date: 2019/7/7 下午 01:01:19 
+DROP TABLE [dbo].[SearchKeywordLogStatisticsHourly]
+GO
+******/
+/****** Object:  Table [dbo].[SearchKeywordLogStatisticsHourly]    Script Date: 2019/7/7 下午 01:01:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SearchKeywordLogStatisticsHourly](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[frequency] [numeric](19, 0) NOT NULL,
+	[func] [varchar](255) NULL,
+	[logDay] [int] NOT NULL,
+	[logHour] [int] NOT NULL,
+	[logMonth] [int] NOT NULL,
+	[logYear] [int] NOT NULL,
+	[logtime] [datetime] NULL,
+	[name] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[SegmentBatchTask]    Script Date: 2019/7/7 下午 01:01:31 
+DROP TABLE [dbo].[SegmentBatchTask]
+GO
+******/
+/****** Object:  Table [dbo].[SegmentBatchTask]    Script Date: 2019/7/7 下午 01:01:31 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SegmentBatchTask](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[entryTimestamp] [datetime] NULL,
+	[keyword] [varchar](255) NULL,
+	[log] [text] NULL,
+	[processedKids] [text] NULL,
+	[purpose] [varchar](255) NULL,
+	[renameTo] [varchar](255) NULL,
+	[source] [varchar](255) NULL,
+	[status] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+	[toBeMerged] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[ServiceLogEntity]    Script Date: 2019/7/7 下午 01:01:42 
+DROP TABLE [dbo].[ServiceLogEntity]
+GO
+******/
+/****** Object:  Table [dbo].[ServiceLogEntity]    Script Date: 2019/7/7 下午 01:01:42 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ServiceLogEntity](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[channel] [text] NULL,
+	[clientIp] [varchar](64) NULL,
+	[conversations] [text] NULL,
+	[logIdentity] [varchar](64) NULL,
+	[lastMessage] [text] NULL,
+	[lastQaCategory] [varchar](32) NULL,
+	[moreDetails] [text] NULL,
+	[namespace] [varchar](32) NULL,
+	[parameters] [varchar](512) NULL,
+	[qaId] [varchar](256) NULL,
+	[reviewStatus] [int] NULL,
+	[reviewedBy] [int] NULL,
+	[statForward] [int] NULL,
+	[statMsgCountFromRobot] [int] NULL,
+	[statMsgCountFromUser] [int] NULL,
+	[statMsgCountHasAnswer] [int] NULL,
+	[statMsgCountNoAnswer] [int] NULL,
+	[statMsgCountTotal] [int] NULL,
+	[status] [varchar](64) NULL,
+	[statusMessage] [text] NULL,
+	[tenantId] [int] NULL,
+	[timestamp] [datetime] NULL,
+	[tsCreated] [datetime] NULL,
+	[chatId] [varchar](256) NULL,
+	[sessionId] [varchar](128) NULL,
+ CONSTRAINT [PK__ServiceL__3213E83F3D2915A8] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[SingleUserPushTrigger]    Script Date: 2019/7/7 下午 01:02:01 
+DROP TABLE [dbo].[SingleUserPushTrigger]
+GO
+******/
+/****** Object:  Table [dbo].[SingleUserPushTrigger]    Script Date: 2019/7/7 下午 01:02:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SingleUserPushTrigger](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[createdTime] [datetime] NULL,
+	[criteriaType] [varchar](255) NULL,
+	[namespace] [varchar](32) NULL,
+	[pushCriteria] [text] NULL,
+	[pushDataId] [int] NULL,
+	[pushStatus] [varchar](255) NULL,
+	[stopCriteria] [text] NULL,
+	[stopCriteriaType] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+	[triggeredTimes] [int] NULL,
+	[updateTime] [datetime] NULL,
+	[userClueId] [numeric](19, 0) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[SynonymKeyword]    Script Date: 2019/7/7 下午 01:02:12 
+DROP TABLE [dbo].[SynonymKeyword]
+GO
+******/
+/****** Object:  Table [dbo].[SynonymKeyword]    Script Date: 2019/7/7 下午 01:02:12 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SynonymKeyword](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[keyword] [varchar](255) NULL,
+	[synonymKeyword] [varchar](255) NULL,
+	[reverse] [tinyint] NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[SyslogEntity]    Script Date: 2019/7/7 下午 01:02:24 
+DROP TABLE [dbo].[SyslogEntity]
+GO
+******/
+/****** Object:  Table [dbo].[SyslogEntity]    Script Date: 2019/7/7 下午 01:02:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SyslogEntity](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[clientIp] [varchar](64) NULL,
+	[event] [varchar](64) NULL,
+	[logIdentity] [varchar](64) NULL,
+	[moreDetails] [text] NULL,
+	[namespace] [varchar](32) NULL,
+	[parameters] [varchar](512) NULL,
+	[statusMessage] [text] NULL,
+	[timestamp] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[Tenant]    Script Date: 2019/7/7 下午 01:02:34 
+DROP TABLE [dbo].[Tenant]
+GO
+******/
+/****** Object:  Table [dbo].[Tenant]    Script Date: 2019/7/7 下午 01:02:34 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tenant](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[address] [varchar](512) NULL,
+	[allowedCustomDataFieldNames] [varchar](255) NULL,
+	[allowedLocales] [varchar](256) NULL,
+	[allowedOptionsJson] [varchar](255) NULL,
+	[apikey] [varchar](32) NULL,
+	[boost1] [int] NULL,
+	[boost2] [int] NULL,
+	[boost3] [int] NULL,
+	[casualCoreUrl] [varchar](255) NULL,
+	[coreName] [varchar](512) NULL,
+	[crmApiBaseUrl] [varchar](255) NULL,
+	[defaultTextCrmDepartmentId] [int] NULL,
+	[email] [varchar](255) NULL,
+	[emailVerified] [tinyint] NULL,
+	[emailVerifyCode] [varchar](255) NULL,
+	[enableAutoLearning] [tinyint] NULL,
+	[enableContextMatch] [tinyint] NULL,
+	[enableDebug] [tinyint] NULL,
+	[enableEssentialKeywordMode] [tinyint] NULL,
+	[enableMultiLocale] [tinyint] NULL,
+	[enablePhoneticHomonym] [tinyint] NULL,
+	[enableQAExplain] [tinyint] NULL,
+	[enableQaAudit] [tinyint] NULL,
+	[enableRateLimitByIP] [tinyint] NULL,
+	[enableRateLimitByQAContext] [tinyint] NULL,
+	[enableRestrictToKnowledgePoint] [tinyint] NULL,
+	[enableRestrictToQaCategory] [tinyint] NULL,
+	[enableScenario] [tinyint] NULL,
+	[enableScenarioCrm] [tinyint] NULL,
+	[enableTenant] [tinyint] NULL,
+	[enableTextCrm] [tinyint] NULL,
+	[enableUserFrontEnd] [tinyint] NULL,
+	[faqJson] [text] NULL,
+	[forceIgnoreCharacters] [varchar](256) NULL,
+	[kmsUrl] [varchar](255) NULL,
+	[lineBotChannelId] [varchar](32) NULL,
+	[lineBotConfigJson] [text] NULL,
+	[locale] [varchar](255) NULL,
+	[maxBatchUploadSize] [int] NULL,
+	[name] [varchar](64) NULL,
+	[notes] [text] NULL,
+	[opendataCoreUrl] [varchar](255) NULL,
+	[otherMltQANum] [int] NULL,
+	[outerSourceUrl] [varchar](255) NULL,
+	[permission] [numeric](19, 0) NOT NULL,
+	[pwd] [varchar](255) NULL,
+	[qaCategory] [varchar](512) NULL,
+	[qaMatchCtrlFlow] [text] NULL,
+	[rateLimitByIpPerSec] [int] NULL,
+	[rateLimitByQAContextPerSec] [int] NULL,
+	[sessionExpirationSecond] [int] NULL,
+	[specificEservice] [varchar](128) NULL,
+	[statisticsCoreUrl] [varchar](255) NULL,
+	[tel] [varchar](255) NULL,
+	[threshold1] [int] NULL,
+	[threshold2] [int] NULL,
+	[threshold3] [int] NULL,
+	[tooManyRepeatThreshold] [int] NULL,
+	[uuid] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[TenantAdminGroup]    Script Date: 2019/7/7 下午 01:02:52 
+DROP TABLE [dbo].[TenantAdminGroup]
+GO
+******/
+/****** Object:  Table [dbo].[TenantAdminGroup]    Script Date: 2019/7/7 下午 01:02:52 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TenantAdminGroup](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[adminId] [int] NULL,
+	[groupId] [int] NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[tenantId] ASC,
+	[adminId] ASC,
+	[groupId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[TextCrmServiceLogEntity]    Script Date: 2019/7/7 下午 01:03:05 
+DROP TABLE [dbo].[TextCrmServiceLogEntity]
+GO
+******/
+/****** Object:  Table [dbo].[TextCrmServiceLogEntity]    Script Date: 2019/7/7 下午 01:03:05 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TextCrmServiceLogEntity](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[clientIp] [varchar](64) NULL,
+	[conversations] [text] NULL,
+	[firstMessage] [text] NULL,
+	[logIdentity] [varchar](64) NULL,
+	[lastMessage] [text] NULL,
+	[lastQaCategory] [varchar](32) NULL,
+	[qaId] [varchar](256) NULL,
+	[reviewStatus] [int] NULL,
+	[reviewedBy] [int] NULL,
+	[statMsgCountFromRobot] [int] NULL,
+	[statMsgCountFromUser] [int] NULL,
+	[statMsgCountTotal] [int] NULL,
+	[tag] [varchar](450) NULL,
+	[tenantId] [int] NULL,
+	[timestamp] [datetime] NULL,
+	[tsCreated] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[UrlShortener]    Script Date: 2019/7/7 下午 01:03:17 
+DROP TABLE [dbo].[UrlShortener]
+GO
+******/
+/****** Object:  Table [dbo].[UrlShortener]    Script Date: 2019/7/7 下午 01:03:17 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[UrlShortener](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[additionalInfo] [varchar](200) NULL,
+	[fullUrl] [varchar](255) NULL,
+	[mkey] [varchar](64) NULL,
+	[tag] [varchar](200) NULL,
+	[tenantId] [int] NULL,
+	[urlHash] [varchar](160) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[UserClue]    Script Date: 2019/7/7 下午 01:03:33 
+DROP TABLE [dbo].[UserClue]
+GO
+******/
+/****** Object:  Table [dbo].[UserClue]    Script Date: 2019/7/7 下午 01:03:33 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[UserClue](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[adminUserId] [int] NULL,
+	[androidDeviceToken] [varchar](200) NULL,
+	[cookieUserId] [varchar](64) NULL,
+	[createdTime] [datetime] NULL,
+	[email] [varchar](200) NULL,
+	[expireTime] [datetime] NULL,
+	[fbPsId] [varchar](128) NULL,
+	[iosDeviceToken] [varchar](200) NULL,
+	[lineUserId] [varchar](64) NULL,
+	[nickname] [varchar](200) NULL,
+	[status] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+	[updateTime] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[UserClueTag]    Script Date: 2019/7/7 下午 01:03:43 
+DROP TABLE [dbo].[UserClueTag]
+GO
+******/
+/****** Object:  Table [dbo].[UserClueTag]    Script Date: 2019/7/7 下午 01:03:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[UserClueTag](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[additionalInfo] [varchar](200) NULL,
+	[tag] [varchar](200) NULL,
+	[tagTime] [datetime] NULL,
+	[tenantId] [int] NULL,
+	[userClueId] [numeric](19, 0) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[ViewRecordEntity]    Script Date: 2019/7/7 下午 01:04:00 
+DROP TABLE [dbo].[ViewRecordEntity]
+GO
+******/
+/****** Object:  Table [dbo].[ViewRecordEntity]    Script Date: 2019/7/7 下午 01:04:00 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ViewRecordEntity](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[keyword] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[WikiWord]    Script Date: 2019/7/7 下午 01:04:15 
+DROP TABLE [dbo].[WikiWord]
+GO
+******/
+/****** Object:  Table [dbo].[WikiWord]    Script Date: 2019/7/7 下午 01:04:15 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[WikiWord](
+	[keywordId] [int] IDENTITY(1,1) NOT NULL,
+	[nature] [varchar](255) NULL,
+	[pageDescription] [text] NULL,
+	[pageTitle] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[keywordId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+USE [ISOK]
+GO
+
+/****** Object:  Table [dbo].[WiVoEntry]    Script Date: 2019/7/7 下午 01:04:49 
+DROP TABLE [dbo].[WiVoEntry]
+GO
+******/
+/****** Object:  Table [dbo].[WiVoEntry]    Script Date: 2019/7/7 下午 01:04:49 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[WiVoEntry](
+	[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,
+	[channel] [varchar](255) NULL,
+	[enabled] [tinyint] NOT NULL,
+	[excludes] [text] NULL,
+	[includes] [text] NULL,
+	[keyword] [varchar](255) NULL,
+	[tenantId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[KeywordToIdRecord]  WITH CHECK ADD  CONSTRAINT [FK64F55790E604C369] FOREIGN KEY([viewRecordEntity_id])
+REFERENCES [dbo].[ViewRecordEntity] ([id])
+GO
+
+ALTER TABLE [dbo].[KeywordToIdRecord] CHECK CONSTRAINT [FK64F55790E604C369]
+GO
+
