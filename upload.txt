@@ -1,1 +1,94 @@
-9d3782f8-3ddc-4dde-8f34-2b6d9065908d
+{
+    "data": {
+        "provisionId": "vcppProvision",
+        "tenant": { 
+            "id": "vcpp.com.tw", 
+            "name": "VCPP Org", 
+            "description": "VCPP test tenant", 
+            "account": { 
+                "id": "admin", 
+                "active": true, 
+                "role": "adminRole", 
+                "contactName": "tester", 
+                "contactMail": "tester@test.com.tw", 
+                "contactPhone": "0901-234-567" 
+            }
+        },
+        "quota": {
+            "id": "vcppVDC", 
+            "provider": "RayTryPro",
+            "resources": [ 
+                {
+                    "type": "cpu",
+                    "limit": 250
+                },
+                {
+                    "type": "memory",
+                    "limit": 4096, 
+                    "unitType": "mb" 
+                },
+                {
+                    "type": "disk",
+                    "limit": 1024, 
+                    "storageId": "" 
+                },
+                {
+                    "type": "vm",
+                    "limit": 10  
+                },
+                {
+                    "type": "network", 
+                    "networkPoolId": "RayTryPro-VXLAN-NP", 
+                    "limit": 100
+                }
+            ]
+        },
+        "network": { 
+			"edge" : {
+				"id": "vcppEDGE", 
+				"publicNetwork": { 
+                    "networkId": "RayTryNet", 
+                    "gateway": "10.147.74.254"
+                },
+                "resources": [
+					{
+						"type": "static", 
+						"ipAddress": "10.147.74.100"
+					},
+					{
+						"type": "addressPool", 
+						"pools":[
+							"10.147.74.100 - 10.147.74.105",
+							"10.147.74.145 - 10.147.74.150"
+						]
+					},
+					{
+						"type": "rateLimit", 
+						"limitSettings": [
+							{
+								"networkId": "RayTryLimit", 
+								"isActive": true,
+								"inboundLimit": 100.0, 
+								"outboundLimit": 100.0 
+							}
+						]
+					}
+				]
+			},
+			"vdc": { 
+                "id": "vcppNet", 
+                "cidr": "192.168.1.0/24", 
+                "gateway": "192.168.1.254", 
+                "submask": "255.255.255.0", 
+                "dns1": "8.8.8.8", 
+                "dns2": "4.4.4.4", 
+                "dnsFQDN": "", 
+                "staticIpPools":[ 
+                        "192.168.1.2 - 192.168.1.100",
+						"192.168.1.101 - 192.168.1.110"
+                ],
+                "dhcpIpPool": "192.168.1.111 - 192.168.1.150"
+            }
+        }
+    }
+}
